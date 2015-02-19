@@ -831,11 +831,13 @@
 					"$(PROJECT_DIR)/UnNamedWeibo/libWeiboSDK",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 					"-licucore",
 					"-l\"Pods-Shimmer\"",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UnNamedWeibo/RAMAnimatedTabBarController/UnNamedWeibo-Bridging-Header.h";
@@ -862,6 +864,7 @@
 					"-ObjC",
 					"-licucore",
 					"-l\"Pods-Shimmer\"",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UnNamedWeibo/RAMAnimatedTabBarController/UnNamedWeibo-Bridging-Header.h";
