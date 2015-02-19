@@ -33,9 +33,10 @@
     UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
     self.navigationItem.leftBarButtonItem=logoItem;
     
-    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 20)];
-    statusView.backgroundColor = [UIColor redColor];
+    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 568, 20)];
     [self.navigationController.view addSubview:statusView];
+    statusView.backgroundColor = [UIColor redColor];
+
     
     _showIndexes = [NSMutableSet set];
     
