@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F8F7BB01BEEE931D7810F14"
-               BuildableName = "libPods-Shimmer.a"
-               BlueprintName = "Pods-Shimmer"
+               BlueprintIdentifier = "7D62D8E53E76E351E9C49F18"
+               BuildableName = "libPods-MDCScrollBarLabel.a"
+               BlueprintName = "Pods-MDCScrollBarLabel"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -6,6 +6,12 @@
 // project.
 
 
+// MDCScrollBarLabel
+#define COCOAPODS_POD_AVAILABLE_MDCScrollBarLabel
+#define COCOAPODS_VERSION_MAJOR_MDCScrollBarLabel 0
+#define COCOAPODS_VERSION_MINOR_MDCScrollBarLabel 1
+#define COCOAPODS_VERSION_PATCH_MDCScrollBarLabel 3
+
 // SKSplashView
 #define COCOAPODS_POD_AVAILABLE_SKSplashView
 #define COCOAPODS_VERSION_MAJOR_SKSplashView 0
