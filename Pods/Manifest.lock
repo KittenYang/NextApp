@@ -1,0 +1,13 @@
+PODS:
+  - Shimmer (1.0.2)
+  - SKSplashView (0.1.0)
+
+DEPENDENCIES:
+  - Shimmer (~> 1.0.2)
+  - SKSplashView
+
+SPEC CHECKSUMS:
+  Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
+  SKSplashView: 1cff0ac7bae5539e65b5b638fb25e59a1e43f681
+
+COCOAPODS: 0.35.0
