@@ -118,7 +118,7 @@ static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
 //    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-(60 * 12 * rowNumber)];
 //    self.scrollBarLabel.date = date;
 
-    
+
     [self.scrollBarLabel adjustPositionForScrollView:scrollView];
     [self.scrollBarLabel setDisplayed:YES animated:YES afterDelay:0.0f];
 }
