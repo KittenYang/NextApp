@@ -203,18 +203,16 @@ typedef enum {
     CGSize size = self.frame.size;
     CGPoint origin = self.frame.origin;
     UIView *indicator = [[scrollView subviews] lastObject];
-float y =scrollView.contentOffset.y+ (scrollView.contentOffset.y) * (scrollView.frame.size.height/scrollView.contentSize.height)+ scrollView.frame.size.height/scrollView.contentSize.height + (indicator.frame.size.height - size.height)/2;
+float y =(scrollView.contentOffset.y+64)+ (scrollView.contentOffset.y) * (scrollView.frame.size.height/scrollView.contentSize.height)+ scrollView.frame.size.height/scrollView.contentSize.height + (indicator.frame.size.height - size.height)/2;
 
     float topLimit = self.verticalPadding + scrollView.contentOffset.y;
 
     if (y < topLimit || isnan(y)) {
         y = topLimit;
     }
-    NSLog(@"scrollView.contentOffset.y:%f",scrollView.contentOffset.y);
-    NSLog(@"y:%f",y);
 
     self.frame = CGRectMake(origin.x, y, size.width, size.height);
-    
+
 }
 
 - (void)setDisplayed:(BOOL)displayed animated:(BOOL)animated afterDelay:(NSTimeInterval)delay {

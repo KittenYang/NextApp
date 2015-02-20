@@ -121,6 +121,8 @@ static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
 
     [self.scrollBarLabel adjustPositionForScrollView:scrollView];
     [self.scrollBarLabel setDisplayed:YES animated:YES afterDelay:0.0f];
+    
+    NSLog(@"%f",self.scrollBarLabel.frame.origin.y);
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
