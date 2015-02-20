@@ -86,9 +86,11 @@ typedef enum {
         _calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 
         _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.locale = [[NSLocale alloc]initWithLocaleIdentifier:@"en_US"];
         _dateFormatter.dateFormat = @"h:mm a";
 
         _weekdayDateFormatter = [NSDateFormatter new];
+        _weekdayDateFormatter.locale = [[NSLocale alloc]initWithLocaleIdentifier:@"en_US"];
         _weekdayDateFormatter.dateFormat = @"EEEE";
 
         self.alpha = 0.0f;
@@ -143,7 +145,7 @@ typedef enum {
             label.font = [UIFont fontWithName:@"Helvetica-Bold" size:12.0f];
             label.shadowColor = [UIColor darkTextColor];
             label.shadowOffset = CGSizeMake(0, -1);
-            label.textAlignment = UITextAlignmentLeft;
+            label.textAlignment = NSTextAlignmentLeft;
             label.backgroundColor = [UIColor clearColor];
         }
         [self addSubview:self.timeLabel];
@@ -203,8 +205,8 @@ typedef enum {
     UIView *indicator = [[scrollView subviews] lastObject];
 
     float y = \
-        scrollView.contentOffset.y \
-        + scrollView.contentOffset.y * (scrollView.frame.size.height/scrollView.contentSize.height)
+        (scrollView.contentOffset.y+64)\
+        + (scrollView.contentOffset.y) * (scrollView.frame.size.height/scrollView.contentSize.height)
         + scrollView.frame.size.height/scrollView.contentSize.height \
         + (indicator.frame.size.height - size.height)/2;
 
@@ -213,8 +215,11 @@ typedef enum {
     if (y < topLimit || isnan(y)) {
         y = topLimit;
     }
+    NSLog(@"scrollView.contentOffset.y:%f",scrollView.contentOffset.y);
+    NSLog(@"y:%f",y);
 
     self.frame = CGRectMake(origin.x, y, size.width, size.height);
+    
 }
 
 - (void)setDisplayed:(BOOL)displayed animated:(BOOL)animated afterDelay:(NSTimeInterval)delay {
