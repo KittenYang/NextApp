@@ -99,7 +99,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setCalendar:self.calendar];
     [dateFormatter setTimeZone:self.calendar.timeZone];
-    [dateFormatter setDateFormat:@"h:mm a"];
+    [dateFormatter setDateFormat:@"HH:mm "];
     self.timeDateFormatter = dateFormatter;
     
     dateFormatter = [[NSDateFormatter alloc] init];
@@ -327,16 +327,17 @@
         dateLabelString = @"";
         
         backgroundFrame = CGRectMake(CGRectGetWidth(self.frame) - 80.0f, 0.0f, 80.0f, CGRectGetHeight(self.frame));
-        timeLabelFrame = CGRectMake(30.0f, 4.0f, 100.0f, 20.0f);
-        dateLabelAlpha = 0.0f;
+        timeLabelFrame = CGRectMake(30.0f, 4.0f, 100.0f, 10.0f);
+        dateLabelAlpha = 1.0f;
     }
     else if ((dateComponents.year == todayComponents.year) && (dateComponents.month == todayComponents.month) && (dateComponents.day == todayComponents.day - 1))
     {
         timeLabelFrame = CGRectMake(30.0f, 4.0f, 100.0f, 10.0f);
         
+        
         dateLabelString = @"昨天";
         dateLabelAlpha = 1.0f;
-        backgroundFrame = CGRectMake(CGRectGetWidth(self.frame) - 85.0f, 0.0f, 85.0f, CGRectGetHeight(self.frame));
+        backgroundFrame = CGRectMake(CGRectGetWidth(self.frame) - 90.0f, 0.0f, 90.0f, CGRectGetHeight(self.frame));
     }
     else if ((dateComponents.year == todayComponents.year) && (dateComponents.weekOfYear == todayComponents.weekOfYear))
     {
@@ -384,7 +385,11 @@
         _dateLabel.frame = dateLabelFrame;
         _dateLabel.alpha = dateLabelAlpha;
         _timeLabel.text = timeLabelString;
-        _dateLabel.text = dateLabelString;
+        if ([dateLabelString isEqualToString:@""]) {
+            _dateLabel.text = [NSString stringWithFormat:@"第%ld条",(long)[_tableView indexPathForCell:cell].row + 1];
+        }else{
+            _dateLabel.text = [NSString stringWithFormat:@"%@ 第%ld条",dateLabelString,(long)[_tableView indexPathForCell:cell].row + 1];
+        }
         _backgroundView.frame = backgroundFrame;
         
     } completion:nil];

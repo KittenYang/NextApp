@@ -184,7 +184,7 @@
         <!--2 Navigation Controller-->
         <scene sceneID="YCg-hb-TwY">
             <objects>
-                <navigationController title="首页" id="K3y-Dz-DBn" userLabel="2 Navigation Controller" sceneMemberID="viewController">
+                <navigationController title="首页" hidesBarsOnSwipe="YES" id="K3y-Dz-DBn" userLabel="2 Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="drop" id="s4Z-B1-qP9" customClass="RAMAnimatedTabBarItem" customModule="UnNamedWeibo" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">

@@ -89,13 +89,13 @@
     //动画1：
     if (![self.showIndexes containsObject:indexPath]) {
         [self.showIndexes addObject:indexPath];
-        CGFloat rotationAngleDegrees = -30;
-        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
-        CGPoint offsetPositioning = CGPointMake(-20, -20);
+//        CGFloat rotationAngleDegrees = -30;
+//        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
+        CGPoint offsetPositioning = CGPointMake(-30, -20);
         
         
         CATransform3D transform = CATransform3DIdentity;
-        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
+//        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
         cell.layer.transform = transform;
         cell.alpha = 0.7;
@@ -106,7 +106,7 @@
         kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
         kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
 
-        [UIView animateWithDuration:1 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             kycell_.avator.layer.opacity = 1;
             kycell_.avator.layer.transform = CATransform3DIdentity;
             cell.layer.transform = CATransform3DIdentity;
