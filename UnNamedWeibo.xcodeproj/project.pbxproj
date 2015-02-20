@@ -37,6 +37,13 @@
 		5F7FAE3C1A9517D400CEF622 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAE281A9517D400CEF622 /* UIImageView+HighlightedWebCache.m */; };
 		5F7FAE3D1A9517D400CEF622 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAE2A1A9517D400CEF622 /* UIImageView+WebCache.m */; };
 		5F7FAE3E1A9517D400CEF622 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAE2C1A9517D400CEF622 /* UIView+WebCacheOperation.m */; };
+		5F7FAE471A9794AE00CEF622 /* ACTimeScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAE461A9794AE00CEF622 /* ACTimeScroller.m */; };
+		5F7FAE501A9797FB00CEF622 /* timescroll_hourhand.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4A1A9797FB00CEF622 /* timescroll_hourhand.png */; };
+		5F7FAE511A9797FB00CEF622 /* timescroll_hourhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4B1A9797FB00CEF622 /* timescroll_hourhand@2x.png */; };
+		5F7FAE521A9797FB00CEF622 /* timescroll_minutehand.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4C1A9797FB00CEF622 /* timescroll_minutehand.png */; };
+		5F7FAE531A9797FB00CEF622 /* timescroll_minutehand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4D1A9797FB00CEF622 /* timescroll_minutehand@2x.png */; };
+		5F7FAE541A9797FB00CEF622 /* timescroll_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4E1A9797FB00CEF622 /* timescroll_pointer.png */; };
+		5F7FAE551A9797FB00CEF622 /* timescroll_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4F1A9797FB00CEF622 /* timescroll_pointer@2x.png */; };
 		5F8736421A8C4EF7000CADF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736411A8C4EF7000CADF4 /* main.m */; };
 		5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736441A8C4EF7000CADF4 /* AppDelegate.m */; };
 		5F8736481A8C4EF7000CADF4 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736471A8C4EF7000CADF4 /* UserViewController.m */; };
@@ -140,6 +147,14 @@
 		5F7FAE2A1A9517D400CEF622 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		5F7FAE2B1A9517D400CEF622 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		5F7FAE2C1A9517D400CEF622 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		5F7FAE451A9794AE00CEF622 /* ACTimeScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTimeScroller.h; sourceTree = "<group>"; };
+		5F7FAE461A9794AE00CEF622 /* ACTimeScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTimeScroller.m; sourceTree = "<group>"; };
+		5F7FAE4A1A9797FB00CEF622 /* timescroll_hourhand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timescroll_hourhand.png; sourceTree = "<group>"; };
+		5F7FAE4B1A9797FB00CEF622 /* timescroll_hourhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timescroll_hourhand@2x.png"; sourceTree = "<group>"; };
+		5F7FAE4C1A9797FB00CEF622 /* timescroll_minutehand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timescroll_minutehand.png; sourceTree = "<group>"; };
+		5F7FAE4D1A9797FB00CEF622 /* timescroll_minutehand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timescroll_minutehand@2x.png"; sourceTree = "<group>"; };
+		5F7FAE4E1A9797FB00CEF622 /* timescroll_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timescroll_pointer.png; sourceTree = "<group>"; };
+		5F7FAE4F1A9797FB00CEF622 /* timescroll_pointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timescroll_pointer@2x.png"; sourceTree = "<group>"; };
 		5F87363C1A8C4EF6000CADF4 /* UnNamedWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnNamedWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8736401A8C4EF6000CADF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8736411A8C4EF7000CADF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -285,6 +300,29 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		5F7FAE481A9794B500CEF622 /* TimeScroller */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FAE491A9797E900CEF622 /* image */,
+				5F7FAE451A9794AE00CEF622 /* ACTimeScroller.h */,
+				5F7FAE461A9794AE00CEF622 /* ACTimeScroller.m */,
+			);
+			name = TimeScroller;
+			sourceTree = "<group>";
+		};
+		5F7FAE491A9797E900CEF622 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FAE4A1A9797FB00CEF622 /* timescroll_hourhand.png */,
+				5F7FAE4B1A9797FB00CEF622 /* timescroll_hourhand@2x.png */,
+				5F7FAE4C1A9797FB00CEF622 /* timescroll_minutehand.png */,
+				5F7FAE4D1A9797FB00CEF622 /* timescroll_minutehand@2x.png */,
+				5F7FAE4E1A9797FB00CEF622 /* timescroll_pointer.png */,
+				5F7FAE4F1A9797FB00CEF622 /* timescroll_pointer@2x.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
 		5F8736331A8C4EF6000CADF4 = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +365,7 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FAE481A9794B500CEF622 /* TimeScroller */,
 				5F7FAE071A9517D400CEF622 /* SDWebImage */,
 				5F7FADFE1A94C69300CEF622 /* RegexKitLite */,
 				5F8736651A8C55EB000CADF4 /* RAMAnimatedTabBarController */,
@@ -596,11 +635,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7FAE501A9797FB00CEF622 /* timescroll_hourhand.png in Resources */,
 				5F7FAE021A94C69300CEF622 /* RegexKitLite.html in Resources */,
 				5F87364B1A8C4EF7000CADF4 /* Main.storyboard in Resources */,
 				5F8736501A8C4EF8000CADF4 /* LaunchScreen.xib in Resources */,
+				5F7FAE511A9797FB00CEF622 /* timescroll_hourhand@2x.png in Resources */,
+				5F7FAE551A9797FB00CEF622 /* timescroll_pointer@2x.png in Resources */,
 				5F87364D1A8C4EF7000CADF4 /* Images.xcassets in Resources */,
+				5F7FAE521A9797FB00CEF622 /* timescroll_minutehand.png in Resources */,
 				5F7FAD8C1A923B5900CEF622 /* WeiboSDK.bundle in Resources */,
+				5F7FAE531A9797FB00CEF622 /* timescroll_minutehand@2x.png in Resources */,
+				5F7FAE541A9797FB00CEF622 /* timescroll_pointer.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +720,7 @@
 				5F8736781A8C55EC000CADF4 /* RAMAnimatedTabBarController.swift in Sources */,
 				5F7FADDE1A9385C500CEF622 /* WeiboView.m in Sources */,
 				5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */,
+				5F7FAE471A9794AE00CEF622 /* ACTimeScroller.m in Sources */,
 				5F7FAE3A1A9517D400CEF622 /* UIImage+MultiFormat.m in Sources */,
 				5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */,
 				5F8736771A8C55EC000CADF4 /* RAMTransitionItemAnimation.swift in Sources */,

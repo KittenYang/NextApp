@@ -10,8 +10,9 @@
 #import "KYCell.h"
 #import "MDCScrollBarLabel.h"
 #import "Utils.h"
+#import "ACTimeScroller.h"
 
-@interface BaseTableViewController ()
+@interface BaseTableViewController ()<ACTimeScrollerDelegate>
 
 @property (strong, nonatomic) NSMutableSet *showIndexes;
 @property (nonatomic, strong) MDCScrollBarLabel *scrollBarLabel;
@@ -19,10 +20,12 @@
 
 @end
 
-static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
 
 @implementation BaseTableViewController{
-    KYCell *kycell;
+    
+    NSMutableArray *_datasource;
+    ACTimeScroller *_timeScroller;
+
 }
 
 - (void)viewDidLoad {
@@ -48,10 +51,9 @@ static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
     
     _showIndexes = [NSMutableSet set];
     
-    //设置滑杆
-    self.scrollBarFadeDelay = kMDCScrollBarViewControllerDefaultFadeDelay;
-    self.scrollBarLabel = [[MDCScrollBarLabel alloc] initWithScrollView:self.tableView];
-    [self.tableView addSubview:self.scrollBarLabel];
+
+    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
+
 
 }
 
@@ -60,12 +62,27 @@ static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
 }
 
 
+#pragma mark - TimeScollDelegate
+- (UITableView *)tableViewForTimeScroller:(ACTimeScroller *)timeScroller
+{
+    return self.tableView;
+}
+
+- (NSDate *)timeScroller:(ACTimeScroller *)timeScroller dateForCell:(UITableViewCell *)cell
+{
+    KYCell *kycell = (KYCell *)cell;
+    NSString *createDate =  kycell.weiboModel.createDate;
+    NSString *formate = @"EEE MMM d HH:mm:ss Z yyyy";
+    NSDate *scrollBarDate = [Utils dateFromFomate:createDate formate:formate];
+
+    return scrollBarDate;
+}
+
+
 
 #pragma mark - Table view data source
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return 200;
-//}
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -83,65 +100,38 @@ static CGFloat const kMDCScrollBarViewControllerDefaultFadeDelay = 1.0f;
         cell.layer.transform = transform;
         cell.alpha = 0.7;
         
-        kycell.avator.layer.opacity = 0;
-        kycell.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
-        kycell.avator.layer.transform = CATransform3DRotate(kycell.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
+        KYCell *kycell_ = (KYCell *)cell;
+        
+        kycell_.avator.layer.opacity = 0;
+        kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+        kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
 
         [UIView animateWithDuration:1 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            kycell.avator.layer.opacity = 1;
-            kycell.avator.layer.transform = CATransform3DIdentity;
+            kycell_.avator.layer.opacity = 1;
+            kycell_.avator.layer.transform = CATransform3DIdentity;
             cell.layer.transform = CATransform3DIdentity;
             cell.layer.opacity = 1;
         } completion:nil];
     }
 }
 
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath*)indexPath{
-    
-    kycell = (KYCell *)cell;
-}
-
 
 #pragma mark - UIScrollViewDelegate
 #pragma mark - Show/Hide the Label Using UIScrollViewDelegate Callbacks
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-
-    NSString *createDate =  kycell.weiboModel.createDate;
-    NSString *formate = @"EEE MMM d HH:mm:ss Z yyyy";
-    NSDate *scrollBarDate = [Utils dateFromFomate:createDate formate:formate];
-    self.scrollBarLabel.date = scrollBarDate;
-
-    
-//    NSInteger rowNumber = self.scrollBarLabel.frame.origin.y / 200;
-//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:-(60 * 12 * rowNumber)];
-//    self.scrollBarLabel.date = date;
-
-
-    [self.scrollBarLabel adjustPositionForScrollView:scrollView];
-    [self.scrollBarLabel setDisplayed:YES animated:YES afterDelay:0.0f];
-    
-    NSLog(@"%f",self.scrollBarLabel.frame.origin.y);
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [_timeScroller scrollViewWillBeginDragging];
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_timeScroller scrollViewDidScroll];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate {
-    if (!decelerate) {
-        [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
-    }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    [self.scrollBarLabel setDisplayed:NO animated:YES afterDelay:self.scrollBarFadeDelay];
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [_timeScroller scrollViewDidEndDecelerating];
 }
 
 
