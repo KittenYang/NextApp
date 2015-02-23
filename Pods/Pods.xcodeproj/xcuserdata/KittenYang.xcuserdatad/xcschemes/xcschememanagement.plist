@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-MDCScrollBarLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-POP+MCAnimate.xcscheme</key>
+		<key>Pods-MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-pop.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>254F83DDA7D00C32AD1DADDD</key>
+		<key>27EA89A0F0FC15D84F0E346B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B960567EB7EAC532B7A1288</key>
+		<key>570CBED4EE0BD998D85984B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4FAD8C1C54CC9174E4B36EE2</key>
+		<key>89D3A50AE628B9AFCCE9DC5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5866A14EBB7178EA728AA779</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BB67625DD539053C63C2E27E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BC43B4A5C48CBA61BAFC1DE4</key>
+		<key>A451896A9625B1EA0B658132</key>
 		<dict>
 			<key>primary</key>
 			<true/>

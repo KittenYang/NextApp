@@ -8,24 +8,22 @@
 
 #import "BaseTableViewController.h"
 #import "KYCell.h"
-#import "MDCScrollBarLabel.h"
 #import "Utils.h"
 #import "ACTimeScroller.h"
+#import "MJRefresh.h"
+
 
 @interface BaseTableViewController ()<ACTimeScrollerDelegate>
 
 @property (strong, nonatomic) NSMutableSet *showIndexes;
-@property (nonatomic, strong) MDCScrollBarLabel *scrollBarLabel;
-@property (nonatomic, assign) NSTimeInterval scrollBarFadeDelay;
+
 
 @end
 
 
 @implementation BaseTableViewController{
-    
-    NSMutableArray *_datasource;
-    ACTimeScroller *_timeScroller;
 
+    ACTimeScroller *_timeScroller;    
 }
 
 - (void)viewDidLoad {
@@ -48,18 +46,44 @@
     [self.navigationController.view addSubview:statusView];
     statusView.backgroundColor = [UIColor redColor];
 
-    
+    //保存indexpath的数组
     _showIndexes = [NSMutableSet set];
     
-
+    //时间滚动条
     _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
 
-
+    //下拉刷新
+   [self setupRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+- (void)setupRefresh{
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"table"];
+    [self.tableView headerBeginRefreshing];
+    
+    self.tableView.headerPullToRefreshText = @"下拉可以刷新了";
+    self.tableView.headerReleaseToRefreshText = @"松开马上刷新了";
+    self.tableView.headerRefreshingText = @"MJ哥正在帮你刷新中,不客气";
+
+}
+
+- (void)headerRereshing
+{
+    
+    // 2.模拟2秒后刷新表格UI（真实开发中，可以移除这段gcd代码）
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        [self.tableView headerEndRefreshing];
+    });
+}
+
+
+
 
 
 #pragma mark - TimeScollDelegate
@@ -81,8 +105,6 @@
 
 
 #pragma mark - Table view data source
-
-
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
@@ -127,6 +149,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_timeScroller scrollViewDidScroll];
+    
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

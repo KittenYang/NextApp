@@ -47,16 +47,7 @@ install_resource()
       ;;
   esac
 }
-          install_resource "MDCScrollBarLabel/Resources/Images/clock-center.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-center@2x.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-face.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-face@2x.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-hour-hand.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-hour-hand@2x.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-minute-hand.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/clock-minute-hand@2x.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/label-background.png"
-                    install_resource "MDCScrollBarLabel/Resources/Images/label-background@2x.png"
+          install_resource "MJRefresh/MJRefreshExample/MJRefreshExample/MJRefresh/MJRefresh.bundle"
           
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
