@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D62D8E53E76E351E9C49F18"
+               BlueprintIdentifier = "5866A14EBB7178EA728AA779"
                BuildableName = "libPods-MDCScrollBarLabel.a"
                BlueprintName = "Pods-MDCScrollBarLabel"
                ReferencedContainer = "container:Pods.xcodeproj">

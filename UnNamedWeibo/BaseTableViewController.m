@@ -89,13 +89,13 @@
     //动画1：
     if (![self.showIndexes containsObject:indexPath]) {
         [self.showIndexes addObject:indexPath];
-//        CGFloat rotationAngleDegrees = -30;
-//        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
+        CGFloat rotationAngleDegrees = -10;
+        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
         CGPoint offsetPositioning = CGPointMake(-30, -20);
         
         
         CATransform3D transform = CATransform3DIdentity;
-//        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
+        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
         cell.layer.transform = transform;
         cell.alpha = 0.7;

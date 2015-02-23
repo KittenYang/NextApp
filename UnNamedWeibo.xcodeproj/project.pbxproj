@@ -44,6 +44,7 @@
 		5F7FAE531A9797FB00CEF622 /* timescroll_minutehand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4D1A9797FB00CEF622 /* timescroll_minutehand@2x.png */; };
 		5F7FAE541A9797FB00CEF622 /* timescroll_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4E1A9797FB00CEF622 /* timescroll_pointer.png */; };
 		5F7FAE551A9797FB00CEF622 /* timescroll_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FAE4F1A9797FB00CEF622 /* timescroll_pointer@2x.png */; };
+		5F7FAE901A9B42B800CEF622 /* KYLoadingHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAE8F1A9B42B800CEF622 /* KYLoadingHUD.m */; };
 		5F8736421A8C4EF7000CADF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736411A8C4EF7000CADF4 /* main.m */; };
 		5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736441A8C4EF7000CADF4 /* AppDelegate.m */; };
 		5F8736481A8C4EF7000CADF4 /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736471A8C4EF7000CADF4 /* UserViewController.m */; };
@@ -155,6 +156,8 @@
 		5F7FAE4D1A9797FB00CEF622 /* timescroll_minutehand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timescroll_minutehand@2x.png"; sourceTree = "<group>"; };
 		5F7FAE4E1A9797FB00CEF622 /* timescroll_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timescroll_pointer.png; sourceTree = "<group>"; };
 		5F7FAE4F1A9797FB00CEF622 /* timescroll_pointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timescroll_pointer@2x.png"; sourceTree = "<group>"; };
+		5F7FAE8E1A9B42B800CEF622 /* KYLoadingHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYLoadingHUD.h; sourceTree = "<group>"; };
+		5F7FAE8F1A9B42B800CEF622 /* KYLoadingHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYLoadingHUD.m; sourceTree = "<group>"; };
 		5F87363C1A8C4EF6000CADF4 /* UnNamedWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnNamedWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8736401A8C4EF6000CADF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8736411A8C4EF7000CADF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -323,6 +326,15 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		5F7FAE911A9B42C000CEF622 /* KYLoadingHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FAE8E1A9B42B800CEF622 /* KYLoadingHUD.h */,
+				5F7FAE8F1A9B42B800CEF622 /* KYLoadingHUD.m */,
+			);
+			name = KYLoadingHUD;
+			sourceTree = "<group>";
+		};
 		5F8736331A8C4EF6000CADF4 = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +377,7 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FAE911A9B42C000CEF622 /* KYLoadingHUD */,
 				5F7FAE481A9794B500CEF622 /* TimeScroller */,
 				5F7FAE071A9517D400CEF622 /* SDWebImage */,
 				5F7FADFE1A94C69300CEF622 /* RegexKitLite */,
@@ -724,6 +737,7 @@
 				5F7FAE3A1A9517D400CEF622 /* UIImage+MultiFormat.m in Sources */,
 				5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */,
 				5F8736771A8C55EC000CADF4 /* RAMTransitionItemAnimation.swift in Sources */,
+				5F7FAE901A9B42B800CEF622 /* KYLoadingHUD.m in Sources */,
 				5F8736791A8C55EC000CADF4 /* RAMItemAnimationProtocol.swift in Sources */,
 				5F7FAE381A9517D400CEF622 /* UIButton+WebCache.m in Sources */,
 				5F7FAE3D1A9517D400CEF622 /* UIImageView+WebCache.m in Sources */,

@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-POP+MCAnimate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SKSplashView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Shimmer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>62C44AB4079CC1EB49B22A39</key>
+		<key>254F83DDA7D00C32AD1DADDD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E69A3D057331EA78F114107</key>
+		<key>3B960567EB7EAC532B7A1288</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F8F7BB01BEEE931D7810F14</key>
+		<key>4FAD8C1C54CC9174E4B36EE2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D62D8E53E76E351E9C49F18</key>
+		<key>5866A14EBB7178EA728AA779</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB67625DD539053C63C2E27E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC43B4A5C48CBA61BAFC1DE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,15 +1,41 @@
 PODS:
   - MDCScrollBarLabel (0.1.3)
+  - pop (1.0.7)
+  - POP+MCAnimate (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Animations (= 2.0.1)
+    - POP+MCAnimate/Group (= 2.0.1)
+    - POP+MCAnimate/Internal (= 2.0.1)
+    - POP+MCAnimate/Shorthand (= 2.0.1)
+    - POP+MCAnimate/Velocity (= 2.0.1)
+  - POP+MCAnimate/Animations (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Group
+    - POP+MCAnimate/Internal
+    - POP+MCAnimate/Shorthand
+    - POP+MCAnimate/Velocity
+  - POP+MCAnimate/Group (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Internal (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Shorthand (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Velocity (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Internal
   - Shimmer (1.0.2)
   - SKSplashView (0.1.0)
 
 DEPENDENCIES:
   - MDCScrollBarLabel (~> 0.1.3)
+  - POP+MCAnimate (~> 2.0)
   - Shimmer (~> 1.0.2)
   - SKSplashView
 
 SPEC CHECKSUMS:
   MDCScrollBarLabel: af15188e64cf76b852e60dc58c0823140e01e519
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  POP+MCAnimate: 528a556e3754a0b406adc481b02ec2984cfd1032
   Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
   SKSplashView: 1cff0ac7bae5539e65b5b638fb25e59a1e43f681
 

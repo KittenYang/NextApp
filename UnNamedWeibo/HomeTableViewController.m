@@ -10,6 +10,7 @@
 #import "KYCell.h"
 #import "Utils.h"
 #import "SKSplashIcon.h"
+#import "KYLoadingHUD.h"
 
 
 
@@ -21,6 +22,7 @@
 
 @implementation HomeTableViewController{
     NSArray *array;
+    KYLoadingHUD *hud;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -40,8 +42,10 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self twitterSplash];
-
+//    [self twitterSplash];
+    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
+    [self.view addSubview:hud];
+    [hud showHUD];
     
     //登录按钮
     UIButton *authBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -149,6 +153,8 @@
 
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
     if ([request.tag isEqual: @"load"]) {
+        [hud dismissHUD];
+        
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
         NSDictionary *WEIBOMODELS = [WEIBOJSON objectForKey:@"statuses"]; //100条微博
