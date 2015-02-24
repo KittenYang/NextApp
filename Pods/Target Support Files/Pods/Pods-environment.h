@@ -6,17 +6,23 @@
 // project.
 
 
-// MJRefresh
-#define COCOAPODS_POD_AVAILABLE_MJRefresh
-#define COCOAPODS_VERSION_MAJOR_MJRefresh 0
-#define COCOAPODS_VERSION_MINOR_MJRefresh 0
-#define COCOAPODS_VERSION_PATCH_MJRefresh 1
+// CBStoreHouseRefreshControl
+#define COCOAPODS_POD_AVAILABLE_CBStoreHouseRefreshControl
+#define COCOAPODS_VERSION_MAJOR_CBStoreHouseRefreshControl 1
+#define COCOAPODS_VERSION_MINOR_CBStoreHouseRefreshControl 0
+#define COCOAPODS_VERSION_PATCH_CBStoreHouseRefreshControl 0
 
 // SKSplashView
 #define COCOAPODS_POD_AVAILABLE_SKSplashView
 #define COCOAPODS_VERSION_MAJOR_SKSplashView 0
 #define COCOAPODS_VERSION_MINOR_SKSplashView 1
 #define COCOAPODS_VERSION_PATCH_SKSplashView 0
+
+// SSPullToRefresh
+#define COCOAPODS_POD_AVAILABLE_SSPullToRefresh
+#define COCOAPODS_VERSION_MAJOR_SSPullToRefresh 1
+#define COCOAPODS_VERSION_MINOR_SSPullToRefresh 2
+#define COCOAPODS_VERSION_PATCH_SSPullToRefresh 2
 
 // Shimmer
 #define COCOAPODS_POD_AVAILABLE_Shimmer

@@ -6,17 +6,23 @@
 //  Copyright (c) 2015 Kitten Yang. All rights reserved.
 //
 
+
+
+#define jellyHeaderHeight 300
+
+
 #import "BaseTableViewController.h"
 #import "KYCell.h"
 #import "Utils.h"
 #import "ACTimeScroller.h"
-#import "MJRefresh.h"
+#import "JellyView.h"
 
 
 @interface BaseTableViewController ()<ACTimeScrollerDelegate>
 
-@property (strong, nonatomic) NSMutableSet *showIndexes;
-
+@property (strong, nonatomic) NSMutableSet  *showIndexes;
+@property (nonatomic,strong ) CADisplayLink *displayLink;
+@property (nonatomic,strong ) JellyView     *jellyView;
 
 @end
 
@@ -53,34 +59,21 @@
     _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
 
     //下拉刷新
-   [self setupRefresh];
+    
 }
+
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
 
-- (void)setupRefresh{
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing) dateKey:@"table"];
-    [self.tableView headerBeginRefreshing];
-    
-    self.tableView.headerPullToRefreshText = @"下拉可以刷新了";
-    self.tableView.headerReleaseToRefreshText = @"松开马上刷新了";
-    self.tableView.headerRefreshingText = @"MJ哥正在帮你刷新中,不客气";
 
-}
-
-- (void)headerRereshing
-{
-    
-    // 2.模拟2秒后刷新表格UI（真实开发中，可以移除这段gcd代码）
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView headerEndRefreshing];
-    });
-}
 
 
 
@@ -105,7 +98,6 @@
 
 
 #pragma mark - Table view data source
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
     //动画1：
@@ -150,13 +142,79 @@
 {
     [_timeScroller scrollViewDidScroll];
     
+    if (self.displayLink == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
+        self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
+        self.jellyView.backgroundColor = [UIColor clearColor];
+        [self.view insertSubview:self.jellyView aboveSubview:self.tableView];
+        
+        
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
+        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }
+    
 }
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+    CGFloat offset = -scrollView.contentOffset.y - 64.5;
+    if (offset >= 100) {
+        
+        self.jellyView.isLoading = YES;
+        
+        [UIView animateWithDuration:0.3 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            
+            self.jellyView.controlPoint.center = CGPointMake(self.jellyView.userFrame.size.width / 2, jellyHeaderHeight);
+            NSLog(@"self.jellyView.controlPoint.center:%@",NSStringFromCGPoint(self.jellyView.controlPoint.center));
+            
+            self.tableView.contentInset = UIEdgeInsetsMake(130+64.5, 0, 0, 0);
+        } completion:^(BOOL finished) {
+            [self performSelector:@selector(backToTop) withObject:nil afterDelay:2.0f];
+        }];
+    }
+    
+}
+
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [_timeScroller scrollViewDidEndDecelerating];
+    
+    if (self.jellyView.isLoading == NO) {
+        [self.jellyView removeFromSuperview];
+        self.jellyView = nil;
+        [self.displayLink invalidate];
+        self.displayLink = nil;
+    }
 }
 
+
+
+//跳到顶部复原的方法
+-(void)backToTop{
+    
+    [UIView animateWithDuration:0.3 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.tableView.contentInset = UIEdgeInsetsMake(64.5, 0, 0, 0);
+    } completion:^(BOOL finished) {
+        self.jellyView.isLoading = NO;
+        [self.jellyView removeFromSuperview];
+        self.jellyView = nil;
+        [self.displayLink invalidate];
+        self.displayLink = nil;
+    }];
+}
+
+//持续刷新屏幕的计时器
+-(void)displayLinkAction:(CADisplayLink *)dis{
+    
+    CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
+    //    NSLog(@"presentationLayer:%@",NSStringFromCGRect(layer.frame));
+    
+    self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
+    
+    
+    [self.jellyView setNeedsDisplay];
+    //    NSLog(@"contentOffset.y:%f",self.tableView.contentOffset.y);
+}
 
 
 @end

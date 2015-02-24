@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-MJRefresh.xcscheme</key>
+		<key>Pods-CBStoreHouseRefreshControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-SKSplashView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SSPullToRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>27EA89A0F0FC15D84F0E346B</key>
+		<key>0BFA139B9CF0AD09CCB38DB7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>570CBED4EE0BD998D85984B6</key>
+		<key>10F286F74C32CA6C6C557353</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89D3A50AE628B9AFCCE9DC5C</key>
+		<key>7F2149A66606787E7D71B46F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A451896A9625B1EA0B658132</key>
+		<key>860A4DEA11FFD58E0F635040</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>916C0845D6009C542D82D2B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

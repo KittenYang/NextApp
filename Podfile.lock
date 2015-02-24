@@ -1,16 +1,19 @@
 PODS:
-  - MJRefresh (0.0.1)
+  - CBStoreHouseRefreshControl (1.0)
   - Shimmer (1.0.2)
   - SKSplashView (0.1.0)
+  - SSPullToRefresh (1.2.2)
 
 DEPENDENCIES:
-  - MJRefresh
+  - CBStoreHouseRefreshControl
   - Shimmer (~> 1.0.2)
   - SKSplashView
+  - SSPullToRefresh
 
 SPEC CHECKSUMS:
-  MJRefresh: 02638d90855109026754562b7507e5c5eabfcc65
+  CBStoreHouseRefreshControl: 3c67731fe57aff3ccd2a151c9d13a6f2aed8a11e
   Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
   SKSplashView: 1cff0ac7bae5539e65b5b638fb25e59a1e43f681
+  SSPullToRefresh: da7acfb8e269acbd040be7f0b091824cda365a17
 
 COCOAPODS: 0.35.0
