@@ -30,13 +30,15 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(prepareToLoadWeibo) name:kWeiboAuthSuccessNotification object:nil];
     
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -45,11 +47,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self twitterSplash];
-    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
-    [self.view addSubview:hud];
-    self.tableView.hidden = YES;
-    [hud showHUD];
+    [self twitterSplash];
+
+//    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
+//    [self.view addSubview:hud];
+
     
     //登录按钮
     UIButton *authBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -60,11 +62,25 @@
     
     UIBarButtonItem *authItem =[[UIBarButtonItem alloc]initWithCustomView:authBtn];
     self.navigationItem.rightBarButtonItem=authItem;
-//    [self loadWeibo];
 
     
     //下拉加载更多
     super.loademoredelegate = self;
+    
+    
+    //数据持久化
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"StoreData"];
+    NSDictionary *weiboDataFromKeyedUnarchiver = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    self.data = [weiboDataFromKeyedUnarchiver objectForKey:@"WEIBOS"];
+    self.topWeiboId = [weiboDataFromKeyedUnarchiver objectForKey:@"topWeiboId"];
+    self.weibos = self.data;
+
+    
+    if (self.data.count == 0) {
+        [self loadWeibo];
+    }else{
+        [self.tableView reloadData];
+    }
  }
 
 
@@ -101,7 +117,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.weibos.count;
+    return self.data.count;
 }
 
 
@@ -141,15 +157,18 @@
 
 
 -(void)prepareToLoadWeibo{
-    
-    if ( [Utils WEIBOTOKEN] == nil || [[Utils WEIBOTOKEN]  isEqualToString:@""]) {
+    if (self.data.count != 0) {
+        return;
     }else{
-        NSDate *nowDate = [NSDate date];
-        if([nowDate compare:[Utils WEIBOEXDATE]] == NSOrderedAscending){
-
-            [self loadWeibo];
-            
+        if ( [Utils WEIBOTOKEN] == nil || [[Utils WEIBOTOKEN]  isEqualToString:@""]) {
         }else{
+            NSDate *nowDate = [NSDate date];
+            if([nowDate compare:[Utils WEIBOEXDATE]] == NSOrderedAscending){
+                
+                [self loadWeibo];
+                
+            }else{
+            }
         }
     }
 }
@@ -188,8 +207,8 @@
 
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
     if ([request.tag isEqual: @"load"]) {
-        [hud dismissHUD];
-        self.tableView.hidden = NO;
+//        [hud dismissHUD];
+
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
         NSDictionary *WEIBOMODELS = [WEIBOJSON objectForKey:@"statuses"]; //100条微博
@@ -210,6 +229,13 @@
             WeiboModel *lastWeibo = [WEIBOS lastObject];  //取出最久的一条微博
             self.lastWeiboId = [lastWeibo.weiboId stringValue];//把最久的微博ID复制给我们定义的这个lastWeiboId变量
         }
+        
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:self.data,@"WEIBOS",self.topWeiboId,@"topWeiboId",nil];
+        NSData *StoreData = [NSKeyedArchiver archivedDataWithRootObject:dic];
+        [[NSUserDefaults standardUserDefaults] setObject:StoreData forKey:@"StoreData"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
         [self.tableView reloadData];
     }
     
@@ -217,6 +243,13 @@
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
         NSDictionary *WEIBOMODELS = [WEIBOJSON objectForKey:@"statuses"]; //100条微博
+        //更新的条数
+        int updateCount = (int)[WEIBOMODELS count];
+        if (updateCount == 0) {
+            [self backToTop];
+            return;
+        }
+        
         NSMutableArray *WEIBOS = [NSMutableArray arrayWithCapacity:WEIBOMODELS.count];
         for (NSDictionary *_wbmodel in WEIBOMODELS) {
             WeiboModel *wbmodel = [[WeiboModel alloc]initWithWeiboDic:_wbmodel];
@@ -232,36 +265,29 @@
             self.topWeiboId = [topWeibo.weiboId stringValue];
         }
         
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:self.data,@"WEIBOS",self.topWeiboId,@"topWeiboId",nil];
+        NSData *StoreData = [NSKeyedArchiver archivedDataWithRootObject:dic];
+        [[NSUserDefaults standardUserDefaults] setObject:StoreData forKey:@"StoreData"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+        
         [self.tableView reloadData];
         [self backToTop];
         
-        //更新的条数
-        int updateCount = (int)[WEIBOMODELS count];
         
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
     }
 }
 
+#pragma mark - NSCoding
+//- (void)encodeWithCoder:(NSCoder *)aCoder{
+//      [aCoder encodeObject:self.data forKey:@"WEIBOS"];
+//}
+//- (id)initWithCoder:(NSCoder *)aDecoder{
+//    
+//}
 
 
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

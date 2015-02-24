@@ -19,6 +19,62 @@
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        self.createDate = [aDecoder decodeObjectForKey:@"createDate"];
+        self.weiboId = [aDecoder decodeObjectForKey:@"weiboId"];
+        self.text = [aDecoder decodeObjectForKey:@"text"];
+        self.source = [aDecoder decodeObjectForKey:@"source"];
+        self.favorited = [aDecoder decodeObjectForKey:@"favorited"];
+        self.thumbnailImage = [aDecoder decodeObjectForKey:@"thumbnailImage"];
+        self.bmiddleImage = [aDecoder decodeObjectForKey:@"bmiddleImage"];
+        self.originalImage = [aDecoder decodeObjectForKey:@"originalImage"];
+        self.geo = [aDecoder decodeObjectForKey:@"geo"];
+        self.geo = [aDecoder decodeObjectForKey:@"repostsCount"];
+        self.geo = [aDecoder decodeObjectForKey:@"commentsCount"];
+
+        
+        WeiboModel *retweetWeiboModel = [aDecoder decodeObjectForKey:@"retWeibo"];;
+        if (retweetWeiboModel != nil) {
+            self.retWeibo = retweetWeiboModel;
+        }
+        
+        UserModel *userModel = [aDecoder decodeObjectForKey:@"user"];
+        if (userModel != nil) {
+            self.user = userModel;
+        }
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.createDate    forKey:@"createDate"];
+    [aCoder encodeObject:self.weiboId forKey:@"weiboId"];
+    [aCoder encodeObject:self.text    forKey:@"text"];
+    [aCoder encodeObject:self.source    forKey:@"source"];
+    [aCoder encodeObject:self.favorited    forKey:@"favorited"];
+    [aCoder encodeObject:self.thumbnailImage    forKey:@"thumbnailImage"];
+    [aCoder encodeObject:self.bmiddleImage    forKey:@"bmiddleImage"];
+    [aCoder encodeObject:self.originalImage    forKey:@"originalImage"];
+    [aCoder encodeObject:self.geo    forKey:@"geo"];
+    [aCoder encodeObject:self.repostsCount    forKey:@"repostsCount"];
+    [aCoder encodeObject:self.commentsCount    forKey:@"commentsCount"];
+    [aCoder encodeObject:self.retWeibo    forKey:@"retWeibo"];
+    [aCoder encodeObject:self.user    forKey:@"user"];
+}
+
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//    self.name      = [aDecoder decodeObjectForKey:kBookName];
+//    self.published = [aDecoder decodeBoolForKey:kPublished];
+//    self.price     = [aDecoder decodeFloatForKey:kPrice];
+//    self.info      = [aDecoder decodeObjectForKey:kInfo];
+//    return self;
+//}
+
+
+
+
 
 -(void)setUpWeiboData:(NSDictionary *)dic{
     self.createDate = [dic objectForKey:@"created_at"];

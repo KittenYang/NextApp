@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "UserModel.h"
 
-@interface WeiboModel : NSObject
+@interface WeiboModel : NSObject<NSCoding>
 
 -(id)initWithWeiboDic:(NSDictionary *)dic;
 
