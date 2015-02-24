@@ -12,7 +12,7 @@
 
 @implementation JellyView{
     CGRect jellyFrame;
-    UIImageView *ballView;
+    UIColor *fillColor;
     
     UIDynamicAnimator *animator;
     UICollisionBehavior *coll;
@@ -47,20 +47,20 @@
         [self addSubview:self.controlPoint];
         
         //小球视图
-        ballView = [[UIImageView alloc]initWithFrame:CGRectMake(self.userFrame.size.width / 3 - 20, self.userFrame.size.height - 100, 40, 40)];
-        ballView.layer.cornerRadius = ballView.bounds.size.width / 2;
-        ballView.image = [UIImage imageNamed:@"sun"];
-        ballView.backgroundColor = [UIColor clearColor];
-        [self addSubview:ballView];
+        _ballView = [[UIImageView alloc]initWithFrame:CGRectMake(self.userFrame.size.width / 3 - 20, self.userFrame.size.height - 100, 40, 40)];
+        _ballView.layer.cornerRadius = _ballView.bounds.size.width / 2;
+        _ballView.image = [UIImage imageNamed:@"sun"];
+        _ballView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_ballView];
         
         //UIDynamic
         animator = [[UIDynamicAnimator alloc]initWithReferenceView:self];
-        UIGravityBehavior *grv = [[UIGravityBehavior alloc]initWithItems:@[ballView]];
+        UIGravityBehavior *grv = [[UIGravityBehavior alloc]initWithItems:@[_ballView]];
         grv.magnitude = 2;
         [animator addBehavior:grv];
-        coll =  [[UICollisionBehavior alloc]initWithItems:@[ballView]];
+        coll =  [[UICollisionBehavior alloc]initWithItems:@[_ballView]];
         
-        UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc]initWithItems:@[ballView]];
+        UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc]initWithItems:@[_ballView]];
         item.elasticity = 0;
         item.density = 1;
     
@@ -74,17 +74,17 @@
     
     if (self.isLoading == NO) {
         [coll removeBoundaryWithIdentifier:@"弧形"];
-        self.fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:(self.controlPointOffset)/100];
+        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:(self.controlPointOffset)/100];
     }else{
 
         if (!isFirstTime) {
             isFirstTime = YES;
-            snap = [[ UISnapBehavior alloc]initWithItem:ballView snapToPoint:CGPointMake(self.userFrame.size.width / 2, self.userFrame.size.height - (130+64.5)/2)];
+            snap = [[ UISnapBehavior alloc]initWithItem:_ballView snapToPoint:CGPointMake(self.userFrame.size.width / 2, self.userFrame.size.height - (90+64.5)/2)];
             [animator addBehavior:snap];
             
             [self startLoading];
         }
-        self.fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
         
     }
     
@@ -101,7 +101,7 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextAddPath(context, path.CGPath);
-    [self.fillColor setFill];
+    [fillColor setFill];
     CGContextFillPath(context);
     
     if(self.isLoading == NO){
@@ -116,7 +116,7 @@
     CGAffineTransform endAngle = CGAffineTransformMakeRotation(angle * (M_PI / 180.0f));
     
     [UIView animateWithDuration:0.01 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-        ballView.transform = endAngle;
+        _ballView.transform = endAngle;
     } completion:^(BOOL finished) {
         angle += 10;
         [self startLoading];

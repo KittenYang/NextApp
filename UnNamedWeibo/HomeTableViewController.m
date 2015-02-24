@@ -17,6 +17,9 @@
 @interface HomeTableViewController ()
 
 @property (strong, nonatomic) SKSplashView *splashView;
+@property (nonatomic,copy   ) NSString     *topWeiboId;// 最新一条微博的ID
+@property (nonatomic,copy   ) NSString     *lastWeiboId;// 最久一条微博的ID
+
 
 @end
 
@@ -45,6 +48,7 @@
 //    [self twitterSplash];
     hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
     [self.view addSubview:hud];
+    self.tableView.hidden = YES;
     [hud showHUD];
     
     //登录按钮
@@ -56,8 +60,11 @@
     
     UIBarButtonItem *authItem =[[UIBarButtonItem alloc]initWithCustomView:authBtn];
     self.navigationItem.rightBarButtonItem=authItem;
+//    [self loadWeibo];
 
-    [self loadWeibo];
+    
+    //下拉加载更多
+    super.loademoredelegate = self;
  }
 
 
@@ -79,6 +86,13 @@
     _splashView.animationDuration = 2; //Optional -> set animation duration. Default: 1s
     [self.tabBarController.view addSubview:_splashView];
     [_splashView startAnimation];
+}
+
+#pragma mark -- splashView animation delegate
+- (void) splashView:(SKSplashView *)splashView didBeginAnimatingWithDuration:(float)duration
+{
+    NSLog(@"Started animating from delegate");
+    
 }
 
 
@@ -147,6 +161,27 @@
     [WBHttpRequest requestWithAccessToken:[Utils WEIBOTOKEN] url:WB_home  httpMethod:@"GET" params:params delegate:self withTag:@"load"];
 }
 
+#pragma mark  - loadMoreDelegate
+//下拉
+- (void)pullDown{
+    if (self.topWeiboId.length == 0) {
+        NSLog(@"最新一条微博的ID为空");
+        return;
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"25",@"count",self.topWeiboId,@"since_id",nil];
+    [WBHttpRequest requestWithAccessToken:[Utils WEIBOTOKEN] url:WB_home  httpMethod:@"GET" params:params delegate:self withTag:@"pullDown"];
+
+}
+//上拉
+- (void)pullUp{
+    
+}
+//选中cell
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
+
 
 
 #pragma mark  - WBHttpRequestDelegate
@@ -154,7 +189,7 @@
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
     if ([request.tag isEqual: @"load"]) {
         [hud dismissHUD];
-        
+        self.tableView.hidden = NO;
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
         NSDictionary *WEIBOMODELS = [WEIBOJSON objectForKey:@"statuses"]; //100条微博
@@ -166,25 +201,48 @@
         
         self.data = WEIBOS;
         self.weibos = WEIBOS;
+        
+        if (WEIBOS.count > 0) {
+            //记下最新的微博ID
+            WeiboModel *topWeibo= [WEIBOS objectAtIndex:0];     //取出最新的一条微博
+            self.topWeiboId = [topWeibo.weiboId stringValue];   //把最新的微博ID赋值给我们定义的这个topWeiboId变量
+            //同理，记下最久的微博ID
+            WeiboModel *lastWeibo = [WEIBOS lastObject];  //取出最久的一条微博
+            self.lastWeiboId = [lastWeibo.weiboId stringValue];//把最久的微博ID复制给我们定义的这个lastWeiboId变量
+        }
         [self.tableView reloadData];
-//        [self.tableView layoutIfNeeded];
+    }
+    
+    if ([request.tag isEqual:@"pullDown"]) {
+        NSError *error;
+        NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
+        NSDictionary *WEIBOMODELS = [WEIBOJSON objectForKey:@"statuses"]; //100条微博
+        NSMutableArray *WEIBOS = [NSMutableArray arrayWithCapacity:WEIBOMODELS.count];
+        for (NSDictionary *_wbmodel in WEIBOMODELS) {
+            WeiboModel *wbmodel = [[WeiboModel alloc]initWithWeiboDic:_wbmodel];
+            [WEIBOS addObject:wbmodel];
+        }
+        
+        [WEIBOS addObjectsFromArray:self.weibos];
+        self.data   = WEIBOS;
+        self.weibos = WEIBOS;
+        
+        if (WEIBOS.count > 0) {
+            WeiboModel *topWeibo= [WEIBOS objectAtIndex:0];
+            self.topWeiboId = [topWeibo.weiboId stringValue];
+        }
+        
+        [self.tableView reloadData];
+        [self backToTop];
+        
+        //更新的条数
+        int updateCount = (int)[WEIBOMODELS count];
+        
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+        
     }
 }
 
-
-#pragma mark -- 
-- (void) splashView:(SKSplashView *)splashView didBeginAnimatingWithDuration:(float)duration
-{
-    NSLog(@"Started animating from delegate");
-    //To start activity animation when splash animation starts
-    
-
-//    [UIView animateKeyframesWithDuration:duration delay:1 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-//        _splashView.alpha = 0;
-//    } completion:nil];
-    
-    
-}
 
 
 

@@ -103,16 +103,16 @@
     //动画1：
     if (![self.showIndexes containsObject:indexPath]) {
         [self.showIndexes addObject:indexPath];
-        CGFloat rotationAngleDegrees = -10;
-        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
-        CGPoint offsetPositioning = CGPointMake(-30, -20);
-        
-        
-        CATransform3D transform = CATransform3DIdentity;
-        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
-        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
-        cell.layer.transform = transform;
-        cell.alpha = 0.7;
+//        CGFloat rotationAngleDegrees = -10;
+//        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
+//        CGPoint offsetPositioning = CGPointMake(-30, 0);
+//        
+//        
+//        CATransform3D transform = CATransform3DIdentity;
+//        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
+//        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
+//        cell.layer.transform = transform;
+//        cell.alpha = 0.7;
         
         KYCell *kycell_ = (KYCell *)cell;
         
@@ -123,8 +123,8 @@
         [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             kycell_.avator.layer.opacity = 1;
             kycell_.avator.layer.transform = CATransform3DIdentity;
-            cell.layer.transform = CATransform3DIdentity;
-            cell.layer.opacity = 1;
+//            cell.layer.transform = CATransform3DIdentity;
+//            cell.layer.opacity = 1;
         } completion:nil];
     }
 }
@@ -143,7 +143,7 @@
     [_timeScroller scrollViewDidScroll];
     
     if (self.displayLink == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
-        self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
+        self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight - 30 , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
         self.jellyView.backgroundColor = [UIColor clearColor];
         [self.view insertSubview:self.jellyView aboveSubview:self.tableView];
         
@@ -152,12 +152,19 @@
         [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     }
     
+    CGFloat offset = -scrollView.contentOffset.y - 64.5;
+    if (offset >= 120) {
+        self.jellyView.ballView.image = [UIImage imageNamed:@"sun_smile"];
+    }else{
+        self.jellyView.ballView.image = [UIImage imageNamed:@"sun"];
+    }
+    
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     CGFloat offset = -scrollView.contentOffset.y - 64.5;
-    if (offset >= 100) {
+    if (offset >= 120) {
         
         self.jellyView.isLoading = YES;
         
@@ -166,10 +173,12 @@
             self.jellyView.controlPoint.center = CGPointMake(self.jellyView.userFrame.size.width / 2, jellyHeaderHeight);
             NSLog(@"self.jellyView.controlPoint.center:%@",NSStringFromCGPoint(self.jellyView.controlPoint.center));
             
-            self.tableView.contentInset = UIEdgeInsetsMake(130+64.5, 0, 0, 0);
-        } completion:^(BOOL finished) {
-            [self performSelector:@selector(backToTop) withObject:nil afterDelay:2.0f];
-        }];
+            self.tableView.contentInset = UIEdgeInsetsMake(150+64.5, 0, 0, 0);
+        } completion:nil];
+        
+        if ([self.loademoredelegate respondsToSelector:@selector(pullDown)]) {
+            [self.loademoredelegate pullDown];
+        }
     }
     
 }
@@ -207,13 +216,11 @@
 -(void)displayLinkAction:(CADisplayLink *)dis{
     
     CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
-    //    NSLog(@"presentationLayer:%@",NSStringFromCGRect(layer.frame));
     
     self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
     
-    
     [self.jellyView setNeedsDisplay];
-    //    NSLog(@"contentOffset.y:%f",self.tableView.contentOffset.y);
+
 }
 
 

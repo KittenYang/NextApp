@@ -11,7 +11,7 @@
 #import "SKSplashView.h"
 
 
-@interface HomeTableViewController : BaseTableViewController<SKSplashDelegate>
+@interface HomeTableViewController : BaseTableViewController<SKSplashDelegate,loadMoreDelegate>
 
 
 @property(nonatomic,retain)NSArray *data;   //为tableView提供数据,基本单位是WeiboModel

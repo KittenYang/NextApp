@@ -18,5 +18,5 @@
 
 @property BOOL isLoading;
 
-@property (strong,nonatomic)    UIColor *fillColor;
+@property (strong,nonatomic)   UIImageView *ballView;
 @end
