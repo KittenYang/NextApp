@@ -81,6 +81,10 @@
     }else{
         [self.tableView reloadData];
     }
+    
+    UIView *new_feed_view = [[UIView alloc]initWithFrame:CGRectMake(10, 568-20, 30, 30)];
+    new_feed_view.backgroundColor = [UIColor redColor];
+    [self.tabBarController.view addSubview:new_feed_view];
  }
 
 
