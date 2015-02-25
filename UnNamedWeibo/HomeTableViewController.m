@@ -265,6 +265,7 @@
             self.topWeiboId = [topWeibo.weiboId stringValue];
         }
         
+        
         NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:self.data,@"WEIBOS",self.topWeiboId,@"topWeiboId",nil];
         NSData *StoreData = [NSKeyedArchiver archivedDataWithRootObject:dic];
         [[NSUserDefaults standardUserDefaults] setObject:StoreData forKey:@"StoreData"];
