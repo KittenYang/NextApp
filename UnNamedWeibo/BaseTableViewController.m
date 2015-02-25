@@ -38,6 +38,10 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 250;
     
+    //去除黑线
+    self.navigationController.navigationBar.clipsToBounds = YES;
+    
+    
     UIImage* logo = [UIImage imageNamed:@"Woohu"];
     CGRect frameimg = CGRectMake(0, 0, 70, 30);
     UIButton *logoButton = [[UIButton alloc] initWithFrame:frameimg];
@@ -145,6 +149,11 @@
         
         self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
         [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    }else if ((-scrollView.contentOffset.y - 64.5) < 0){
+        [self.jellyView removeFromSuperview];
+        self.jellyView = nil;
+        [self.displayLink invalidate];
+        self.displayLink = nil;
     }
     
     CGFloat offset = -scrollView.contentOffset.y - 64.5;

@@ -74,7 +74,8 @@
     
     if (self.isLoading == NO) {
         [coll removeBoundaryWithIdentifier:@"弧形"];
-        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:(self.controlPointOffset)/100];
+//        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:(self.controlPointOffset)/100];
+        fillColor = [UIColor redColor];
     }else{
 
         if (!isFirstTime) {
@@ -84,7 +85,8 @@
             
             [self startLoading];
         }
-        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+//        fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+        fillColor = [UIColor redColor];
         
     }
     
