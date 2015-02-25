@@ -39,7 +39,7 @@
     self.tableView.estimatedRowHeight = 250;
     
     //去除黑线
-    self.navigationController.navigationBar.clipsToBounds = YES;
+//    self.navigationController.navigationBar.clipsToBounds = YES;
     
     
     UIImage* logo = [UIImage imageNamed:@"Woohu"];
