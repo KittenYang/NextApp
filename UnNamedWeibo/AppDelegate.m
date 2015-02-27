@@ -19,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    NSLog(@"%@",application.windows);
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kWeiboAppKey];
     

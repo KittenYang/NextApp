@@ -8,8 +8,8 @@
 
 //关于未读提示
 #define BubbleWidth  35
-#define BubbleX      10
-#define BubbleY      510
+#define BubbleX      13
+#define BubbleY      580
 #define BubbleColor  [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
 
@@ -27,7 +27,6 @@
 @property (strong, nonatomic) SKSplashView *splashView;
 @property (nonatomic,copy   ) NSString     *topWeiboId;// 最新一条微博的ID
 @property (nonatomic,copy   ) NSString     *lastWeiboId;// 最久一条微博的ID
-
 
 @end
 
@@ -311,6 +310,10 @@
         }
         
         [WEIBOS addObjectsFromArray:self.weibos];
+        NSRange overHundredRange;
+        overHundredRange.location = 100;
+        overHundredRange.length   = [WEIBOS count]-100;
+        [WEIBOS removeObjectsInRange:overHundredRange];
         self.data   = WEIBOS;
         self.weibos = WEIBOS;
         
