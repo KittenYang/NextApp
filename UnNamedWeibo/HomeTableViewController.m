@@ -7,9 +7,9 @@
 //
 
 //关于未读提示
-#define BubbleWidth  40
-#define BubbleX      25
-#define BubbleY      505
+#define BubbleWidth  35
+#define BubbleX      10
+#define BubbleY      510
 #define BubbleColor  [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
 
@@ -123,9 +123,9 @@
         [self.tableView reloadData];
     }
     
-    UIView *new_feed_view = [[UIView alloc]initWithFrame:CGRectMake(10, 568-100, 30, 30)];
-    new_feed_view.backgroundColor = [UIColor redColor];
-    [self.tabBarController.view addSubview:new_feed_view];
+//    UIView *new_feed_view = [[UIView alloc]initWithFrame:CGRectMake(10, 568-100, 30, 30)];
+//    new_feed_view.backgroundColor = [UIColor redColor];
+//    [self.tabBarController.view addSubview:new_feed_view];
     
     
     //获取未读微博数的定时器
@@ -257,8 +257,6 @@
 }
 
 
-
-
 #pragma mark  - WBHttpRequestDelegate
 
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
@@ -345,22 +343,16 @@
         int n = [unReadNum intValue];
         if (frontView == nil) {
             NSLog(@"提示框+1");
-            [self setUp];
+            [self setUp:n];
             [self addGesture];
         }
-        if (n > 0) {
-            number = [[UILabel alloc]init];
-            number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
-            number.textColor = [UIColor whiteColor];
-            number.textAlignment = NSTextAlignmentCenter;
-            if (n > 25) {
-                number.text = @"~~~";
-            }else{
-                number.text = [NSString stringWithFormat:@"%d",n];
-            }
 
-            [frontView insertSubview:number atIndex:0];
+        if (n > 25) {
+            number.text = @"~~~";
+        }else{
+            number.text = [NSString stringWithFormat:@"%d",n];
         }
+    
     }
 }
 
@@ -382,7 +374,7 @@
         cosDigree = (y2-y1)/centerDistance;
         sinDigree = (x2-x1)/centerDistance;
     }
-    r1 = oldBackViewFrame.size.width / 2 - centerDistance/15;
+    r1 = oldBackViewFrame.size.width / 2 - centerDistance/10;
     
     pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A
     pointB = CGPointMake(x1+r1*cosDigree, y1-r1*sinDigree); // B
@@ -411,14 +403,13 @@
     if (backView.hidden == NO) {
         shapeLayer.path = [cutePath CGPath];
         shapeLayer.fillColor = [fillColorForCute CGColor];
-        [self.view.layer addSublayer:shapeLayer];
+        [self.tabBarController.view.layer addSublayer:shapeLayer];
     }
 }
 
 
--(void)setUp{
+-(void)setUp:(int)n{
     shapeLayer = [CAShapeLayer layer];
-    
     
     self.view.backgroundColor = [UIColor clearColor];
     frontView = [[UIView alloc]initWithFrame:CGRectMake(BubbleX,BubbleY, BubbleWidth, BubbleWidth)];
@@ -431,6 +422,16 @@
     r1 = backView.bounds.size.width / 2;
     backView.layer.cornerRadius = r1;
     backView.backgroundColor = BubbleColor;
+    
+    if (n > 0) {
+        number = [[UILabel alloc]init];
+        number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
+        number.textColor = [UIColor whiteColor];
+        number.textAlignment = NSTextAlignmentCenter;
+        
+        [frontView insertSubview:number atIndex:0];
+    }
+
     
     [self.tabBarController.view addSubview:backView];
     [self.tabBarController.view addSubview:frontView];
@@ -465,7 +466,7 @@
 
 
 -(void)dragMe:(UIPanGestureRecognizer *)ges{
-    CGPoint dragPoint = [ges locationInView:self.view];
+    CGPoint dragPoint = [ges locationInView:self.tabBarController.view];
     
     if (ges.state == UIGestureRecognizerStateBegan) {
         backView.hidden = NO;

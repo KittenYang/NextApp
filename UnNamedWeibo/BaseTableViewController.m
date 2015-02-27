@@ -219,7 +219,7 @@
 //持续刷新屏幕的计时器
 -(void)displayLinkActionToDrawPullToRefresh:(CADisplayLink *)dis{
     
-    CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
+//    CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
     
     self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
     
