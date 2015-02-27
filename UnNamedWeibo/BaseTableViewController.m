@@ -205,7 +205,7 @@
 //跳到顶部复原的方法
 -(void)backToTop{
     
-    [UIView animateWithDuration:0.3 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(64.5, 0, 0, 0);
     } completion:^(BOOL finished) {
         self.jellyView.isLoading = NO;

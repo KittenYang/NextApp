@@ -12,13 +12,42 @@
 @implementation CellView
 
 -(void)awakeFromNib{
-    self.layer.cornerRadius = 10;
+//    self.layer.cornerRadius = 10;
 }
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.weiboView.weiboModel = self.weiboModel;
     
+    CGSize size = self.bounds.size;
+    NSLog(@"%@",NSStringFromCGSize(size));
+    CGFloat curlFactor = 15.0f;
+    CGFloat shadowDepth = 5.0f;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+    
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOpacity = 0.7f;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 3.0f);
+    self.layer.shadowRadius = 2.0f;
+    self.layer.shadowPath = path.CGPath;
+    self.layer.masksToBounds = NO;
+
+//-----------使用普通阴影-----------------
+//    self.layer.shadowColor = [UIColor blackColor].CGColor;
+//    self.layer.shadowOffset = CGSizeMake(0, 1);
+//    self.layer.shadowOpacity = 1;
+//    self.layer.shadowRadius = 1.0;
+//    self.clipsToBounds = NO;
+
+    
+
+    self.weiboView.weiboModel = self.weiboModel;
     //----------微博来源--------------
     NSString *ret = [Utils parseSource: self.weiboModel.source];
     if (ret != nil) {
