@@ -10,6 +10,7 @@
 #define UnNamedWeibo_UnNamedWeibo_Bridging_Header_h
 
 #import "HomeTableViewController.h"
+#import "WeiboSDK.h"
 
 
 #endif

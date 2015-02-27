@@ -69,8 +69,8 @@ class RAMAnimatedTabBarController: UITabBarController {
         var textLabel = iconsView[0].textLabel
         animationItem.playAnimation(icon, textLabel: textLabel)
 
-
     }
+
 
 // MARK: create methods
 

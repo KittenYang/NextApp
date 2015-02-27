@@ -21,7 +21,7 @@
 @interface BaseTableViewController ()<ACTimeScrollerDelegate>
 
 @property (strong, nonatomic) NSMutableSet  *showIndexes;
-@property (nonatomic,strong ) CADisplayLink *displayLink;
+@property (nonatomic,strong ) CADisplayLink *displayLinkToPull;
 @property (nonatomic,strong ) JellyView     *jellyView;
 
 @end
@@ -141,19 +141,19 @@
 {
     [_timeScroller scrollViewDidScroll];
     
-    if (self.displayLink == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
+    if (self.displayLinkToPull == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
         self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight - 30 , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
         self.jellyView.backgroundColor = [UIColor clearColor];
         [self.view insertSubview:self.jellyView aboveSubview:self.tableView];
         
         
-        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
-        [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+        self.displayLinkToPull = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkActionToDrawPullToRefresh:)];
+        [self.displayLinkToPull addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     }else if ((-scrollView.contentOffset.y - 64.5) < 0){
         [self.jellyView removeFromSuperview];
         self.jellyView = nil;
-        [self.displayLink invalidate];
-        self.displayLink = nil;
+        [self.displayLinkToPull invalidate];
+        self.displayLinkToPull = nil;
     }
     
     CGFloat offset = -scrollView.contentOffset.y - 64.5;
@@ -195,8 +195,8 @@
     if (self.jellyView.isLoading == NO) {
         [self.jellyView removeFromSuperview];
         self.jellyView = nil;
-        [self.displayLink invalidate];
-        self.displayLink = nil;
+        [self.displayLinkToPull invalidate];
+        self.displayLinkToPull = nil;
     }
 }
 
@@ -211,13 +211,13 @@
         self.jellyView.isLoading = NO;
         [self.jellyView removeFromSuperview];
         self.jellyView = nil;
-        [self.displayLink invalidate];
-        self.displayLink = nil;
+        [self.displayLinkToPull invalidate];
+        self.displayLinkToPull = nil;
     }];
 }
 
 //持续刷新屏幕的计时器
--(void)displayLinkAction:(CADisplayLink *)dis{
+-(void)displayLinkActionToDrawPullToRefresh:(CADisplayLink *)dis{
     
     CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
     
