@@ -44,7 +44,8 @@
     
     CADisplayLink *displayLinkToFeed;
     
-    UILabel *number;//更新数字
+    UILabel *updatedNumberforTabbar;//tabbar上更新数字的label
+    UILabel *updatedNumberforBanner;//顶部滑下来更新数字的label
     UIView *frontView;
     UIView *backView;
     CGFloat r1; // backView
@@ -68,6 +69,9 @@
     CGPoint oldBackViewCenter;
     CAShapeLayer *shapeLayer;
     //----------------------------
+    
+    //刷新了几条微博的视图
+    JellyButton *refreshNumberView;
 
 }
 
@@ -130,7 +134,7 @@
     
     
     //获取未读微博数的定时器
-    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(fetchToUnread) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(fetchToUnread) userInfo:nil repeats:YES];
     
  }
 
@@ -332,7 +336,7 @@
         
         [self.tableView reloadData];
         [self backToTop];
-        [self showNumberOfRefresh];
+        [self showNumberOfRefresh:updateCount];
         //刷新之后移除未读提示
         frontView.hidden = YES;
         
@@ -355,10 +359,10 @@
         if (n > 0){
             if (n > 25) {
                 frontView.hidden = NO;
-                number.text = @"...";
+                updatedNumberforTabbar.text = @"...";
             }else{
                 frontView.hidden = NO;
-                number.text = [NSString stringWithFormat:@"%d",n];
+                updatedNumberforTabbar.text = [NSString stringWithFormat:@"%d",n];
             }
         }
     
@@ -366,27 +370,36 @@
 }
 
 #pragma mark - 刷新之后提示刷新几条
--(void)showNumberOfRefresh{
-    JellyButton *jButton = [[JellyButton alloc]initWithFrame:CGRectMake(5, -55, self.view.bounds.size.width - 10, 50)
-                                               jellyViewSize:CGSizeMake(self.view.bounds.size.width - 10, 50)
-                                                   fillColor:[UIColor redColor]
-                                                  elasticity:0
-                                                     density:1
-                                                     damping:0.1
-                                                   frequency:3];
-    [self.view addSubview:jButton];
-    [UIView animateWithDuration:0.6 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        jButton.frame = CGRectMake(5, 64+5, self.view.bounds.size.width - 10, 50);
+-(void)showNumberOfRefresh:(int)updatedNum{
+    if (refreshNumberView == nil) {
+        refreshNumberView = [[JellyButton alloc]initWithFrame:CGRectMake(5, -120, [[UIScreen mainScreen]bounds].size.width - 10, 50)
+                                                jellyViewSize:CGSizeMake(self.view.bounds.size.width - 10, 50)
+                                                    fillColor:[UIColor redColor]
+                                                   elasticity:3
+                                                      density:1
+                                                      damping:0.6
+                                                    frequency:8];
+        
+        updatedNumberforBanner = [[UILabel alloc]initWithFrame:refreshNumberView.frame];
+        [refreshNumberView addSubview:updatedNumberforBanner];
+        [self.view addSubview:refreshNumberView];
+    }
+    
+    updatedNumberforBanner.text = [NSString  stringWithFormat:@"更新%d条微博",updatedNum];
+
+    
+    [UIView animateWithDuration:1.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        refreshNumberView.frame = CGRectMake(5, 5, [[UIScreen mainScreen]bounds].size.width - 10, 50);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.6 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            jButton.frame = CGRectMake(5, -55, self.view.bounds.size.width - 10, 50);
+        [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            refreshNumberView.frame = CGRectMake(5, -120, [[UIScreen mainScreen]bounds].size.width - 10, 50);
         } completion:nil];
     }];
-    [jButton show];
+    [refreshNumberView show];
 
 }
 
-#pragma mark - 关于未读提示
+#pragma mark - 关于tabbar未读提示
 //每隔一帧刷新屏幕的定时器
 -(void)displayLinkActionToFeed:(CADisplayLink *)dis{
     
@@ -454,13 +467,13 @@
     backView.backgroundColor = BubbleColor;
     
     if (n > 0) {
-        number = [[UILabel alloc]init];
-        number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
-        number.textColor = [UIColor whiteColor];
-        number.font = [UIFont systemFontOfSize:13.0f];
-        number.textAlignment = NSTextAlignmentCenter;
+        updatedNumberforTabbar = [[UILabel alloc]init];
+        updatedNumberforTabbar.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
+        updatedNumberforTabbar.textColor = [UIColor whiteColor];
+        updatedNumberforTabbar.font = [UIFont systemFontOfSize:13.0f];
+        updatedNumberforTabbar.textAlignment = NSTextAlignmentCenter;
         
-        [frontView insertSubview:number atIndex:0];
+        [frontView insertSubview:updatedNumberforTabbar atIndex:0];
     }
 
     
