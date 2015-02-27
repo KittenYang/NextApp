@@ -339,9 +339,6 @@
         [self showNumberOfRefresh:updateCount];
         //刷新之后移除未读提示
         frontView.hidden = YES;
-
-        updatedNumberforBanner.text = [NSString  stringWithFormat:@"更新%d条微博",updateCount];
-        
         
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
@@ -384,22 +381,26 @@
                                                    elasticity:0.1
                                                       density:1
                                                       damping:0.1
-                                                    frequency:3];
-        
-        updatedNumberforBanner = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 50)];
+                                                    frequency:7];
+
+        updatedNumberforBanner = [[UILabel alloc]initWithFrame:refreshNumberView.frame];
         NSLog(@"%@",NSStringFromCGRect(updatedNumberforBanner.frame));
         updatedNumberforBanner.textColor = [UIColor whiteColor];
         updatedNumberforBanner.textAlignment = NSTextAlignmentCenter;
 //        [refreshNumberView insertSubview:updatedNumberforBanner atIndex:[[refreshNumberView subviews]count]-1];
         [self.view addSubview:refreshNumberView];
+        [self.view addSubview:updatedNumberforBanner];
     }
     
+    updatedNumberforBanner.text = [NSString  stringWithFormat:@"更新%d条微博",updatedNum];
     
     [UIView animateWithDuration:1.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         refreshNumberView.frame = CGRectMake(5, 5, 300, 50);
+        updatedNumberforBanner.frame = CGRectMake(5, 5, 300, 50);
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             refreshNumberView.frame = CGRectMake(5, -120, 300, 50);
+            updatedNumberforBanner.frame = CGRectMake(5, -120, 300, 50);
         } completion:nil];
     }];
     [refreshNumberView show];
