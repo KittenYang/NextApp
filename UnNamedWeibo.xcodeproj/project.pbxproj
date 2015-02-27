@@ -66,6 +66,8 @@
 		5F8736C21A8D1B3F000CADF4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */; };
 		5F8737321A8F2399000CADF4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737311A8F2399000CADF4 /* BaseViewController.m */; };
 		5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */; };
+		5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */; };
+		5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DE1AA0AAFA007E6ECA /* JellyButton.m */; };
 		81A5B1D193E58D1DF7894F4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296A6E4ABE0FB16D9F90BF72 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -193,6 +195,10 @@
 		5F8737311A8F2399000CADF4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5F8737341A8F23EA000CADF4 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		5FDF30D91AA0AAC8007E6ECA /* VBFJellyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFJellyView.h; sourceTree = "<group>"; };
+		5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFJellyView.m; sourceTree = "<group>"; };
+		5FDF30DD1AA0AAFA007E6ECA /* JellyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JellyButton.h; sourceTree = "<group>"; };
+		5FDF30DE1AA0AAFA007E6ECA /* JellyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JellyButton.m; sourceTree = "<group>"; };
 		8939DF6D9A5DEBB90443B603 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -389,6 +395,7 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FDF30DC1AA0AAD0007E6ECA /* VBFJellyView */,
 				5F7FAE9F1A9C40A500CEF622 /* KYJellyView */,
 				5F7FAE911A9B42C000CEF622 /* KYLoadingHUD */,
 				5F7FAE481A9794B500CEF622 /* TimeScroller */,
@@ -567,6 +574,17 @@
 				5F7FADDD1A9385C500CEF622 /* WeiboView.m */,
 			);
 			name = BaseTableViewController;
+			sourceTree = "<group>";
+		};
+		5FDF30DC1AA0AAD0007E6ECA /* VBFJellyView */ = {
+			isa = PBXGroup;
+			children = (
+				5FDF30D91AA0AAC8007E6ECA /* VBFJellyView.h */,
+				5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */,
+				5FDF30DD1AA0AAFA007E6ECA /* JellyButton.h */,
+				5FDF30DE1AA0AAFA007E6ECA /* JellyButton.m */,
+			);
+			name = VBFJellyView;
 			sourceTree = "<group>";
 		};
 		89E06CB1917730750A97A586 /* Frameworks */ = {
@@ -764,6 +782,8 @@
 				5F8736751A8C55EC000CADF4 /* RAMFumeAnimation.swift in Sources */,
 				5F8736881A8CC55A000CADF4 /* SquareViewController.m in Sources */,
 				5F7FAE2D1A9517D400CEF622 /* MKAnnotationView+WebCache.m in Sources */,
+				5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */,
+				5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */,
 				5F7FADDB1A9385B900CEF622 /* CellView.m in Sources */,
 				5F8736731A8C55EC000CADF4 /* RAMBounceAnimation.swift in Sources */,
 			);

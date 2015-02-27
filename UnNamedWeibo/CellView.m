@@ -19,7 +19,6 @@
     [super layoutSubviews];
     
     CGSize size = self.bounds.size;
-    NSLog(@"%@",NSStringFromCGSize(size));
     CGFloat curlFactor = 15.0f;
     CGFloat shadowDepth = 5.0f;
     

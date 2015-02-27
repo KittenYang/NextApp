@@ -20,6 +20,7 @@
 #import "Utils.h"
 #import "SKSplashIcon.h"
 #import "KYLoadingHUD.h"
+#import "JellyButton.h"
 
 
 
@@ -258,7 +259,6 @@
 
 
 #pragma mark  - WBHttpRequestDelegate
-
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
     if ([request.tag isEqual: @"load"]) {
 //        [hud dismissHUD];
@@ -332,8 +332,10 @@
         
         [self.tableView reloadData];
         [self backToTop];
+        [self showNumberOfRefresh];
         //刷新之后移除未读提示
         frontView.hidden = YES;
+        
         
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
@@ -363,6 +365,26 @@
     }
 }
 
+#pragma mark - 刷新之后提示刷新几条
+-(void)showNumberOfRefresh{
+    JellyButton *jButton = [[JellyButton alloc]initWithFrame:CGRectMake(5, -55, self.view.bounds.size.width - 10, 50)
+                                               jellyViewSize:CGSizeMake(self.view.bounds.size.width - 10, 50)
+                                                   fillColor:[UIColor redColor]
+                                                  elasticity:0
+                                                     density:1
+                                                     damping:0.1
+                                                   frequency:3];
+    [self.view addSubview:jButton];
+    [UIView animateWithDuration:0.6 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        jButton.frame = CGRectMake(5, 64+5, self.view.bounds.size.width - 10, 50);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.6 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            jButton.frame = CGRectMake(5, -55, self.view.bounds.size.width - 10, 50);
+        } completion:nil];
+    }];
+    [jButton show];
+
+}
 
 #pragma mark - 关于未读提示
 //每隔一帧刷新屏幕的定时器
