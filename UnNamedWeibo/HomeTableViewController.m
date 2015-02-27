@@ -7,10 +7,11 @@
 //
 
 //关于未读提示
-#define BubbleWidth  35
-#define BubbleX      13
-#define BubbleY      580
-#define BubbleColor  [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+#define BubbleWidth  30
+#define BubbleX      18
+#define BubbleY      500
+#define BubbleColor  [UIColor redColor];
+//[UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
 
 
@@ -128,7 +129,7 @@
     
     
     //获取未读微博数的定时器
-    [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(fetchToUnread) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(fetchToUnread) userInfo:nil repeats:YES];
     
  }
 
@@ -332,8 +333,7 @@
         [self.tableView reloadData];
         [self backToTop];
         //刷新之后移除未读提示
-        [frontView removeFromSuperview];
-        frontView = nil;
+        frontView.hidden = YES;
         
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
@@ -350,10 +350,14 @@
             [self addGesture];
         }
 
-        if (n > 25) {
-            number.text = @"~~~";
-        }else{
-            number.text = [NSString stringWithFormat:@"%d",n];
+        if (n > 0){
+            if (n > 25) {
+                frontView.hidden = NO;
+                number.text = @"...";
+            }else{
+                frontView.hidden = NO;
+                number.text = [NSString stringWithFormat:@"%d",n];
+            }
         }
     
     }
@@ -364,6 +368,7 @@
 //每隔一帧刷新屏幕的定时器
 -(void)displayLinkActionToFeed:(CADisplayLink *)dis{
     
+    self.view.backgroundColor = [UIColor whiteColor];
     x1 = backView.center.x;
     y1 = backView.center.y;
     x2 = frontView.center.x;
@@ -377,7 +382,7 @@
         cosDigree = (y2-y1)/centerDistance;
         sinDigree = (x2-x1)/centerDistance;
     }
-    r1 = oldBackViewFrame.size.width / 2 - centerDistance/10;
+    r1 = oldBackViewFrame.size.width / 2 - centerDistance/25;
     
     pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A
     pointB = CGPointMake(x1+r1*cosDigree, y1-r1*sinDigree); // B
@@ -430,6 +435,7 @@
         number = [[UILabel alloc]init];
         number.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
         number.textColor = [UIColor whiteColor];
+        number.font = [UIFont systemFontOfSize:13.0f];
         number.textAlignment = NSTextAlignmentCenter;
         
         [frontView insertSubview:number atIndex:0];
