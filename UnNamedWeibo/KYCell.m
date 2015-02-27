@@ -45,8 +45,8 @@
     
     //-----头像------
     self.avator.layer.cornerRadius = self.avator.width / 2;
-    self.avator.layer.borderWidth = 2.0f;
-    self.avator.layer.borderColor = [UIColor blackColor].CGColor    ;
+    self.avator.layer.borderWidth = 1.0f;
+    self.avator.layer.borderColor = [UIColor whiteColor].CGColor    ;
     NSString *imgURL = self.weiboModel.user.profile_image_url;
     [self.avator sd_setImageWithURL:[NSURL URLWithString:imgURL]];
 
