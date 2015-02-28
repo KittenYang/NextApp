@@ -11,7 +11,14 @@
 @implementation JellyButton
 
 
-- (void)show {
+-(void)show {
+
+    self.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.layer.shadowOffset = CGSizeMake(0, 0.5);
+    self.layer.shadowOpacity = 0.6;
+    self.layer.shadowRadius = 0.5f;
+    self.layer.masksToBounds = NO;
+
     [super show];
     [self buttonTapped];
 }

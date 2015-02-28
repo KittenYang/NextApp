@@ -20,8 +20,8 @@
 
 
 - (void)awakeFromNib {
-    
-     
+
+    self.readedTag = NO;
     [self createLine];
     [self addPanGesture];
     
@@ -41,16 +41,30 @@
 }
 
 -(void)layoutSubviews{
+    [super layoutSubviews];
     self.cellView.weiboModel = self.weiboModel;
     
     //-----头像------
+
     self.avator.layer.cornerRadius = self.avator.width / 2;
+    self.avator.layer.masksToBounds = YES;
     self.avator.layer.borderWidth = 1.0f;
-    self.avator.layer.borderColor = [UIColor whiteColor].CGColor    ;
-    NSString *imgURL = self.weiboModel.user.profile_image_url;
+    self.avator.layer.borderColor = [UIColor whiteColor].CGColor;
+    NSString *imgURL = self.weiboModel.user.avatar_large;
     [self.avator sd_setImageWithURL:[NSURL URLWithString:imgURL]];
 
 
+    CALayer* avatorShadowLayer = [CALayer layer];
+    avatorShadowLayer.shadowColor = [UIColor blackColor].CGColor;
+    avatorShadowLayer.shadowRadius = 0.5f;
+    avatorShadowLayer.shadowOffset = CGSizeMake(0.f, 0.5f);
+    avatorShadowLayer.shadowOpacity = 0.6f;
+
+    [avatorShadowLayer addSublayer:self.avator.layer];
+    [self.layer insertSublayer:avatorShadowLayer below:self.verticalLine];
+
+
+    
     //-----昵称-------
     self.name.text = self.weiboModel.user.screen_name;
 

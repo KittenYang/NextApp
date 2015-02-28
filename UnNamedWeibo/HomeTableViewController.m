@@ -315,10 +315,24 @@
         }
         
         [WEIBOS addObjectsFromArray:self.weibos];
+        //移除超出100条的
         NSRange overHundredRange;
         overHundredRange.location = 100;
         overHundredRange.length   = [WEIBOS count]-100;
         [WEIBOS removeObjectsInRange:overHundredRange];
+        
+        //移除刚刷新的几条
+        NSRange updatedRange;
+        updatedRange.location = [self.showIndexes count]-updateCount;
+        updatedRange.length = updateCount;
+        [self.showIndexes removeObjectsInRange:updatedRange];
+        if (self.afterRemovedshowIndexes.count != 0 ) {
+            [self.afterRemovedshowIndexes removeAllObjects];
+        }
+        [self.afterRemovedshowIndexes addObjectsFromArray:self.showIndexes];
+        NSLog(@"移除：%@",self.showIndexes);
+        self.isFirstTime = NO;
+        
         self.data   = WEIBOS;
         self.weibos = WEIBOS;
         
@@ -335,7 +349,7 @@
 
         
         // 刷新前保存高度旧的tableview高度
-        CGFloat oldTableViewHeight = self.tableView.contentSize.height;
+//        CGFloat oldTableViewHeight = self.tableView.contentSize.height;
         
         //刷新tableview
         [self.tableView reloadData];
@@ -345,10 +359,9 @@
         frontView.hidden = YES;
 
         
-
         // 刷新后位置保持在原地
-        CGFloat newTableViewHeight = self.tableView.contentSize.height;
-        self.tableView.contentOffset = CGPointMake(0, newTableViewHeight - oldTableViewHeight);
+//        CGFloat newTableViewHeight = self.tableView.contentSize.height;
+//        self.tableView.contentOffset = CGPointMake(0, newTableViewHeight - oldTableViewHeight);
         
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
@@ -391,7 +404,7 @@
                                                    elasticity:0.1
                                                       density:1
                                                       damping:0.1
-                                                    frequency:7];
+                                                    frequency:6];
 
         updatedNumberforBanner = [[UILabel alloc]initWithFrame:refreshNumberView.frame];
         NSLog(@"%@",NSStringFromCGRect(updatedNumberforBanner.frame));
@@ -420,8 +433,6 @@
 #pragma mark - 关于tabbar未读提示
 //每隔一帧刷新屏幕的定时器
 -(void)displayLinkActionToFeed:(CADisplayLink *)dis{
-    
-    self.view.backgroundColor = [UIColor whiteColor];
     x1 = backView.center.x;
     y1 = backView.center.y;
     x2 = frontView.center.x;
@@ -497,6 +508,7 @@
     
     [self.tabBarController.view addSubview:backView];
     [self.tabBarController.view addSubview:frontView];
+    self.tabBarController.view.backgroundColor = [UIColor whiteColor];
     
     
     x1 = backView.center.x;

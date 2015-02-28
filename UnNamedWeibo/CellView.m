@@ -12,7 +12,7 @@
 @implementation CellView
 
 -(void)awakeFromNib{
-//    self.layer.cornerRadius = 10;
+    self.layer.cornerRadius = 5;
 }
 
 -(void)layoutSubviews{
@@ -41,10 +41,13 @@
 
 //-----------使用普通阴影-----------------
     self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOffset = CGSizeMake(0, 1);
-    self.layer.shadowOpacity = 0.7;
+    self.layer.shadowOffset = CGSizeMake(0, 0.5);
+    self.layer.shadowOpacity = 0.2;
     self.layer.shadowRadius = 2.0f;
     self.layer.masksToBounds = NO;
+    
+
+
 
     
 
@@ -70,6 +73,5 @@
     }
 
     
-//    [self.weiboView setNeedsLayout];
 }
 @end
