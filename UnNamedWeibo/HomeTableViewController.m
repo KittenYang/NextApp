@@ -334,11 +334,21 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
 
         
+        // 刷新前保存高度旧的tableview高度
+        CGFloat oldTableViewHeight = self.tableView.contentSize.height;
+        
+        //刷新tableview
         [self.tableView reloadData];
         [self backToTop];
         [self showNumberOfRefresh:updateCount];
         //刷新之后移除未读提示
         frontView.hidden = YES;
+
+        
+
+        // 刷新后位置保持在原地
+        CGFloat newTableViewHeight = self.tableView.contentSize.height;
+        self.tableView.contentOffset = CGPointMake(0, newTableViewHeight - oldTableViewHeight);
         
 //        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:updateCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
         
