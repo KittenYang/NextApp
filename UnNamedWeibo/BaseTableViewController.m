@@ -20,7 +20,7 @@
 
 @interface BaseTableViewController ()<ACTimeScrollerDelegate>
 
-@property (strong, nonatomic) NSMutableSet  *showIndexes;
+
 @property (nonatomic,strong ) CADisplayLink *displayLinkToPull;
 @property (nonatomic,strong ) JellyView     *jellyView;
 
@@ -57,11 +57,21 @@
     statusView.backgroundColor = [UIColor redColor];
 
     //保存indexpath的数组
-    _showIndexes = [NSMutableSet set];
+    _showIndexes = [NSMutableArray array];
+    _afterRemovedshowIndexes = [NSMutableArray array];
     
     //时间滚动条
     _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
 
+    
+    //是否是第一次加载
+    self.isFirstTime = YES;
+    for (NSInteger i = 99; i >= 0; i--) {
+        NSNumber *intnumber = [NSNumber numberWithInteger:i];
+        [self.showIndexes addObject:intnumber];
+    }
+
+    
     //下拉刷新
     
 }
@@ -97,36 +107,50 @@
 
 
 #pragma mark - Table view data source
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//
-//    //动画1：
-//    if (![self.showIndexes containsObject:indexPath]) {
-//        [self.showIndexes addObject:indexPath];
-////        CGFloat rotationAngleDegrees = -10;
-////        CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/ 180);
-////        CGPoint offsetPositioning = CGPointMake(-30, 0);
-////        
-////        
-////        CATransform3D transform = CATransform3DIdentity;
-////        transform = CATransform3DRotate(transform, rotationAngleRadians, 0.0,  0.0, 1.0);
-////        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
-////        cell.layer.transform = transform;
-////        cell.alpha = 0.7;
-//        
-//        KYCell *kycell_ = (KYCell *)cell;
-//        
-//        kycell_.avator.layer.opacity = 0;
-//        kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
-//        kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
-//
-//        [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//            kycell_.avator.layer.opacity = 1;
-//            kycell_.avator.layer.transform = CATransform3DIdentity;
-////            cell.layer.transform = CATransform3DIdentity;
-////            cell.layer.opacity = 1;
-//        } completion:nil];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    //动画1：
+    if(self.isFirstTime){
+//        for (NSInteger i = 99; i < 0; i--) {
+//            NSNumber *intnumber = [NSNumber numberWithInteger:i];
+//            [self.showIndexes addObject:intnumber];
+//        }
+        return;
+    }
+    
+    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
+    if (![self.showIndexes containsObject:row]) {
+
+//        if (row > [self.showIndexes firstObject]) {
+//            [self.showIndexes insertObject:row atIndex:0];
+//        }else{
+//            [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
+//            NSLog(@"加入：%@",self.showIndexes);
+//        }
+        
+        [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
+        NSLog(@"加入：%@",self.showIndexes);
+
+        CGPoint offsetPositioning = CGPointMake(0, 100);
+        CATransform3D transform = CATransform3DIdentity;
+        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
+        cell.layer.transform = transform;
+        cell.alpha = 0.7;
+        
+        KYCell *kycell_ = (KYCell *)cell;
+        
+        kycell_.avator.layer.opacity = 0;
+        kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+        kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
+
+        [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            kycell_.avator.layer.opacity = 1;
+            kycell_.avator.layer.transform = CATransform3DIdentity;
+            cell.layer.transform = CATransform3DIdentity;
+            cell.layer.opacity = 1;
+        } completion:nil];
+    }
+}
 
 
 #pragma mark - UIScrollViewDelegate

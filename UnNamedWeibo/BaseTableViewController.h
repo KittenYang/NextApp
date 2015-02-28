@@ -25,8 +25,10 @@
 @interface BaseTableViewController : UITableViewController<WBHttpRequestDelegate,UIGestureRecognizerDelegate>
 
 
-@property(nonatomic,assign)id<loadMoreDelegate>loademoredelegate;
-
+@property (nonatomic,assign ) id<loadMoreDelegate> loademoredelegate;
+@property (strong, nonatomic) NSMutableArray   *showIndexes;//保存已显示的cell的indexpath
+@property (strong, nonatomic) NSMutableArray   *afterRemovedshowIndexes;//保存已显示的cell的indexpath
+@property (assign,nonatomic ) BOOL             isFirstTime;
 
 -(void)backToTop;//停止刷新，回到顶部
 @end
