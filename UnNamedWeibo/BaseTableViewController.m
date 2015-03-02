@@ -66,6 +66,7 @@
     
     //是否是第一次加载
     self.isFirstTime = YES;
+    //初始化的时候让self.showIndexes默认包含所有微博，也就是说重新打开微博的情况下默认所有微博都是看过的
     for (NSInteger i = 99; i >= 0; i--) {
         NSNumber *intnumber = [NSNumber numberWithInteger:i];
         [self.showIndexes addObject:intnumber];
@@ -125,11 +126,11 @@
         [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
         NSLog(@"加入：%@",self.showIndexes);
         
-        CGPoint offsetPositioning = CGPointMake(0, 100);
+        CGPoint offsetPositioning = CGPointMake(0, 140);
         CATransform3D transform = CATransform3DIdentity;
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
         cell.layer.transform = transform;
-        cell.alpha = 0.7;
+        cell.alpha = 0.3;
         
         KYCell *kycell_ = (KYCell *)cell;
         
