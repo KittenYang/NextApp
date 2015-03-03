@@ -66,7 +66,7 @@
 		5F8736C21A8D1B3F000CADF4 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */; };
 		5F8737321A8F2399000CADF4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737311A8F2399000CADF4 /* BaseViewController.m */; };
 		5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */; };
-		5F8DB5721AA5709000727719 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DB5711AA5709000727719 /* KYCuteView.m */; };
+		5F8DB5781AA5816700727719 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DB5771AA5816700727719 /* KYCuteView.m */; };
 		5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */; };
 		5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DE1AA0AAFA007E6ECA /* JellyButton.m */; };
 		81A5B1D193E58D1DF7894F4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296A6E4ABE0FB16D9F90BF72 /* libPods.a */; };
@@ -196,8 +196,8 @@
 		5F8737311A8F2399000CADF4 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5F8737341A8F23EA000CADF4 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		5F8DB5701AA5709000727719 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
-		5F8DB5711AA5709000727719 /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCuteView.m; sourceTree = "<group>"; };
+		5F8DB5761AA5816700727719 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
+		5F8DB5771AA5816700727719 /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCuteView.m; sourceTree = "<group>"; };
 		5FDF30D91AA0AAC8007E6ECA /* VBFJellyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFJellyView.h; sourceTree = "<group>"; };
 		5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFJellyView.m; sourceTree = "<group>"; };
 		5FDF30DD1AA0AAFA007E6ECA /* JellyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JellyButton.h; sourceTree = "<group>"; };
@@ -583,8 +583,8 @@
 		5F8DB56C1AA56A4D00727719 /* KYCuteView */ = {
 			isa = PBXGroup;
 			children = (
-				5F8DB5701AA5709000727719 /* KYCuteView.h */,
-				5F8DB5711AA5709000727719 /* KYCuteView.m */,
+				5F8DB5761AA5816700727719 /* KYCuteView.h */,
+				5F8DB5771AA5816700727719 /* KYCuteView.m */,
 			);
 			name = KYCuteView;
 			sourceTree = "<group>";
@@ -774,7 +774,7 @@
 				5F87368C1A8CC5A2000CADF4 /* PostViewController.m in Sources */,
 				5F7FAE3C1A9517D400CEF622 /* UIImageView+HighlightedWebCache.m in Sources */,
 				5F7FADD81A93840F00CEF622 /* UIView+Extra.m in Sources */,
-				5F8DB5721AA5709000727719 /* KYCuteView.m in Sources */,
+				5F8DB5781AA5816700727719 /* KYCuteView.m in Sources */,
 				5F8736781A8C55EC000CADF4 /* RAMAnimatedTabBarController.swift in Sources */,
 				5F7FADDE1A9385C500CEF622 /* WeiboView.m in Sources */,
 				5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */,

@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Kitten Yang. All rights reserved.
 //
 
-//关于未读提示
+//关于未读气泡提示
 #define BubbleWidth  30
 #define BubbleX      18
 #define BubbleY      500
-#define BubbleColor  [UIColor redColor];
+#define BubbleColor  [UIColor redColor]
 //[UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
 
@@ -348,7 +348,7 @@
 
             self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(BubbleX,BubbleY) superView:self.tabBarController.view];
             self.cuteView.bubbleWidth = 35;
-            self.cuteView.bubbleColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+            self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.viscosity  = 25;
             [self.cuteView setUp];
             [self.cuteView addGesture];
