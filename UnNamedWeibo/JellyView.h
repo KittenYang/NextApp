@@ -19,4 +19,8 @@
 @property BOOL isLoading;
 
 @property (strong,nonatomic)   UIImageView *ballView;
+
+- (void)drawRectInJellyView;
+-(void)removeAnimator;
+
 @end

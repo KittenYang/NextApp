@@ -19,11 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
     NSLog(@"%@",application.windows);
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kWeiboAppKey];
     
     return YES;
+    
 }
 
 
@@ -51,6 +53,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"WeiboAuthData"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[NSNotificationCenter defaultCenter]postNotificationName:kWeiboAuthSuccessNotification object:nil];
+    
     }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

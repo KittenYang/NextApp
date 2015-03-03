@@ -64,15 +64,6 @@
     [aCoder encodeObject:self.user    forKey:@"user"];
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder {
-//    self.name      = [aDecoder decodeObjectForKey:kBookName];
-//    self.published = [aDecoder decodeBoolForKey:kPublished];
-//    self.price     = [aDecoder decodeFloatForKey:kPrice];
-//    self.info      = [aDecoder decodeObjectForKey:kInfo];
-//    return self;
-//}
-
-
 
 
 

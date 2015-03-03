@@ -180,7 +180,7 @@
     }
     
     CGFloat offset = -scrollView.contentOffset.y - 64.5;
-    if (offset >= 120) {
+    if (offset >= 100) {
         self.jellyView.ballView.image = [UIImage imageNamed:@"sun_smile"];
     }else{
         self.jellyView.ballView.image = [UIImage imageNamed:@"sun"];
@@ -191,7 +191,7 @@
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     CGFloat offset = -scrollView.contentOffset.y - 64.5;
-    if (offset >= 120) {
+    if (offset >= 100) {
         
         self.jellyView.isLoading = YES;
         
@@ -200,7 +200,7 @@
             self.jellyView.controlPoint.center = CGPointMake(self.jellyView.userFrame.size.width / 2, jellyHeaderHeight);
             NSLog(@"self.jellyView.controlPoint.center:%@",NSStringFromCGPoint(self.jellyView.controlPoint.center));
             
-            self.tableView.contentInset = UIEdgeInsetsMake(150+64.5, 0, 0, 0);
+            self.tableView.contentInset = UIEdgeInsetsMake(100+64.5, 0, 0, 0);
         } completion:nil];
         
         if ([self.loademoredelegate respondsToSelector:@selector(pullDown)]) {
@@ -228,9 +228,11 @@
 //跳到顶部复原的方法
 -(void)backToTop{
     
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(64.5, 0, 0, 0);
     } completion:^(BOOL finished) {
+        [self.jellyView removeAnimator];
         self.jellyView.isLoading = NO;
         [self.jellyView removeFromSuperview];
         self.jellyView = nil;
@@ -246,7 +248,7 @@
     
     self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
     
-    [self.jellyView setNeedsDisplay];
+    [self.jellyView drawRectInJellyView];
 }
 
 

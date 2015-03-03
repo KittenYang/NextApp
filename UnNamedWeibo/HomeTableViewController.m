@@ -70,7 +70,7 @@
 //    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
 //    [self.view addSubview:hud];
 
-    
+
     //登录按钮
     UIButton *authBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     authBtn.frame = CGRectMake(260, 20, 50, 30);
@@ -393,14 +393,20 @@
     
     [UIView animateWithDuration:1.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
         refreshNumberView.frame = CGRectMake(5, 5, 300, 50);
-        updatedNumberforBanner.frame = CGRectMake(5, 5, 300, 50);
+        updatedNumberforBanner.frame = CGRectMake(5, 8, 300, 50);
+        [refreshNumberView show];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             refreshNumberView.frame = CGRectMake(5, -120, 300, 50);
             updatedNumberforBanner.frame = CGRectMake(5, -120, 300, 50);
-        } completion:nil];
+        } completion:^(BOOL finished) {
+            [refreshNumberView removeFromSuperview];
+            [updatedNumberforBanner removeFromSuperview];
+            refreshNumberView = nil;
+            updatedNumberforBanner = nil;
+        }];
     }];
-    [refreshNumberView show];
+
 
 }
 
