@@ -126,7 +126,7 @@
         [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
         NSLog(@"加入：%@",self.showIndexes);
         
-        CGPoint offsetPositioning = CGPointMake(0, 140);
+        CGPoint offsetPositioning = CGPointMake(0, 120);
         CATransform3D transform = CATransform3DIdentity;
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
         cell.layer.transform = transform;

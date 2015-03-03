@@ -21,6 +21,8 @@
 #import "SKSplashIcon.h"
 #import "KYLoadingHUD.h"
 #import "JellyButton.h"
+#import "KYCuteView.h"
+
 
 
 
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) SKSplashView *splashView;
 @property (nonatomic,copy   ) NSString     *topWeiboId;// 最新一条微博的ID
 @property (nonatomic,copy   ) NSString     *lastWeiboId;// 最久一条微博的ID
+@property (nonatomic,strong) KYCuteView *cuteView;
 
 @end
 
@@ -36,42 +39,10 @@
     NSArray *array;
     KYLoadingHUD *hud;
     
-    //--------关于未读提示----------
-    UIBezierPath *cutePath;
-    UIColor *fillColorForCute;
-    UIDynamicAnimator *animator;
-    UISnapBehavior  *snap;
-    
-    CADisplayLink *displayLinkToFeed;
-    
-    UILabel *updatedNumberforTabbar;//tabbar上更新数字的label
-    UILabel *updatedNumberforBanner;//顶部滑下来更新数字的label
-    UIView *frontView;
-    UIView *backView;
-    CGFloat r1; // backView
-    CGFloat r2; // frontView
-    CGFloat x1;
-    CGFloat y1;
-    CGFloat x2;
-    CGFloat y2;
-    CGFloat centerDistance;
-    CGFloat cosDigree;
-    CGFloat sinDigree;
-    
-    CGPoint pointA; //A
-    CGPoint pointB; //B
-    CGPoint pointD; //D
-    CGPoint pointC; //C
-    CGPoint pointO; //O
-    CGPoint pointP; //P
-    
-    CGRect oldBackViewFrame;
-    CGPoint oldBackViewCenter;
-    CAShapeLayer *shapeLayer;
-    //----------------------------
     
     //刷新了几条微博的视图
     JellyButton *refreshNumberView;
+    UILabel *updatedNumberforBanner;
 
 }
 
@@ -127,10 +98,6 @@
     }else{
         [self.tableView reloadData];
     }
-    
-//    UIView *new_feed_view = [[UIView alloc]initWithFrame:CGRectMake(10, 568-100, 30, 30)];
-//    new_feed_view.backgroundColor = [UIColor redColor];
-//    [self.tabBarController.view addSubview:new_feed_view];
     
     
     //获取未读微博数的定时器
@@ -248,7 +215,7 @@
         NSLog(@"最新一条微博的ID为空");
         return;
     }
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"25",@"count",self.topWeiboId,@"since_id",nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"50",@"count",self.topWeiboId,@"since_id",nil];
     [WBHttpRequest requestWithAccessToken:[Utils WEIBOTOKEN] url:WB_home  httpMethod:@"GET" params:params delegate:self withTag:@"pullDown"];
 
 }
@@ -356,7 +323,7 @@
         [self backToTop];
         [self showNumberOfRefresh:updateCount];
         //刷新之后移除未读提示
-        frontView.hidden = YES;
+        self.cuteView.frontView.hidden = YES;
 
         
         // 刷新后位置保持在原地
@@ -375,27 +342,35 @@
         if (n == 0) {
             return;
         }
-        if (frontView == nil) {
+        
+        
+        if (self.cuteView == nil) {
+
+            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(BubbleX,BubbleY) superView:self.tabBarController.view];
+            self.cuteView.bubbleWidth = 35;
+            self.cuteView.bubbleColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
+            self.cuteView.viscosity  = 25;
+            [self.cuteView setUp];
+            [self.cuteView addGesture];
+            self.tabBarController.view.backgroundColor = [UIColor whiteColor];
+
             NSLog(@"提示框+1");
-            [self setUp:n];
-            [self addGesture];
         }
-
+        
         if (n > 0){
-            if (n > 25) {
-                frontView.hidden = NO;
-                updatedNumberforTabbar.text = @"...";
+            if (n > 50) {
+                self.cuteView.frontView.hidden = NO;
+                self.cuteView.bubbleLabel.text  = @"...";
             }else{
-                frontView.hidden = NO;
-                updatedNumberforTabbar.text = [NSString stringWithFormat:@"%d",n];
-
+                self.cuteView.frontView.hidden = NO;
+                self.cuteView.bubbleLabel.text  =[NSString stringWithFormat:@"%d",n];
             }
         }
     
     }
 }
 
-#pragma mark - 刷新之后提示刷新几条
+#pragma mark - banner上刷新之后提示刷新几条
 -(void)showNumberOfRefresh:(int)updatedNum{
     if (refreshNumberView == nil) {
         refreshNumberView = [[JellyButton alloc]initWithFrame:CGRectMake(5, -120, 300, 50)
@@ -410,7 +385,6 @@
         NSLog(@"%@",NSStringFromCGRect(updatedNumberforBanner.frame));
         updatedNumberforBanner.textColor = [UIColor whiteColor];
         updatedNumberforBanner.textAlignment = NSTextAlignmentCenter;
-//        [refreshNumberView insertSubview:updatedNumberforBanner atIndex:[[refreshNumberView subviews]count]-1];
         [self.view addSubview:refreshNumberView];
         [self.view addSubview:updatedNumberforBanner];
     }
@@ -429,206 +403,6 @@
     [refreshNumberView show];
 
 }
-
-#pragma mark - 关于tabbar未读提示
-//每隔一帧刷新屏幕的定时器
--(void)displayLinkActionToFeed:(CADisplayLink *)dis{
-    x1 = backView.center.x;
-    y1 = backView.center.y;
-    x2 = frontView.center.x;
-    y2 = frontView.center.y;
-    
-    centerDistance = sqrtf((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
-    if (centerDistance == 0) {
-        cosDigree = 1;
-        sinDigree = 0;
-    }else{
-        cosDigree = (y2-y1)/centerDistance;
-        sinDigree = (x2-x1)/centerDistance;
-    }
-    r1 = oldBackViewFrame.size.width / 2 - centerDistance/25;
-    
-    pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A
-    pointB = CGPointMake(x1+r1*cosDigree, y1-r1*sinDigree); // B
-    pointD = CGPointMake(x2-r2*cosDigree, y2+r2*sinDigree); // D
-    pointC = CGPointMake(x2+r2*cosDigree, y2-r2*sinDigree);// C
-    pointO = CGPointMake(pointA.x + (centerDistance / 2)*sinDigree, pointA.y + (centerDistance / 2)*cosDigree);
-    pointP = CGPointMake(pointB.x + (centerDistance / 2)*sinDigree, pointB.y + (centerDistance / 2)*cosDigree);
-    
-    [self drawRect];
-}
-
--(void)drawRect{
-    
-    backView.center = oldBackViewCenter;
-    backView.bounds = CGRectMake(0, 0, r1*2, r1*2);
-    backView.layer.cornerRadius = r1;
-    
-    cutePath = [UIBezierPath bezierPath];
-    [cutePath moveToPoint:pointA];
-    [cutePath addQuadCurveToPoint:pointD controlPoint:pointO];
-    [cutePath addLineToPoint:pointC];
-    [cutePath addQuadCurveToPoint:pointB controlPoint:pointP];
-    [cutePath moveToPoint:pointA];
-    
-    
-    if (backView.hidden == NO) {
-        shapeLayer.path = [cutePath CGPath];
-        shapeLayer.fillColor = [fillColorForCute CGColor];
-        [self.tabBarController.view.layer addSublayer:shapeLayer];
-    }
-}
-
-
--(void)setUp:(int)n{
-    shapeLayer = [CAShapeLayer layer];
-    
-    self.view.backgroundColor = [UIColor clearColor];
-    frontView = [[UIView alloc]initWithFrame:CGRectMake(BubbleX,BubbleY, BubbleWidth, BubbleWidth)];
-    
-    r2 = frontView.bounds.size.width / 2;
-    frontView.layer.cornerRadius = r2;
-    frontView.backgroundColor = BubbleColor;
-    
-    backView = [[UIView alloc]initWithFrame:frontView.frame];
-    r1 = backView.bounds.size.width / 2;
-    backView.layer.cornerRadius = r1;
-    backView.backgroundColor = BubbleColor;
-    
-    if (n > 0) {
-        updatedNumberforTabbar = [[UILabel alloc]init];
-        updatedNumberforTabbar.frame = CGRectMake(0, 0, frontView.bounds.size.width, frontView.bounds.size.height);
-        updatedNumberforTabbar.textColor = [UIColor whiteColor];
-        updatedNumberforTabbar.font = [UIFont systemFontOfSize:13.0f];
-        updatedNumberforTabbar.textAlignment = NSTextAlignmentCenter;
-        
-        [frontView insertSubview:updatedNumberforTabbar atIndex:0];
-    }
-
-    
-    [self.tabBarController.view addSubview:backView];
-    [self.tabBarController.view addSubview:frontView];
-    self.tabBarController.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    x1 = backView.center.x;
-    y1 = backView.center.y;
-    x2 = frontView.center.x;
-    y2 = frontView.center.y;
-    
-    
-    pointA = CGPointMake(x1-r1,y1);   // A
-    pointB = CGPointMake(x1+r1, y1);  // B
-    pointD = CGPointMake(x2-r2, y2);  // D
-    pointC = CGPointMake(x2+r2, y2);  // C
-    pointO = CGPointMake(x1-r1,y1);
-    pointP = CGPointMake(x2+r2, y2);
-    
-    oldBackViewFrame = backView.frame;
-    oldBackViewCenter = backView.center;
-    
-    backView.hidden = YES;//为了看到frontView的气泡晃动效果，需要展示隐藏backView
-    [self AddAniamtionLikeGameCenterBubble];
-}
-
-
--(void)addGesture{
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragMe:)];
-    [frontView addGestureRecognizer:pan];
-    
-}
-
-
--(void)dragMe:(UIPanGestureRecognizer *)ges{
-    CGPoint dragPoint = [ges locationInView:self.tabBarController.view];
-    
-    if (ges.state == UIGestureRecognizerStateBegan) {
-        backView.hidden = NO;
-        fillColorForCute = BubbleColor;
-        [self RemoveAniamtionLikeGameCenterBubble];
-        if (displayLinkToFeed == nil) {
-            displayLinkToFeed = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkActionToFeed:)];
-            [displayLinkToFeed addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-        }
-        
-    }else if (ges.state == UIGestureRecognizerStateChanged){
-        frontView.center = dragPoint;
-        
-        if (r1 <= 6) {
-            
-            fillColorForCute = [UIColor clearColor];
-            backView.hidden = YES;
-            [shapeLayer removeFromSuperlayer];
-            [displayLinkToFeed invalidate];
-            displayLinkToFeed = nil;
-        }
-        
-    }else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled || ges.state == UIGestureRecognizerStateFailed){
-        
-        backView.hidden = YES;
-        fillColorForCute = [UIColor clearColor];
-        [shapeLayer removeFromSuperlayer];
-        [UIView animateWithDuration:0.5 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            frontView.center = oldBackViewCenter;
-            
-        } completion:^(BOOL finished) {
-            
-            if (finished) {
-                [self AddAniamtionLikeGameCenterBubble];
-                [displayLinkToFeed invalidate];
-                displayLinkToFeed = nil;
-            }
-        }];
-    }
-}
-
-
-//----类似GameCenter的气泡晃动动画------
--(void)AddAniamtionLikeGameCenterBubble{
-    
-    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    pathAnimation.calculationMode = kCAAnimationPaced;
-    pathAnimation.fillMode = kCAFillModeForwards;
-    pathAnimation.removedOnCompletion = NO;
-    pathAnimation.repeatCount = INFINITY;
-    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    pathAnimation.duration = 5.0;
-    
-    
-    CGMutablePathRef curvedPath = CGPathCreateMutable();
-    CGRect circleContainer = CGRectInset(frontView.frame, frontView.bounds.size.width / 2 - 3, frontView.bounds.size.width / 2 - 3);
-    CGPathAddEllipseInRect(curvedPath, NULL, circleContainer);
-    
-    pathAnimation.path = curvedPath;
-    CGPathRelease(curvedPath);
-    [frontView.layer addAnimation:pathAnimation forKey:@"myCircleAnimation"];
-    
-    
-    CAKeyframeAnimation *scaleX = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.x"];
-    scaleX.duration = 1;
-    scaleX.values = @[@1.0, @1.1, @1.0];
-    scaleX.keyTimes = @[@0.0, @0.5, @1.0];
-    scaleX.repeatCount = INFINITY;
-    scaleX.autoreverses = YES;
-    
-    scaleX.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [frontView.layer addAnimation:scaleX forKey:@"scaleXAnimation"];
-    
-    
-    CAKeyframeAnimation *scaleY = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
-    scaleY.duration = 1.5;
-    scaleY.values = @[@1.0, @1.1, @1.0];
-    scaleY.keyTimes = @[@0.0, @0.5, @1.0];
-    scaleY.repeatCount = INFINITY;
-    scaleY.autoreverses = YES;
-    scaleX.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [frontView.layer addAnimation:scaleY forKey:@"scaleYAnimation"];
-}
-
--(void)RemoveAniamtionLikeGameCenterBubble{
-    [frontView.layer removeAllAnimations];
-}
-
 
 
 @end
