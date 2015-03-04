@@ -106,7 +106,6 @@
                                                             <rect key="frame" x="0.0" y="209" width="590" height="175"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="150" id="8a6-2Y-C4M"/>
                                                                 <constraint firstAttribute="height" constant="175" id="ShI-DX-5rh"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Nm-AE-4lj">
@@ -123,7 +122,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
+                                                                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
                                                                             </imageView>
                                                                         </subviews>
@@ -137,11 +136,6 @@
                                                                     </constraints>
                                                                 </collectionViewCell>
                                                             </cells>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="8a6-2Y-C4M"/>
-                                                                </mask>
-                                                            </variation>
                                                             <connections>
                                                                 <outlet property="dataSource" destination="hCK-Zx-Qf9" id="jJ3-It-ZQr"/>
                                                                 <outlet property="delegate" destination="hCK-Zx-Qf9" id="KEe-77-iRk"/>
@@ -165,6 +159,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
+                                                        <outlet property="collectionViewHeight" destination="ShI-DX-5rh" id="9W8-ju-cUa"/>
                                                         <outlet property="text_between_imageNO" destination="t7j-Zp-UMs" id="mHq-aE-Mfa"/>
                                                         <outlet property="text_between_imageYES" destination="Iw3-eL-2zT" id="OOb-Gu-QZL"/>
                                                         <outlet property="weiboImageCollectionView" destination="yIf-4U-N4w" id="RQA-LY-s2p"/>

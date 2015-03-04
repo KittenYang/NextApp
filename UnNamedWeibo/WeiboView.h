@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageYES;
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageNO;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 
 //weiboModel
 @property (strong,nonatomic)WeiboModel *weiboModel;

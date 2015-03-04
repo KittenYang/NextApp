@@ -167,7 +167,6 @@
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
     
-    //----------微博内容--------------
 
 }
 

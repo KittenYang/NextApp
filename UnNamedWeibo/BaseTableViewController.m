@@ -107,22 +107,17 @@
 
 
 
-#pragma mark - Table view data source
+#pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    //动画1：    
+    KYCell *kycell_ = (KYCell *)cell;
+    [kycell_.cellView.weiboView.weiboImageCollectionView reloadData];
+
+
     NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
-    
-    //动画1：
-    if(self.isFirstTime){
-        //        for (NSInteger i = 99; i < 0; i--) {
-        //            NSNumber *intnumber = [NSNumber numberWithInteger:i];
-        //            [self.showIndexes addObject:intnumber];
-        //        }
-        return;
-    }
+
+    //cell进入动画：
     if (![self.showIndexes containsObject:row]) {
-        
         [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
         NSLog(@"加入：%@",self.showIndexes);
         
@@ -131,8 +126,6 @@
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
         cell.layer.transform = transform;
         cell.alpha = 0.3;
-        
-        KYCell *kycell_ = (KYCell *)cell;
         
         kycell_.avator.layer.opacity = 0;
         kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
