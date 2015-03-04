@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "WeiboModel.h"
 
-@interface WeiboView : UIView
+@interface WeiboView : UIView<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *weiboText;
+@property (strong, nonatomic) IBOutlet UICollectionView *weiboImageCollectionView;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageYES;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageNO;
 
 //weiboModel
 @property (strong,nonatomic)WeiboModel *weiboModel;
 
-+(CGFloat)getWeiboHeight:(WeiboModel *)model;
 
 @end

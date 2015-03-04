@@ -30,6 +30,7 @@
         self.thumbnailImage = [aDecoder decodeObjectForKey:@"thumbnailImage"];
         self.bmiddleImage = [aDecoder decodeObjectForKey:@"bmiddleImage"];
         self.originalImage = [aDecoder decodeObjectForKey:@"originalImage"];
+        self.pic_urls      = [aDecoder decodeObjectForKey:@"pic_urls"];
         self.geo = [aDecoder decodeObjectForKey:@"geo"];
         self.geo = [aDecoder decodeObjectForKey:@"repostsCount"];
         self.geo = [aDecoder decodeObjectForKey:@"commentsCount"];
@@ -57,6 +58,7 @@
     [aCoder encodeObject:self.thumbnailImage    forKey:@"thumbnailImage"];
     [aCoder encodeObject:self.bmiddleImage    forKey:@"bmiddleImage"];
     [aCoder encodeObject:self.originalImage    forKey:@"originalImage"];
+    [aCoder encodeObject:self.pic_urls forKey:@"pic_urls"];
     [aCoder encodeObject:self.geo    forKey:@"geo"];
     [aCoder encodeObject:self.repostsCount    forKey:@"repostsCount"];
     [aCoder encodeObject:self.commentsCount    forKey:@"commentsCount"];
@@ -76,6 +78,7 @@
     self.thumbnailImage = [dic objectForKey:@"thumbnail_pic"];
     self.bmiddleImage = [dic objectForKey:@"bmiddle_pic"];
     self.originalImage = [dic objectForKey:@"original_pic"];
+    self.pic_urls = [dic objectForKey:@"pic_urls"];
     self.geo = [dic objectForKey:@"geo"];
     self.repostsCount = [dic objectForKey:@"reposts_count"];
     self.commentsCount = [dic objectForKey:@"comments_count"];

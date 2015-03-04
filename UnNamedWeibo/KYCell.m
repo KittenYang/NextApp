@@ -83,13 +83,13 @@
 }
 
 //区分两个手势敏感度关键
-- (BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+- (BOOL)gestureRecognizerShouldBegin:(UIScreenEdgePanGestureRecognizer *)gestureRecognizer
 {
     UIView *gestureView = [gestureRecognizer view];
     CGPoint translation = [gestureRecognizer translationInView:[gestureView superview]];
     
     //只有水平方向的距离绝对值 大于 垂直方向的距离绝对值 才能触发
-    if (fabsf(translation.x) > fabsf(translation.y))
+    if (fabsf(translation.x) > fabsf(translation.y) || (fabsf(translation.x) == 0 && fabsf(translation.y) == 0))
     {
         return YES;
     }
@@ -138,22 +138,28 @@
 }
 
 - (void) addPanGesture {
-    self.sgr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSlide:)];
-    self.sgr.delegate = self;
-    self.sgr.delaysTouchesBegan = YES;
-    [self addGestureRecognizer:self.sgr];
+    self.sgr_left = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSlide:)];
+    self.sgr_left.edges =  UIRectEdgeLeft;
+    self.sgr_left.delegate = self;
+    self.sgr_left.delaysTouchesBegan = YES;
+    [self addGestureRecognizer:self.sgr_left];
     
+    
+    self.sgr_right = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSlide:)];
+    self.sgr_right.edges =  UIRectEdgeRight;
+    self.sgr_right.delegate = self;
+    self.sgr_right.delaysTouchesBegan = YES;
+    [self addGestureRecognizer:self.sgr_right];
     
 }
 
 
 
-- (void) handleSlide:(UIPanGestureRecognizer *)gr{
+- (void) handleSlide:(UIScreenEdgePanGestureRecognizer *)gr{
     CGFloat amountX = [gr translationInView:self].x;
 //    CGFloat amountY = [gr translationInView:self].y;
 
 
-    
     if (gr.state == UIGestureRecognizerStateBegan) {
         id view = [self superview];
         

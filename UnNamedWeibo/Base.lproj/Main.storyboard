@@ -104,6 +104,7 @@
                                                         </label>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
                                                             <rect key="frame" x="0.0" y="209" width="590" height="175"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="8a6-2Y-C4M"/>
                                                                 <constraint firstAttribute="height" constant="175" id="ShI-DX-5rh"/>
@@ -122,7 +123,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
+                                                                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
                                                                             </imageView>
                                                                         </subviews>
@@ -141,6 +142,10 @@
                                                                     <exclude reference="8a6-2Y-C4M"/>
                                                                 </mask>
                                                             </variation>
+                                                            <connections>
+                                                                <outlet property="dataSource" destination="hCK-Zx-Qf9" id="jJ3-It-ZQr"/>
+                                                                <outlet property="delegate" destination="hCK-Zx-Qf9" id="KEe-77-iRk"/>
+                                                            </connections>
                                                         </collectionView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,10 +155,19 @@
                                                         <constraint firstItem="o4i-jI-Rqb" firstAttribute="leading" secondItem="hCK-Zx-Qf9" secondAttribute="leading" constant="10" id="Ukv-RZ-iwh"/>
                                                         <constraint firstItem="o4i-jI-Rqb" firstAttribute="top" secondItem="hCK-Zx-Qf9" secondAttribute="top" constant="5" id="V1Q-7O-PnR"/>
                                                         <constraint firstAttribute="trailing" secondItem="yIf-4U-N4w" secondAttribute="trailing" id="qDD-fh-Le0"/>
+                                                        <constraint firstAttribute="bottom" secondItem="o4i-jI-Rqb" secondAttribute="bottom" constant="10" id="t7j-Zp-UMs"/>
                                                         <constraint firstItem="yIf-4U-N4w" firstAttribute="leading" secondItem="hCK-Zx-Qf9" secondAttribute="leading" id="zXf-fn-wtK"/>
                                                         <constraint firstAttribute="trailing" secondItem="o4i-jI-Rqb" secondAttribute="trailing" constant="5" id="zhR-lj-2xq"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="t7j-Zp-UMs"/>
+                                                        </mask>
+                                                    </variation>
                                                     <connections>
+                                                        <outlet property="text_between_imageNO" destination="t7j-Zp-UMs" id="mHq-aE-Mfa"/>
+                                                        <outlet property="text_between_imageYES" destination="Iw3-eL-2zT" id="OOb-Gu-QZL"/>
+                                                        <outlet property="weiboImageCollectionView" destination="yIf-4U-N4w" id="RQA-LY-s2p"/>
                                                         <outlet property="weiboText" destination="o4i-jI-Rqb" id="Dut-GV-vC5"/>
                                                     </connections>
                                                 </view>

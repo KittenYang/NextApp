@@ -21,6 +21,7 @@
 @property (nonatomic,copy  ) NSString     *thumbnailImage;//缩略图片地址，没有时不返回此字段
 @property (nonatomic,copy  ) NSString     *bmiddleImage;//中等尺寸图片地址，没有时不返回此字段
 @property (nonatomic,copy  ) NSString     *originalImage;//原始图片地址，没有时不返回此字段
+@property (nonatomic,retain) NSMutableArray *pic_urls; //微博中多张图片的地址
 @property (nonatomic,retain) NSDictionary *geo;//地理信息字段
 @property (nonatomic,retain) NSNumber     *repostsCount;//转发数
 @property (nonatomic,retain) NSNumber     *commentsCount;//评论数

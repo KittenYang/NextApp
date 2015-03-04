@@ -166,7 +166,9 @@
 
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
-        
+    
+    //----------微博内容--------------
+
 }
 
 #pragma  mark - 微博登录

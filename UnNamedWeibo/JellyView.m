@@ -92,23 +92,22 @@
         
     }
     
+    self.controlPoint.center = (self.isLoading == NO)?(CGPointMake(self.userFrame.size.width / 2 , self.userFrame.size.height + self.controlPointOffset)) : (CGPointMake(self.userFrame.size.width / 2, self.userFrame.size.height + self.controlPointOffset));
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0,self.userFrame.size.height)];
+    [path addQuadCurveToPoint:CGPointMake(self.userFrame.size.width,self.userFrame.size.height) controlPoint:self.controlPoint.center];
+    [path addLineToPoint:CGPointMake(self.userFrame.size.width, 0)];
+    [path addLineToPoint:CGPointMake(0, 0)];
+    [path closePath];
+    
+    
+    shapeLayer.path = path.CGPath;
+    shapeLayer.fillColor = [UIColor redColor].CGColor;
+    
     if (self.isLoading == NO) {
-        self.controlPoint.center = (self.isLoading == NO)?(CGPointMake(self.userFrame.size.width / 2 , self.userFrame.size.height + self.controlPointOffset)) : (CGPointMake(self.userFrame.size.width / 2, self.userFrame.size.height + self.controlPointOffset));
-        
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(0,self.userFrame.size.height)];
-        [path addQuadCurveToPoint:CGPointMake(self.userFrame.size.width,self.userFrame.size.height) controlPoint:self.controlPoint.center];
-        [path addLineToPoint:CGPointMake(self.userFrame.size.width, 0)];
-        [path addLineToPoint:CGPointMake(0, 0)];
-        [path closePath];
-        
-        
-        shapeLayer.path = path.CGPath;
-        shapeLayer.fillColor = [UIColor redColor].CGColor;
-        
         [coll addBoundaryWithIdentifier:@"弧形" forPath:path];
         [animator addBehavior:coll];
-
     }
     
 //    CGContextRef context = UIGraphicsGetCurrentContext();

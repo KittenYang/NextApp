@@ -14,12 +14,14 @@
 @interface KYCell : UITableViewCell
 
 @property(nonatomic,strong)CAShapeLayer * verticalLine;
-@property(nonatomic,strong)UIPanGestureRecognizer *sgr;
+@property(nonatomic,strong)UIScreenEdgePanGestureRecognizer *sgr_left;
+@property(nonatomic,strong)UIScreenEdgePanGestureRecognizer *sgr_right;
 
 //subviews
 @property (strong, nonatomic) IBOutlet CellView *cellView;
 @property (strong, nonatomic) IBOutlet UILabel *name;
 @property (strong, nonatomic) IBOutlet UIImageView *avator;
+
 
 
 //是否阅读的标记

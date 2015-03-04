@@ -163,6 +163,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [_timeScroller scrollViewDidScroll];
+    if (scrollView.contentOffset.y > -64.5) {
+        return;
+    }
     
     if (self.displayLinkToPull == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
         self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight - 30 , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
@@ -198,9 +201,8 @@
         [UIView animateWithDuration:0.3 delay:0.0f usingSpringWithDamping:0.4f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             
             self.jellyView.controlPoint.center = CGPointMake(self.jellyView.userFrame.size.width / 2, jellyHeaderHeight);
-            NSLog(@"self.jellyView.controlPoint.center:%@",NSStringFromCGPoint(self.jellyView.controlPoint.center));
             
-            self.tableView.contentInset = UIEdgeInsetsMake(100+64.5, 0, 0, 0);
+            self.tableView.contentInset = UIEdgeInsetsMake(150+64.5, 0, 0, 0);
         } completion:nil];
         
         if ([self.loademoredelegate respondsToSelector:@selector(pullDown)]) {

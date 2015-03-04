@@ -7,8 +7,11 @@
 //
 
 #import "WeiboView.h"
+#import "UIImageView+WebCache.h"
 
-@implementation WeiboView
+@implementation WeiboView{
+    UIImageView *weiboImageView;
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -21,18 +24,37 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
 //    self.weiboText.text = self.weiboModel.text;
+    if (self.weiboModel.pic_urls.count == 0) {
+        [self.weiboImageCollectionView removeConstraints:[self constraints]];
+        self.weiboImageCollectionView.hidden = YES;
+//        self.text_between_imageYES.active = NO;
+        self.text_between_imageNO.active = YES;
+        [self updateConstraintsIfNeeded];
+    }
+
+    
 }
 
 
-+(CGFloat)getWeiboHeight:(WeiboModel *)model{
-    float height = 0;
-    
-    //-------------计算微博内容的高度-------------
-    UILabel *textLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
+    return [self.weiboModel.pic_urls count];
     
-    textLabel.text = model.text;
-    height += textLabel.bounds.size.height;
-    return height;
 }
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
+    weiboImageView = (UIImageView *)[cell viewWithTag:200];
+    NSDictionary *imgDics = self.weiboModel.pic_urls[indexPath.row];
+    NSString *imgUrl = [imgDics objectForKey:@"thumbnail_pic"];
+    [weiboImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+    
+    
+    return cell;
+    
+}
+
+
 @end
