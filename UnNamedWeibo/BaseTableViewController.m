@@ -51,10 +51,12 @@
     
     UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
     self.navigationItem.leftBarButtonItem=logoItem;
+    self.navigationController.navigationBar.alpha = 0.5f;
     
-    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 568, 20)];
-    [self.navigationController.view addSubview:statusView];
-    statusView.backgroundColor = [UIColor redColor];
+    //状态条底色
+//    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 568, 20)];
+//    [self.navigationController.view addSubview:statusView];
+//    statusView.backgroundColor = [UIColor redColor];
 
     //保存indexpath的数组
     _showIndexes = [NSMutableArray array];
@@ -112,6 +114,7 @@
 
     KYCell *kycell_ = (KYCell *)cell;
     [kycell_.cellView.weiboView.weiboImageCollectionView reloadData];
+    [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
 
     
     NSNumber *row = [NSNumber numberWithInteger:indexPath.row];

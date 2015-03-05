@@ -166,6 +166,7 @@
 
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
+//    [cell.cellView.weiboView updateView];
     
     
     //-----------创建日期---------------
@@ -190,12 +191,35 @@
 
     //---图片视图----
     if (model.pic_urls.count > 0) {
-        cell.cellView.weiboView.weiboImageCollectionView.hidden = NO;
-        cell.cellView.weiboView.collectionViewHeight.constant = 150.0f;
+
+        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
     
     }else {
         cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
     }
+    
+    //------转发视图-------
+    if (model.retWeibo) {
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboModel = model.retWeibo;
+        cell.cellView.weiboView.reWeiboView.reWeiboText.text = model.retWeibo.text;
+//
+        if (model.retWeibo.pic_urls.count > 0) {
+            
+            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
+            
+        }else {
+            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+        }
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.bounds.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
+//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 190.0f;
+        
+    }else{
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+    }
+
 
     
 

@@ -11,7 +11,7 @@
 #import "UIView+Extra.h"
 #import "UIImageView+WebCache.h"
 
-
+#define BarColor  [UIColor colorWithRed:249/255.0 green:56/255.0 blue:54/255.0 alpha:1]
 @implementation KYCell{
     UIView *postView;
     UIView *comView;
@@ -104,10 +104,7 @@
 
 - (void) createLine {
     self.verticalLine = [CAShapeLayer layer];
-    self.verticalLine.strokeColor = [[UIColor whiteColor] CGColor];
-    self.verticalLine.lineWidth = 1.0;
-    self.verticalLine.fillColor = [[UIColor whiteColor] CGColor];
-    
+    self.verticalLine.fillColor = BarColor.CGColor;
     [self.layer addSublayer:self.verticalLine];
 }
 
@@ -119,7 +116,7 @@
     CGPoint topPoint = CGPointMake(0, 0);
     CGPoint midControlPoint = CGPointMake(amount, self.bounds.size.height/2);
     CGPoint bottomPoint = CGPointMake(0, self.bounds.size.height);
-    
+
     [verticalLine moveToPoint:topPoint];
     [verticalLine addQuadCurveToPoint:bottomPoint controlPoint:midControlPoint];
     [verticalLine closePath];
@@ -133,6 +130,7 @@
     CGPoint topPoint = CGPointMake(self.bounds.size.width , 0);
     CGPoint midControlPoint = CGPointMake(self.bounds.size.width - amount, self.bounds.size.height/2);
     CGPoint bottomPoint = CGPointMake(self.bounds.size.width , self.bounds.size.height);
+
     
     [verticalLine moveToPoint:topPoint];
     [verticalLine addQuadCurveToPoint:bottomPoint controlPoint:midControlPoint];
@@ -175,7 +173,6 @@
         UITableView *tableView = (UITableView *)view;
         tableView.scrollEnabled = NO;
 
-        
     }
     
     if (gr.state == UIGestureRecognizerStateChanged){
@@ -184,7 +181,7 @@
                 postView = [[UIView alloc]init];
                 postView.center = CGPointMake(-100, self.bounds.size.height / 2);
                 postView.bounds = CGRectMake(0, 0, 100, 100);
-                postView.backgroundColor = [UIColor redColor];
+                postView.backgroundColor = BarColor;
                 postView.layer.cornerRadius = 50;
                 [self addSubview:postView];
 
@@ -193,6 +190,7 @@
             //向右滑 ———— 转发
             [self cancelComment];
             self.verticalLine.path = [self getLeftLinePathWithAmount:amountX];
+            
             postView.frame = CGRectMake(-100 + amountX*0.4, postView.frame.origin.y, 100, 100);
             if (amountX > self.bounds.size.width / 2) {
                 
@@ -221,7 +219,7 @@
                 comView = [[UIView alloc]init];
                 comView.center = CGPointMake(self.bounds.size.width + 100, self.bounds.size.height / 2);
                 comView.bounds = CGRectMake(0, 0, 100, 100);
-                comView.backgroundColor = [UIColor blueColor];
+                comView.backgroundColor = BarColor;
                 comView.layer.cornerRadius = 50;
                 [self addSubview:comView];
             }
@@ -230,6 +228,7 @@
             //向左滑 ———— 评论
             [self cancelPost];
             self.verticalLine.path = [self getRightLinePathWithAmount:abs(amountX)];
+            
             comView.frame = CGRectMake(self.bounds.size.width  + amountX*0.4, comView.frame.origin.y, 100, 100);
             if (abs(amountX) > self.bounds.size.width / 2) {
                 
@@ -242,7 +241,6 @@
                 UITableView *tableView = (UITableView *)view;
                 tableView.scrollEnabled = YES;
 
-                
                 [UIView animateWithDuration:0.5f delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                     comView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
                 } completion:^(BOOL finished) {
@@ -335,6 +333,7 @@
 
 #pragma mark  - CAAnimationDelegate
 - (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    
     if (anim == [self.verticalLine animationForKey:@"bounce_left"] ) {
         self.verticalLine.path = [self getLeftLinePathWithAmount:0.0];
         [self.verticalLine removeAllAnimations];
