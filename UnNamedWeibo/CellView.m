@@ -53,25 +53,24 @@
 
     self.weiboView.weiboModel = self.weiboModel;
     //----------微博来源--------------
-    NSString *ret = [Utils parseSource: self.weiboModel.source];
-    if (ret != nil) {
-        
-        self.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
-        
-    }else{
-        self.sourceLabel.hidden = YES;
-    }
+//    NSString *ret = [Utils parseSource: self.weiboModel.source];
+//    if (ret != nil) {
+//        
+//        self.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
+//        
+//    }else{
+//        self.sourceLabel.hidden = YES;
+//    }
     
     
     //----------发布时间--------------
-    NSString *createDate =  self.weiboModel.createDate;
-    NSString *dateString = [Utils fomateString:createDate];
-    if (createDate != nil ) {
-        self.createDateLabel.text = dateString;
-    }else{
-        self.createDateLabel.hidden = YES;
-    }
-
+//    NSString *createDate =  self.weiboModel.createDate;
+//    NSString *dateString = [Utils fomateString:createDate];
+//    if (createDate != nil ) {
+//        self.createDateLabel.text = dateString;
+//    }else{
+//        self.createDateLabel.hidden = YES;
+//    }
     
 }
 @end

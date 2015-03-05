@@ -14,10 +14,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *weiboText;
 @property (strong, nonatomic) IBOutlet UICollectionView *weiboImageCollectionView;
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageYES;
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *text_between_imageNO;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
+
 
 //weiboModel
 @property (strong,nonatomic)WeiboModel *weiboModel;

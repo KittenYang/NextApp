@@ -21,7 +21,6 @@
 
 - (void)awakeFromNib {
 
-    self.readedTag = NO;
     [self createLine];
     [self addPanGesture];
     
@@ -43,6 +42,7 @@
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.cellView.weiboModel = self.weiboModel;
+//    [self.cellView layoutIfNeeded];
     
     //-----头像------
 
@@ -85,6 +85,10 @@
 //区分两个手势敏感度关键
 - (BOOL)gestureRecognizerShouldBegin:(UIScreenEdgePanGestureRecognizer *)gestureRecognizer
 {
+    if (! [gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        return YES;
+    }
+    
     UIView *gestureView = [gestureRecognizer view];
     CGPoint translation = [gestureRecognizer translationInView:[gestureView superview]];
     

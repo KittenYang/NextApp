@@ -62,6 +62,8 @@
         range.location = 1;
         range.length = ret.length - 2;
         NSString *resultString = [ret substringWithRange:range];
+        NSLog(@"%@",source);
+        NSLog(@"%@",resultString);
         return resultString;
     }
     return nil;

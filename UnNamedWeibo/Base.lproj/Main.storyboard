@@ -97,33 +97,31 @@
                                                     <rect key="frame" x="0.0" y="25" width="590" height="389"/>
                                                     <subviews>
                                                         <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-jI-Rqb" userLabel="weibo_text">
-                                                            <rect key="frame" x="10" y="5" width="575" height="196"/>
+                                                            <rect key="frame" x="10" y="5" width="575" height="371"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
-                                                            <rect key="frame" x="0.0" y="209" width="590" height="175"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
+                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="175" id="ShI-DX-5rh"/>
+                                                                <constraint firstAttribute="height" id="ShI-DX-5rh"/>
                                                             </constraints>
                                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Nm-AE-4lj">
-                                                                <size key="itemSize" width="179" height="174"/>
+                                                                <size key="itemSize" width="150" height="150"/>
                                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weibo_image_cell" id="3gY-DX-EKX">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="weibo_image_cell" id="3gY-DX-EKX">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="179" height="174"/>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -159,9 +157,7 @@
                                                         </mask>
                                                     </variation>
                                                     <connections>
-                                                        <outlet property="collectionViewHeight" destination="ShI-DX-5rh" id="9W8-ju-cUa"/>
-                                                        <outlet property="text_between_imageNO" destination="t7j-Zp-UMs" id="mHq-aE-Mfa"/>
-                                                        <outlet property="text_between_imageYES" destination="Iw3-eL-2zT" id="OOb-Gu-QZL"/>
+                                                        <outlet property="collectionViewHeight" destination="ShI-DX-5rh" id="TmY-7G-RT6"/>
                                                         <outlet property="weiboImageCollectionView" destination="yIf-4U-N4w" id="RQA-LY-s2p"/>
                                                         <outlet property="weiboText" destination="o4i-jI-Rqb" id="Dut-GV-vC5"/>
                                                     </connections>
@@ -232,7 +228,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i36-Ue-dle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2164" y="1569"/>
+            <point key="canvasLocation" x="-2164" y="1557"/>
         </scene>
         <!--2 Navigation Controller-->
         <scene sceneID="YCg-hb-TwY">

@@ -23,10 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *avator;
 
 
-
-//是否阅读的标记
-@property (assign ,nonatomic)BOOL readedTag;
-
 //weiboModel
 @property (strong,nonatomic)WeiboModel *weiboModel;
 
