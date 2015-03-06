@@ -203,6 +203,13 @@
         
         cell.cellView.weiboView.reWeiboView.reWeiboModel = model.retWeibo;
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = model.retWeibo.text;
+        CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
+
+        cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
+        CGSize size = [cell.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake(cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.width, MAXFLOAT)];
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
+        
 //
         if (model.retWeibo.pic_urls.count > 0) {
             
@@ -217,6 +224,8 @@
         
     }else{
         
+        cell.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
+        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
         cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
     }
 

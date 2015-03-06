@@ -115,6 +115,7 @@
     KYCell *kycell_ = (KYCell *)cell;
     [kycell_.cellView.weiboView.weiboImageCollectionView reloadData];
     [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
+//    [kycell_.cellView.weiboView.reWeiboView layoutIfNeeded];
 
     
     NSNumber *row = [NSNumber numberWithInteger:indexPath.row];

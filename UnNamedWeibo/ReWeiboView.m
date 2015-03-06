@@ -33,6 +33,32 @@ typedef enum ScrollDirection {
 
 }
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+}
+
+
+//-(void)setReWeiboModel:(WeiboModel *)reWeiboModel{
+//    self.reWeiboText.text = reWeiboModel.text;
+//    
+//    if (reWeiboModel.retWeibo.pic_urls.count > 0) {
+//        
+//        self.reCollectionViewHeight.constant = 130.0f;
+//        
+//    }else {
+//        self.reCollectionViewHeight.constant = 0.0f;
+//    }
+//    
+////    cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.bounds.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
+//    //        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 190.0f;
+//    
+//}else{
+//    
+//    cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+//}
+//
+//}
 
 
 #pragma mark - UICollectionViewDataSource
@@ -59,10 +85,12 @@ typedef enum ScrollDirection {
     
     ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
 
+    if (indexPath.item < self.reWeiboModel.pic_urls.count) {
     
-    NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
-    NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-    [cell.reWeiboImage sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+        NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
+        NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+        [cell.reWeiboImage sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+    }
     
     return cell;
     
