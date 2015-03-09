@@ -68,8 +68,16 @@ typedef enum ScrollDirection {
     NSLog(@"cell.frame:%@",NSStringFromCGRect(cell.frame));
 
     NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
-    NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-    [cell.weiboImage sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+        NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+        if (photoUrl != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.weiboImage sd_setImageWithURL:photoUrl];
+            });
+        }
+    });
     
     
     return cell;

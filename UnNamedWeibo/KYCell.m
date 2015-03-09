@@ -51,7 +51,16 @@
     self.avator.layer.borderWidth = 1.0f;
     self.avator.layer.borderColor = [UIColor whiteColor].CGColor;
     NSString *imgURL = self.weiboModel.user.avatar_large;
-    [self.avator sd_setImageWithURL:[NSURL URLWithString:imgURL]];
+    //多线程实现头像的加载
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+        if (avatorUrl != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.avator sd_setImageWithURL:avatorUrl];
+            });
+        }
+    });
+    
 
 
     CALayer* avatorShadowLayer = [CALayer layer];
