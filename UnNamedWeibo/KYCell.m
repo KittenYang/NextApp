@@ -10,6 +10,7 @@
 #import "HomeTableViewController.h"
 #import "UIView+Extra.h"
 #import "UIImageView+WebCache.h"
+#import "Utils.h"
 
 #define BarColor  [UIColor colorWithRed:249/255.0 green:56/255.0 blue:54/255.0 alpha:1]
 @implementation KYCell{
@@ -38,6 +39,79 @@
 //    [self addMotionEffect:shadowEffect];
 
 }
+
+//-(void)drawRect:(CGRect)rect{
+//
+//        
+//        //----------微博内容--------------
+//        self.cellView.weiboView.weiboText.text = self.weiboModel.text;
+//        //    [cell.cellView.weiboView updateView];
+//        
+//        
+//        //-----------创建日期---------------
+//        NSString *createDate =  self.weiboModel.createDate;
+//        NSString *dateString = [Utils fomateString:createDate];
+//        if (createDate != nil ) {
+//            self.cellView.createDateLabel.text = dateString;
+//        }else{
+//            self.cellView.createDateLabel.hidden = YES;
+//        }
+//        
+//        //----------微博来源---------------
+//        NSString *ret = [Utils parseSource: self.weiboModel.source];
+//        if (ret != nil) {
+//            
+//            self.cellView.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
+//            
+//        }else{
+//            self.cellView.sourceLabel.hidden = YES;
+//        }
+//        
+//        
+//        //---图片视图----
+//        if (self.weiboModel.pic_urls.count > 0) {
+//            
+//            self.cellView.weiboView.collectionViewHeight.constant = 130.0f;
+//            
+//        }else {
+//            self.cellView.weiboView.collectionViewHeight.constant = 0.0f;
+//        }
+//    
+//        //------转发视图-------
+//        if (self.weiboModel.retWeibo) {
+//            
+//            self.cellView.weiboView.reWeiboView.reWeiboModel = self.weiboModel.retWeibo;
+//            self.cellView.weiboView.reWeiboView.reWeiboText.text = self.weiboModel.retWeibo.text;
+//            CGRect oldFrame = self.cellView.weiboView.reWeiboView.reWeiboText.frame;
+//            
+//            self.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
+//            CGSize size = [self.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake(self.cellView.weiboView.reWeiboView.reWeiboText.frame.size.width, MAXFLOAT)];
+//            
+//            self.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
+//            
+//            //
+//            if (self.weiboModel.retWeibo.pic_urls.count > 0) {
+//                
+//                self.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
+//                
+//            }else {
+//                self.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//            }
+//            
+//            self.cellView.weiboView.reWeiboView.reWeiboHeight.constant = self.cellView.weiboView.reWeiboView.reWeiboText.bounds.size.height + self.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
+//            //        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 190.0f;
+//            
+//        }else{
+//            
+//            self.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
+//            self.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//            self.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+//        }
+//        
+//        
+//
+//
+//}
 
 -(void)layoutSubviews{
     [super layoutSubviews];

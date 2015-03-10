@@ -67,16 +67,14 @@ typedef enum ScrollDirection {
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
     NSLog(@"cell.frame:%@",NSStringFromCGRect(cell.frame));
 
-    NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
+        NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
         NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
         NSURL *photoUrl = [NSURL URLWithString:imgUrl];
-        if (photoUrl != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [cell.weiboImage sd_setImageWithURL:photoUrl];
-            });
-        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [cell.weiboImage sd_setImageWithURL:photoUrl];
+        });
     });
     
     

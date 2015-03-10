@@ -10,6 +10,15 @@
 		5F2889591AA868F200E64BAD /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889581AA868F200E64BAD /* CollectionViewCell.m */; };
 		5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */; };
 		5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */; };
+		5F2889681AAF26B500E64BAD /* WeiboTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889661AAF26B500E64BAD /* WeiboTextCell.m */; };
+		5F2889691AAF26B500E64BAD /* WeiboTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2889671AAF26B500E64BAD /* WeiboTextCell.xib */; };
+		5F28896D1AAF2C9A00E64BAD /* WeiboTextAndImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28896B1AAF2C9A00E64BAD /* WeiboTextAndImgCell.m */; };
+		5F28896E1AAF2C9A00E64BAD /* WeiboTextAndImgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F28896C1AAF2C9A00E64BAD /* WeiboTextAndImgCell.xib */; };
+		5F2889721AAF2D3700E64BAD /* ReWeiboTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889701AAF2D3700E64BAD /* ReWeiboTextCell.m */; };
+		5F2889731AAF2D3700E64BAD /* ReWeiboTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F2889711AAF2D3700E64BAD /* ReWeiboTextCell.xib */; };
+		5F2889801AAF4F0800E64BAD /* HtmlString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28897B1AAF4F0800E64BAD /* HtmlString.m */; };
+		5F2889811AAF4F0800E64BAD /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28897D1AAF4F0800E64BAD /* NSString+URLEncoding.m */; };
+		5F2889821AAF4F0800E64BAD /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28897F1AAF4F0800E64BAD /* RTLabel.m */; };
 		5F7FAD6C1A904CF500CEF622 /* KYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6B1A904CF500CEF622 /* KYCell.m */; };
 		5F7FAD6F1A90DEB600CEF622 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6E1A90DEB600CEF622 /* MainTabViewController.m */; };
 		5F7FAD8B1A923B5900CEF622 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FAD801A923B5900CEF622 /* libWeiboSDK.a */; };
@@ -94,6 +103,21 @@
 		5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboView.m; sourceTree = "<group>"; };
 		5F28895D1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReWeiboImgCollectionViewCell.h; sourceTree = "<group>"; };
 		5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboImgCollectionViewCell.m; sourceTree = "<group>"; };
+		5F2889651AAF26B500E64BAD /* WeiboTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboTextCell.h; sourceTree = "<group>"; };
+		5F2889661AAF26B500E64BAD /* WeiboTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboTextCell.m; sourceTree = "<group>"; };
+		5F2889671AAF26B500E64BAD /* WeiboTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiboTextCell.xib; sourceTree = "<group>"; };
+		5F28896A1AAF2C9A00E64BAD /* WeiboTextAndImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboTextAndImgCell.h; sourceTree = "<group>"; };
+		5F28896B1AAF2C9A00E64BAD /* WeiboTextAndImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiboTextAndImgCell.m; sourceTree = "<group>"; };
+		5F28896C1AAF2C9A00E64BAD /* WeiboTextAndImgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeiboTextAndImgCell.xib; sourceTree = "<group>"; };
+		5F28896F1AAF2D3700E64BAD /* ReWeiboTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReWeiboTextCell.h; sourceTree = "<group>"; };
+		5F2889701AAF2D3700E64BAD /* ReWeiboTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboTextCell.m; sourceTree = "<group>"; };
+		5F2889711AAF2D3700E64BAD /* ReWeiboTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReWeiboTextCell.xib; sourceTree = "<group>"; };
+		5F28897A1AAF4F0800E64BAD /* HtmlString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HtmlString.h; sourceTree = "<group>"; };
+		5F28897B1AAF4F0800E64BAD /* HtmlString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HtmlString.m; sourceTree = "<group>"; };
+		5F28897C1AAF4F0800E64BAD /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
+		5F28897D1AAF4F0800E64BAD /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		5F28897E1AAF4F0800E64BAD /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		5F28897F1AAF4F0800E64BAD /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
 		5F7FAD6A1A904CF500CEF622 /* KYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCell.h; sourceTree = "<group>"; };
 		5F7FAD6B1A904CF500CEF622 /* KYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCell.m; sourceTree = "<group>"; };
 		5F7FAD6D1A90DEB600CEF622 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
@@ -243,6 +267,19 @@
 				253EB284DB3AB18D1FB274CB /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		5F2889791AAF4F0800E64BAD /* FontLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5F28897A1AAF4F0800E64BAD /* HtmlString.h */,
+				5F28897B1AAF4F0800E64BAD /* HtmlString.m */,
+				5F28897C1AAF4F0800E64BAD /* NSString+URLEncoding.h */,
+				5F28897D1AAF4F0800E64BAD /* NSString+URLEncoding.m */,
+				5F28897E1AAF4F0800E64BAD /* RTLabel.h */,
+				5F28897F1AAF4F0800E64BAD /* RTLabel.m */,
+			);
+			path = FontLabel;
 			sourceTree = "<group>";
 		};
 		5F7FAD7F1A923B5900CEF622 /* libWeiboSDK */ = {
@@ -407,6 +444,7 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F2889791AAF4F0800E64BAD /* FontLabel */,
 				5FDF30DC1AA0AAD0007E6ECA /* VBFJellyView */,
 				5F7FAE9F1A9C40A500CEF622 /* KYJellyView */,
 				5F8DB56C1AA56A4D00727719 /* KYCuteView */,
@@ -591,6 +629,15 @@
 				5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */,
 				5F28895D1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.h */,
 				5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */,
+				5F2889651AAF26B500E64BAD /* WeiboTextCell.h */,
+				5F2889661AAF26B500E64BAD /* WeiboTextCell.m */,
+				5F2889671AAF26B500E64BAD /* WeiboTextCell.xib */,
+				5F28896A1AAF2C9A00E64BAD /* WeiboTextAndImgCell.h */,
+				5F28896B1AAF2C9A00E64BAD /* WeiboTextAndImgCell.m */,
+				5F28896C1AAF2C9A00E64BAD /* WeiboTextAndImgCell.xib */,
+				5F28896F1AAF2D3700E64BAD /* ReWeiboTextCell.h */,
+				5F2889701AAF2D3700E64BAD /* ReWeiboTextCell.m */,
+				5F2889711AAF2D3700E64BAD /* ReWeiboTextCell.xib */,
 			);
 			name = BaseTableViewController;
 			sourceTree = "<group>";
@@ -708,6 +755,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7FAE501A9797FB00CEF622 /* timescroll_hourhand.png in Resources */,
+				5F2889731AAF2D3700E64BAD /* ReWeiboTextCell.xib in Resources */,
 				5F7FAE021A94C69300CEF622 /* RegexKitLite.html in Resources */,
 				5F87364B1A8C4EF7000CADF4 /* Main.storyboard in Resources */,
 				5F8736501A8C4EF8000CADF4 /* LaunchScreen.xib in Resources */,
@@ -716,8 +764,10 @@
 				5F87364D1A8C4EF7000CADF4 /* Images.xcassets in Resources */,
 				5F7FAE521A9797FB00CEF622 /* timescroll_minutehand.png in Resources */,
 				5F7FAD8C1A923B5900CEF622 /* WeiboSDK.bundle in Resources */,
+				5F2889691AAF26B500E64BAD /* WeiboTextCell.xib in Resources */,
 				5F7FAE531A9797FB00CEF622 /* timescroll_minutehand@2x.png in Resources */,
 				5F7FAE541A9797FB00CEF622 /* timescroll_pointer.png in Resources */,
+				5F28896E1AAF2C9A00E64BAD /* WeiboTextAndImgCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F2889811AAF4F0800E64BAD /* NSString+URLEncoding.m in Sources */,
 				5F7FAE351A9517D400CEF622 /* SDWebImageDownloaderOperation.m in Sources */,
 				5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */,
 				5F7FAE3B1A9517D400CEF622 /* UIImage+WebP.m in Sources */,
@@ -797,25 +848,30 @@
 				5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */,
 				5F7FAE471A9794AE00CEF622 /* ACTimeScroller.m in Sources */,
 				5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */,
+				5F2889721AAF2D3700E64BAD /* ReWeiboTextCell.m in Sources */,
 				5F7FAE3A1A9517D400CEF622 /* UIImage+MultiFormat.m in Sources */,
 				5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */,
 				5F8736771A8C55EC000CADF4 /* RAMTransitionItemAnimation.swift in Sources */,
 				5F7FAE901A9B42B800CEF622 /* KYLoadingHUD.m in Sources */,
+				5F28896D1AAF2C9A00E64BAD /* WeiboTextAndImgCell.m in Sources */,
 				5F8736791A8C55EC000CADF4 /* RAMItemAnimationProtocol.swift in Sources */,
 				5F7FAE381A9517D400CEF622 /* UIButton+WebCache.m in Sources */,
 				5F7FAE3D1A9517D400CEF622 /* UIImageView+WebCache.m in Sources */,
 				5F7FAD6C1A904CF500CEF622 /* KYCell.m in Sources */,
 				5F7FAE9E1A9C409F00CEF622 /* JellyView.m in Sources */,
 				5F8736421A8C4EF7000CADF4 /* main.m in Sources */,
+				5F2889821AAF4F0800E64BAD /* RTLabel.m in Sources */,
 				5F7FAE391A9517D400CEF622 /* UIImage+GIF.m in Sources */,
 				5F7FAE341A9517D400CEF622 /* SDWebImageDownloader.m in Sources */,
 				5F8736761A8C55EC000CADF4 /* RAMRotationAnimation.swift in Sources */,
+				5F2889681AAF26B500E64BAD /* WeiboTextCell.m in Sources */,
 				5F8736741A8C55EC000CADF4 /* RAMFrameItemAnimation.swift in Sources */,
 				5F8736751A8C55EC000CADF4 /* RAMFumeAnimation.swift in Sources */,
 				5F8736881A8CC55A000CADF4 /* SquareViewController.m in Sources */,
 				5F7FAE2D1A9517D400CEF622 /* MKAnnotationView+WebCache.m in Sources */,
 				5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */,
 				5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */,
+				5F2889801AAF4F0800E64BAD /* HtmlString.m in Sources */,
 				5F7FADDB1A9385B900CEF622 /* CellView.m in Sources */,
 				5F8736731A8C55EC000CADF4 /* RAMBounceAnimation.swift in Sources */,
 			);

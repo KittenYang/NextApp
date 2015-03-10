@@ -143,7 +143,7 @@
                                                             <subviews>
                                                                 <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0P-cf-XCP" userLabel="reWeibo_text">
                                                                     <rect key="frame" x="10" y="5" width="575" height="45"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -271,7 +271,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.97254901960784312" green="0.95294117647058818" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.97254901960784312" green="0.95294117647058818" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="ahg-PD-yVw" firstAttribute="top" secondItem="22v-tu-i6u" secondAttribute="top" constant="35" id="6Eg-Pu-qoY"/>
                                         <constraint firstItem="QQK-qW-FwU" firstAttribute="leading" secondItem="vsj-oN-jyf" secondAttribute="trailing" constant="2" id="IT7-RS-t3Q"/>

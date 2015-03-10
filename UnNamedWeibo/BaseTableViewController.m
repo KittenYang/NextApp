@@ -113,8 +113,10 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
     KYCell *kycell_ = (KYCell *)cell;
+    
     [kycell_.cellView.weiboView.weiboImageCollectionView reloadData];
     [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
+    
 //    [kycell_.cellView.weiboView.reWeiboView layoutIfNeeded];
 
     

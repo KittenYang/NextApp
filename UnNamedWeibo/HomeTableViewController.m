@@ -152,11 +152,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
+
     
     WeiboModel *model = [self.data objectAtIndex:indexPath.row];
     cell.weiboModel = model;
-    [self updateCellContentView:cell withWeiboModel:model];
     
+    [self updateCellContentView:cell withWeiboModel:model];
+
     return cell;
 }
 
@@ -202,7 +204,17 @@
     if (model.retWeibo) {
         
         cell.cellView.weiboView.reWeiboView.reWeiboModel = model.retWeibo;
-        cell.cellView.weiboView.reWeiboView.reWeiboText.text = model.retWeibo.text;
+        NSString *nickName = model.user.screen_name;
+        
+        NSString *encodeName = [nickName URLEncodedString];
+        [_parseText appendFormat:@"<a href='user://%@'>@%@</a>:",encodeName,nickName];
+
+        
+        
+        
+        
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboText.text = [NSString stringWithFormat:@"@%@:%@",nickName,model.retWeibo.text];
         CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
 
         cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
@@ -210,7 +222,6 @@
         
         cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
         
-//
         if (model.retWeibo.pic_urls.count > 0) {
             
             cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
@@ -220,7 +231,6 @@
         }
         
         cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.bounds.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
-//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 190.0f;
         
     }else{
         

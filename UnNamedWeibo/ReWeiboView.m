@@ -87,9 +87,13 @@ typedef enum ScrollDirection {
 
     if (indexPath.item < self.reWeiboModel.pic_urls.count) {
     
-        NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
-        NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-        [cell.reWeiboImage sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
+            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.reWeiboImage sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
+            });
+        });
     }
     
     return cell;
