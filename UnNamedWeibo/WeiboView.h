@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "WeiboModel.h"
 #import "ReWeiboView.h"
+#import "MLEmojiLabel.h"
 
-@interface WeiboView : UIView<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface WeiboView : UIView<UICollectionViewDataSource,UICollectionViewDelegate,MLEmojiLabelDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *weiboText;
+@property (strong, nonatomic) IBOutlet MLEmojiLabel *weiboText;
 @property (strong, nonatomic) IBOutlet UICollectionView *weiboImageCollectionView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *collectionViewHeight;
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RegexKitLite.h"
-#import "NSString+URLEncoding.h"
+
 
 @interface Utils : NSObject
 

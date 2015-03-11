@@ -79,7 +79,7 @@
     x1 = backView.center.x;
     y1 = backView.center.y;
     x2 = self.frontView.center.x;
-    y2 = self.frontView.center.y;
+    y2 = self.frontView.center.y;  
     
     centerDistance = sqrtf((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
     if (centerDistance == 0) {

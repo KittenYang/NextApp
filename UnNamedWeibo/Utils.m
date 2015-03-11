@@ -70,25 +70,25 @@
 }
 
 //正则表达式解析高亮字符
-+ (NSString *)parseLink:(NSString *)text{
-    NSString *regex = @"(@[\\u4e00-\\u9fa5\\w\\-]+)|(http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?)|(#([^\\#|.]+)#)|(\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\])";
-    NSArray *matchArray = [text componentsMatchedByRegex:regex];
-    for (NSString *linkString in matchArray) {
-        
-        NSString *replacing = nil;
-        if ([linkString hasPrefix:@"@"]) {   //hasPrefix 方法作用：判断以哪个字符串开头
-            replacing = [NSString stringWithFormat:@"<a href='user://%@'>%@</a>",[linkString URLEncodedString],linkString];
-        }else if([linkString hasPrefix:@"http"]){
-            replacing = [NSString stringWithFormat:@"<a href='%@'>%@</a>",linkString,linkString];
-        }else if([linkString hasPrefix:@"#"]){
-            replacing = [NSString stringWithFormat:@"<a href='topic://%@'>%@</a>",[linkString URLEncodedString],linkString];
-        }
-        if (replacing != nil) {
-            text = [text stringByReplacingOccurrencesOfString:linkString withString:replacing];
-        }
-    }
-    return text;
-}
+//+ (NSString *)parseLink:(NSString *)text{
+//    NSString *regex = @"(@[\\u4e00-\\u9fa5\\w\\-]+)|(http(s)?://([a-zA-Z|\\d]+\\.)+[a-zA-Z|\\d]+(/[a-zA-Z|\\d|\\-|\\+|_./?%&=]*)?)|(#([^\\#|.]+)#)|(\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\])";
+//    NSArray *matchArray = [text componentsMatchedByRegex:regex];
+//    for (NSString *linkString in matchArray) {
+//        
+//        NSString *replacing = nil;
+//        if ([linkString hasPrefix:@"@"]) {   //hasPrefix 方法作用：判断以哪个字符串开头
+//            replacing = [NSString stringWithFormat:@"<a href='user://%@'>%@</a>",[linkString URLEncodedString],linkString];
+//        }else if([linkString hasPrefix:@"http"]){
+//            replacing = [NSString stringWithFormat:@"<a href='%@'>%@</a>",linkString,linkString];
+//        }else if([linkString hasPrefix:@"#"]){
+//            replacing = [NSString stringWithFormat:@"<a href='topic://%@'>%@</a>",[linkString URLEncodedString],linkString];
+//        }
+//        if (replacing != nil) {
+//            text = [text stringByReplacingOccurrencesOfString:linkString withString:replacing];
+//        }
+//    }
+//    return text;
+//}
 
 
 @end

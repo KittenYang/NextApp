@@ -29,9 +29,14 @@ typedef enum ScrollDirection {
 
 
 -(void)awakeFromNib{
+
     self.weiboImageCollectionView.dataSource  = self;
     self.weiboImageCollectionView.delegate    = self;
-
+    self.weiboText.isNeedAtAndPoundSign = YES;
+    self.weiboText.disableEmoji = NO;
+    self.weiboText.delegate = self;
+    self.weiboText.customEmojiPlistName = @"emotions.plist";
+    self.weiboText.customEmojiRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
 }
 
 
@@ -40,6 +45,30 @@ typedef enum ScrollDirection {
 
 }
 
+#pragma  mark  - MLEmojiLabelDelegate
+- (void)mlEmojiLabel:(MLEmojiLabel*)emojiLabel didSelectLink:(NSString*)link withType:(MLEmojiLabelLinkType)type{
+    
+    switch(type){
+        case MLEmojiLabelLinkTypeURL:
+            NSLog(@"点击了链接%@",link);
+            break;
+        case MLEmojiLabelLinkTypePhoneNumber:
+            NSLog(@"点击了电话%@",link);
+            break;
+        case MLEmojiLabelLinkTypeEmail:
+            NSLog(@"点击了邮箱%@",link);
+            break;
+        case MLEmojiLabelLinkTypeAt:
+            NSLog(@"点击了用户%@",link);
+            break;
+        case MLEmojiLabelLinkTypePoundSign:
+            NSLog(@"点击了话题%@",link);
+            break;
+        default:
+            NSLog(@"点击了不知道啥%@",link);
+            break;
+    }
+}
 
 
 #pragma mark - UICollectionViewDataSource

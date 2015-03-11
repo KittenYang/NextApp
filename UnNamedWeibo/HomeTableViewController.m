@@ -150,15 +150,18 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
-
-    
     WeiboModel *model = [self.data objectAtIndex:indexPath.row];
+    
+    
+    KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
+   
     cell.weiboModel = model;
     
     [self updateCellContentView:cell withWeiboModel:model];
 
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    
     return cell;
 }
 
@@ -168,7 +171,6 @@
 
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
-//    [cell.cellView.weiboView updateView];
     
     
     //-----------创建日期---------------
@@ -204,16 +206,8 @@
     if (model.retWeibo) {
         
         cell.cellView.weiboView.reWeiboView.reWeiboModel = model.retWeibo;
-        NSString *nickName = model.user.screen_name;
-        
-        NSString *encodeName = [nickName URLEncodedString];
-        [_parseText appendFormat:@"<a href='user://%@'>@%@</a>:",encodeName,nickName];
+        NSString *nickName = model.retWeibo.user.screen_name;
 
-        
-        
-        
-        
-        
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = [NSString stringWithFormat:@"@%@:%@",nickName,model.retWeibo.text];
         CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
 
