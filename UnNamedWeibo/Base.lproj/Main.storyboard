@@ -300,7 +300,9 @@
                             <outlet property="delegate" destination="xCt-L4-EeA" id="fX1-cC-aut"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="B1h-32-Xab"/>
+                    <navigationItem key="navigationItem" id="B1h-32-Xab">
+                        <nil key="title"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i36-Ue-dle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

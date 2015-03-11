@@ -500,6 +500,7 @@
 		5FE0CA421AB0368B00D4D0F7 /* 104.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C90C1AB0368B00D4D0F7 /* 104.gif */; };
 		5FE0CA431AB0368B00D4D0F7 /* 104.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C90D1AB0368B00D4D0F7 /* 104.png */; };
 		5FE0CA441AB0368B00D4D0F7 /* 104@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C90E1AB0368B00D4D0F7 /* 104@2x.png */; };
+		5FE172E91AB0A91B004E7A33 /* EMOTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE172E81AB0A91B004E7A33 /* EMOTION.plist */; };
 		81A5B1D193E58D1DF7894F4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296A6E4ABE0FB16D9F90BF72 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1072,6 +1073,7 @@
 		5FE0C90C1AB0368B00D4D0F7 /* 104.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 104.gif; sourceTree = "<group>"; };
 		5FE0C90D1AB0368B00D4D0F7 /* 104.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 104.png; sourceTree = "<group>"; };
 		5FE0C90E1AB0368B00D4D0F7 /* 104@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "104@2x.png"; sourceTree = "<group>"; };
+		5FE172E81AB0A91B004E7A33 /* EMOTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EMOTION.plist; sourceTree = "<group>"; };
 		8939DF6D9A5DEBB90443B603 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1385,6 +1387,7 @@
 			children = (
 				5F8736C01A8D1B3F000CADF4 /* HomeTableViewController.h */,
 				5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */,
+				5FE172E81AB0A91B004E7A33 /* EMOTION.plist */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -2271,6 +2274,7 @@
 				5FE0C97F1AB0368B00D4D0F7 /* 039.gif in Resources */,
 				5FE0C9281AB0368B00D4D0F7 /* 009.png in Resources */,
 				5FE0C9C51AB0368B00D4D0F7 /* 062.png in Resources */,
+				5FE172E91AB0A91B004E7A33 /* EMOTION.plist in Resources */,
 				5FE0C9901AB0368B00D4D0F7 /* 044@2x.png in Resources */,
 				5FE0C9621AB0368B00D4D0F7 /* 029.png in Resources */,
 				5FE0C9241AB0368B00D4D0F7 /* 008.gif in Resources */,

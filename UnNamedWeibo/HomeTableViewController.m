@@ -79,8 +79,19 @@
     [authBtn addTarget:self action:@selector(authWeibo) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *authItem =[[UIBarButtonItem alloc]initWithCustomView:authBtn];
-    self.navigationItem.rightBarButtonItem=authItem;
+//    self.navigationItem.rightBarButtonItem=authItem;
 
+    
+    //获取表情
+    UIButton *emotionsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    emotionsButton.frame = CGRectMake(0, 0, 50, 30);
+    [emotionsButton setTitle:@"表情" forState:UIControlStateNormal];
+    [emotionsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [emotionsButton addTarget:self action:@selector(getEmotions) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *emotionsItem = [[UIBarButtonItem alloc]initWithCustomView:emotionsButton];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:authItem,emotionsItem ,nil];
+    
+    
     
     //下拉加载更多
     super.loademoredelegate = self;
@@ -250,6 +261,11 @@
                          @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
     [WeiboSDK sendRequest:authrequest];
 
+}
+
+#pragma mark - 获取表情
+-(void)getEmotions{
+    [WBHttpRequest requestWithAccessToken:[Utils WEIBOTOKEN] url:WB_emotions httpMethod:@"GET" params:nil delegate:self withTag:@"emotions"];
 }
 
 
@@ -437,6 +453,50 @@
         }
     
     }
+    
+    if ([request.tag isEqual:@"emotions"]) {
+        NSError *error;
+        NSArray *EMOTIONSJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+//        NSString *documentsDirectory = [paths objectAtIndex:0];
+//        NSString *filePath = [documentsDirectory stringByAppendingString:@"/EMOTION.plist"];
+        
+        NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        destPath = [destPath stringByAppendingPathComponent:@"EMOTIONTEST.plist"];
+        
+        // If the file doesn't exist in the Documents Folder, copy it.
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
+        if (![fileManager fileExistsAtPath:destPath]) {
+            NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"EMOTION" ofType:@"plist"];
+            [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+        }
+        
+        NSLog(@"%@",destPath);
+        [EMOTIONSJSON writeToFile:destPath atomically:YES];
+        
+
+        
+//        for (NSDictionary *dic in EMOTIONSJSON) {
+//            NSString *category = [self replaceUnicode:[dic objectForKey:@"category"]];
+//            NSString *phrase = [self replaceUnicode:[dic objectForKey:@"phrase"]];
+//            NSString *value = [self replaceUnicode:[dic objectForKey:@"value"]];
+//            
+//            NSLog(@"%@",[NSString stringWithFormat:@"%@,%@,%@",category,phrase,value]);
+//            NSDictionary *emotionText = [NSDictionary dictionaryWithObject:phrase forKey:@"chs"];
+//            NSDictionary *emotionPNG = [NSDictionary dictionaryWithObject:<#(id)#> forKey:@"png"];
+//            
+//        }
+    }
+}
+
+//Unicode编码转换
+- (NSString *)replaceUnicode:(NSString *)unicodeStr
+{
+     NSString* strAfterDecodeByUTF8AndURI = [unicodeStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    return strAfterDecodeByUTF8AndURI;
 }
 
 #pragma mark - banner上刷新之后提示刷新几条
@@ -458,6 +518,7 @@
         [self.view addSubview:updatedNumberforBanner];
     }
     
+    
     updatedNumberforBanner.text = [NSString  stringWithFormat:@"更新%d条微博",updatedNum];
     
     [UIView animateWithDuration:1.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -475,8 +536,6 @@
             updatedNumberforBanner = nil;
         }];
     }];
-
-
 }
 
 
