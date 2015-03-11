@@ -456,25 +456,44 @@
     
     if ([request.tag isEqual:@"emotions"]) {
         NSError *error;
-        NSArray *EMOTIONSJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+        NSMutableArray *EMOTIONSJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+    
         
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
-//        NSString *documentsDirectory = [paths objectAtIndex:0];
-//        NSString *filePath = [documentsDirectory stringByAppendingString:@"/EMOTION.plist"];
-        
-        NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        destPath = [destPath stringByAppendingPathComponent:@"EMOTIONTEST.plist"];
-        
-        // If the file doesn't exist in the Documents Folder, copy it.
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSLog(@"目录:%@",documentsDirectory);
         NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *testDirectory = [documentsDirectory stringByAppendingPathComponent:@"test"];
+        NSString *imgsDirectory = [documentsDirectory stringByAppendingPathComponent:@"imgs"];
+        // 创建目录
+        [fileManager createDirectoryAtPath:testDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+        [fileManager createDirectoryAtPath:imgsDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+
         
-        if (![fileManager fileExistsAtPath:destPath]) {
-            NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"EMOTION" ofType:@"plist"];
-            [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+        
+        NSInteger count = [EMOTIONSJSON count];
+    
+        for (int i = 0; i < count; i++) {
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:EMOTIONSJSON[i]];
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic valueForKey:@"url"]]]];
+            NSString *imgPath = [imgsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"img%d.png",i]];
+            [fileManager createFileAtPath:imgPath contents:UIImagePNGRepresentation(image) attributes:nil];
+            [dic setValue:[NSString stringWithFormat:@"img%d.png",i] forKey:@"url"];
+            NSLog(@"downloading:%d",i);
         }
         
-        NSLog(@"%@",destPath);
-        [EMOTIONSJSON writeToFile:destPath atomically:YES];
+        NSLog(@"下载完成啦");
+        
+
+        NSString *testPath = [testDirectory stringByAppendingPathComponent:@"EMOTIONTEST.plist"];
+        NSLog(@"文件:%@",testPath);
+    
+        
+//        NSData *emotionData = [NSData data];
+//        [fileManager createFileAtPath:testPath contents:[EMOTIONSJSON  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+
+        
+        [EMOTIONSJSON writeToFile:testPath atomically:YES];
         
 
         

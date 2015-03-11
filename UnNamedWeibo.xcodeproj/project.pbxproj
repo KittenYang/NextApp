@@ -501,6 +501,7 @@
 		5FE0CA431AB0368B00D4D0F7 /* 104.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C90D1AB0368B00D4D0F7 /* 104.png */; };
 		5FE0CA441AB0368B00D4D0F7 /* 104@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C90E1AB0368B00D4D0F7 /* 104@2x.png */; };
 		5FE172E91AB0A91B004E7A33 /* EMOTION.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE172E81AB0A91B004E7A33 /* EMOTION.plist */; };
+		5FE172EB1AB0BA5E004E7A33 /* EMOTIONTEST.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE172EA1AB0BA5E004E7A33 /* EMOTIONTEST.plist */; };
 		81A5B1D193E58D1DF7894F4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296A6E4ABE0FB16D9F90BF72 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1074,6 +1075,7 @@
 		5FE0C90D1AB0368B00D4D0F7 /* 104.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 104.png; sourceTree = "<group>"; };
 		5FE0C90E1AB0368B00D4D0F7 /* 104@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "104@2x.png"; sourceTree = "<group>"; };
 		5FE172E81AB0A91B004E7A33 /* EMOTION.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EMOTION.plist; sourceTree = "<group>"; };
+		5FE172EA1AB0BA5E004E7A33 /* EMOTIONTEST.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EMOTIONTEST.plist; sourceTree = "<group>"; };
 		8939DF6D9A5DEBB90443B603 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1387,6 +1389,7 @@
 			children = (
 				5F8736C01A8D1B3F000CADF4 /* HomeTableViewController.h */,
 				5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */,
+				5FE172EA1AB0BA5E004E7A33 /* EMOTIONTEST.plist */,
 				5FE172E81AB0A91B004E7A33 /* EMOTION.plist */,
 			);
 			name = HomeViewController;
@@ -2005,6 +2008,7 @@
 				TargetAttributes = {
 					5F87363B1A8C4EF6000CADF4 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = Y6BM76G9E8;
 					};
 					5F8736541A8C4EF9000CADF4 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -2270,6 +2274,7 @@
 				5FE0C9FD1AB0368B00D4D0F7 /* 081.gif in Resources */,
 				5FE0C9161AB0368B00D4D0F7 /* 003.png in Resources */,
 				5FE0CA301AB0368B00D4D0F7 /* 098.gif in Resources */,
+				5FE172EB1AB0BA5E004E7A33 /* EMOTIONTEST.plist in Resources */,
 				5FE0C7A31AB02F4900D4D0F7 /* Expression_5@2x.png in Resources */,
 				5FE0C97F1AB0368B00D4D0F7 /* 039.gif in Resources */,
 				5FE0C9281AB0368B00D4D0F7 /* 009.png in Resources */,
@@ -2705,7 +2710,8 @@
 			baseConfigurationReference = 8939DF6D9A5DEBB90443B603 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xinyu Li (XWYND9KE57)";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = UnNamedWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -2725,6 +2731,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UnNamedWeibo/RAMAnimatedTabBarController/UnNamedWeibo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -2733,6 +2740,8 @@
 			baseConfigurationReference = 253EB284DB3AB18D1FB274CB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = UnNamedWeibo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -2752,6 +2761,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UnNamedWeibo/RAMAnimatedTabBarController/UnNamedWeibo-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
