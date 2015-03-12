@@ -112,13 +112,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    KYCell *kycell_ = (KYCell *)cell;
     
-    [kycell_.cellView.weiboView.weiboImageCollectionView reloadData];
-    [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
-    
-//    [kycell_.cellView.weiboView.reWeiboView layoutIfNeeded];
-
+//    [kycell_.cellView.weiboView.weiboImageCollectionView reloadItemsAtIndexPaths:];
+//    [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
     
     NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
 
@@ -127,29 +123,24 @@
         [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
         NSLog(@"加入：%@",self.showIndexes);
         
-        CGPoint offsetPositioning = CGPointMake(0, 120);
+        CGPoint offsetPositioning = CGPointMake(0, 150);
         CATransform3D transform = CATransform3DIdentity;
         transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
+        KYCell *kycell_ = (KYCell *)cell;
         cell.layer.transform = transform;
-        cell.alpha = 0.3;
         
-        kycell_.avator.layer.opacity = 0;
         kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
         kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
         
-        [UIView animateWithDuration:1.0 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            kycell_.avator.layer.opacity = 1;
+        [UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+
             kycell_.avator.layer.transform = CATransform3DIdentity;
             cell.layer.transform = CATransform3DIdentity;
-            cell.layer.opacity = 1;
+
         } completion:nil];
     }
 
-
 }
-
-
-
 
 #pragma mark - UIScrollViewDelegate
 #pragma mark - Show/Hide the Label Using UIScrollViewDelegate Callbacks
@@ -192,6 +183,9 @@
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
+    if (self.jellyView.isLoading) {
+        return;
+    }
     CGFloat offset = -scrollView.contentOffset.y - 64.5;
     if (offset >= 100) {
         

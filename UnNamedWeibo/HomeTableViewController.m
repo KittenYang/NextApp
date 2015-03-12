@@ -170,8 +170,8 @@
     
     [self updateCellContentView:cell withWeiboModel:model];
 
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
+//    [cell setNeedsUpdateConstraints];
+//    [cell updateConstraintsIfNeeded];
     
     return cell;
 }
@@ -187,24 +187,25 @@
     //-----------创建日期---------------
     NSString *createDate =  model.createDate;
     NSString *dateString = [Utils fomateString:createDate];
+
     if (createDate != nil ) {
         cell.cellView.createDateLabel.text = dateString;
     }else{
         cell.cellView.createDateLabel.hidden = YES;
     }
     
+
     //----------微博来源---------------
     NSString *ret = [Utils parseSource: model.source];
     if (ret != nil) {
-        
         cell.cellView.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
         
     }else{
         cell.cellView.sourceLabel.hidden = YES;
     }
     
-
-    //---图片视图----
+    
+    //------图片视图-------
     if (model.pic_urls.count > 0) {
 
         cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
