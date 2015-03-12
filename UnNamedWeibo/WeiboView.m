@@ -35,7 +35,7 @@ typedef enum ScrollDirection {
     self.weiboText.isNeedAtAndPoundSign = YES;
     self.weiboText.disableEmoji = NO;
     self.weiboText.delegate = self;
-    self.weiboText.customEmojiPlistName = @"emotions.plist";
+    self.weiboText.customEmojiPlistName = @"EMOTION.plist";
     self.weiboText.customEmojiRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
 }
 
@@ -115,15 +115,15 @@ typedef enum ScrollDirection {
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (self.weiboModel.pic_urls.count == 1) {
-        
-        cell.frame = CGRectMake(0, 5, collectionView.bounds.size.width, 120);
-        
-    }else{
-        if (indexPath.item == 0) {
-            cell.frame = CGRectMake(0, 5, 120, 120);
-        }
-    }
+//    if (self.weiboModel.pic_urls.count == 1) {
+//        
+//        cell.frame = CGRectMake(0, 5, collectionView.bounds.size.width, 190);
+//        
+//    }else{
+//        if (indexPath.item == 0) {
+//            cell.frame = CGRectMake(0, 5, 190, 190);
+//        }
+//    }
 
     
     ScrollDirection scrollDirection;

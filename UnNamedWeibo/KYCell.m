@@ -137,14 +137,14 @@
     
 
 
-    CALayer* avatorShadowLayer = [CALayer layer];
-    avatorShadowLayer.shadowColor = [UIColor blackColor].CGColor;
-    avatorShadowLayer.shadowRadius = 0.5f;
-    avatorShadowLayer.shadowOffset = CGSizeMake(0.f, 0.5f);
-    avatorShadowLayer.shadowOpacity = 0.6f;
-
-    [avatorShadowLayer addSublayer:self.avator.layer];
-    [self.layer insertSublayer:avatorShadowLayer below:self.verticalLine];
+//    CALayer* avatorShadowLayer = [CALayer layer];
+//    avatorShadowLayer.shadowColor = [UIColor blackColor].CGColor;
+//    avatorShadowLayer.shadowRadius = 0.5f;
+//    avatorShadowLayer.shadowOffset = CGSizeMake(0.f, 0.5f);
+//    avatorShadowLayer.shadowOpacity = 0.6f;
+//
+//    [avatorShadowLayer addSublayer:self.avator.layer];
+//    [self.layer insertSublayer:avatorShadowLayer below:self.verticalLine];
 
 
     

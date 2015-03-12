@@ -9,7 +9,7 @@
 //关于未读气泡提示
 #define BubbleWidth  30
 #define BubbleX      18
-#define BubbleY      500
+#define BubbleY      CGRectGetHeight(self.tabBarController.view.frame) - CGRectGetHeight(self.tabBarController.tabBar.frame)
 #define BubbleColor  [UIColor redColor]
 //[UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
 
@@ -431,9 +431,11 @@
         
         if (self.cuteView == nil) {
 
-            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake(BubbleX,BubbleY) superView:self.tabBarController.view];
-            self.cuteView.bubbleWidth = 35;
+            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,CGRectGetHeight(self.tabBarController.view.frame)- CGRectGetHeight(self.tabBarController.tabBar.frame)-35*2/3) superView:self.tabBarController.view];
+    
+            NSLog(@"self.cuteView.frame:%@",NSStringFromCGRect(self.cuteView.frame));
             self.cuteView.bubbleColor = BubbleColor;
+            self.cuteView.bubbleWidth = 35;
             self.cuteView.viscosity  = 25;
             [self.cuteView setUp];
             [self.cuteView addGesture];
@@ -473,12 +475,14 @@
         
         NSInteger count = [EMOTIONSJSON count];
     
+        NSMutableArray *EMO = [[NSMutableArray alloc]init];
         for (int i = 0; i < count; i++) {
             NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:EMOTIONSJSON[i]];
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic valueForKey:@"url"]]]];
-            NSString *imgPath = [imgsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"img%d.png",i]];
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[dic valueForKey:@"icon"]]]];
+            NSString *imgPath = [imgsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"img%d@2x.png",i]];
             [fileManager createFileAtPath:imgPath contents:UIImagePNGRepresentation(image) attributes:nil];
-            [dic setValue:[NSString stringWithFormat:@"img%d.png",i] forKey:@"url"];
+            [dic setValue:[NSString stringWithFormat:@"img%d.png",i] forKey:@"icon"];
+            [EMO addObject:dic];
             NSLog(@"downloading:%d",i);
         }
         
@@ -493,20 +497,8 @@
 //        [fileManager createFileAtPath:testPath contents:[EMOTIONSJSON  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
 
         
-        [EMOTIONSJSON writeToFile:testPath atomically:YES];
-        
-
-        
-//        for (NSDictionary *dic in EMOTIONSJSON) {
-//            NSString *category = [self replaceUnicode:[dic objectForKey:@"category"]];
-//            NSString *phrase = [self replaceUnicode:[dic objectForKey:@"phrase"]];
-//            NSString *value = [self replaceUnicode:[dic objectForKey:@"value"]];
-//            
-//            NSLog(@"%@",[NSString stringWithFormat:@"%@,%@,%@",category,phrase,value]);
-//            NSDictionary *emotionText = [NSDictionary dictionaryWithObject:phrase forKey:@"chs"];
-//            NSDictionary *emotionPNG = [NSDictionary dictionaryWithObject:<#(id)#> forKey:@"png"];
-//            
-//        }
+        [EMO writeToFile:testPath atomically:YES];
+    
     }
 }
 
@@ -520,9 +512,10 @@
 
 #pragma mark - banner上刷新之后提示刷新几条
 -(void)showNumberOfRefresh:(int)updatedNum{
+    CGFloat barWidth = [[UIScreen mainScreen]bounds].size.width - 20;
     if (refreshNumberView == nil) {
-        refreshNumberView = [[JellyButton alloc]initWithFrame:CGRectMake(5, -120, 300, 50)
-                                                jellyViewSize:CGSizeMake(300, 50)
+        refreshNumberView = [[JellyButton alloc]initWithFrame:CGRectMake(5, -120, barWidth, 50)
+                                                jellyViewSize:CGSizeMake(barWidth, 50)
                                                     fillColor:[UIColor redColor]
                                                    elasticity:0.1
                                                       density:1
@@ -530,7 +523,6 @@
                                                     frequency:6];
 
         updatedNumberforBanner = [[UILabel alloc]initWithFrame:refreshNumberView.frame];
-        NSLog(@"%@",NSStringFromCGRect(updatedNumberforBanner.frame));
         updatedNumberforBanner.textColor = [UIColor whiteColor];
         updatedNumberforBanner.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:refreshNumberView];
@@ -541,13 +533,13 @@
     updatedNumberforBanner.text = [NSString  stringWithFormat:@"更新%d条微博",updatedNum];
     
     [UIView animateWithDuration:1.5 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        refreshNumberView.frame = CGRectMake(5, 5, 300, 50);
-        updatedNumberforBanner.frame = CGRectMake(5, 8, 300, 50);
+        refreshNumberView.frame = CGRectMake(5, 5, barWidth, 50);
+        updatedNumberforBanner.frame = CGRectMake(5, 8, barWidth, 50);
         [refreshNumberView show];
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:1.5 delay:1 usingSpringWithDamping:0.6f initialSpringVelocity:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            refreshNumberView.frame = CGRectMake(5, -120, 300, 50);
-            updatedNumberforBanner.frame = CGRectMake(5, -120, 300, 50);
+            refreshNumberView.frame = CGRectMake(5, -120, barWidth, 50);
+            updatedNumberforBanner.frame = CGRectMake(5, -120, barWidth, 50);
         } completion:^(BOOL finished) {
             [refreshNumberView removeFromSuperview];
             [updatedNumberforBanner removeFromSuperview];
@@ -557,5 +549,16 @@
     }];
 }
 
+
+//获取tabbar上item的中点
+-(CGPoint )centerForTabBarItemAtIndex:(NSInteger)index {
+    CGRect tabBarRect = self.tabBarController.tabBar.frame;
+    NSInteger buttonCount = self.tabBarController.tabBar.items.count;
+    CGFloat containingWidth = tabBarRect.size.width/buttonCount;
+    CGFloat originX = containingWidth * index ;
+    CGRect containingRect = CGRectMake( originX, 0, containingWidth, self.tabBarController.tabBar.frame.size.height );
+    CGPoint center = CGPointMake( CGRectGetMidX(containingRect), CGRectGetMidY(containingRect));
+    return center;
+}
 
 @end
