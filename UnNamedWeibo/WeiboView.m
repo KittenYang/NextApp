@@ -37,6 +37,7 @@ typedef enum ScrollDirection {
     self.weiboText.delegate = self;
     self.weiboText.customEmojiPlistName = @"EMOTION.plist";
     self.weiboText.customEmojiRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
+    self.weiboText.font =[UIFont systemFontOfSize:16.0f];
 }
 
 
@@ -80,21 +81,21 @@ typedef enum ScrollDirection {
     return [self.weiboModel.pic_urls count];
     
 }
-
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
-    NSMutableArray *original_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
+-(void)setWeiboModel:(WeiboModel *)weiboModel{
+    NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
     for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
         NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
         thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
-        [original_pic_urls addObject:imgdics];
+        [bmiddle_pic_urls addObject:imgdics];
     }
-    self.weiboModel.pic_urls = original_pic_urls;
+    self.weiboModel.pic_urls = bmiddle_pic_urls;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+
     
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
-    NSLog(@"cell.frame:%@",NSStringFromCGRect(cell.frame));
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];

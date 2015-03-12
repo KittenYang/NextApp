@@ -96,7 +96,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCK-Zx-Qf9" userLabel="WeiboView" customClass="WeiboView">
                                                     <rect key="frame" x="0.0" y="25" width="590" height="389"/>
                                                     <subviews>
-                                                        <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
                                                             <rect key="frame" x="0.0" y="254" width="590" height="130"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -311,7 +311,7 @@
         <!--2 Navigation Controller-->
         <scene sceneID="YCg-hb-TwY">
             <objects>
-                <navigationController title="首页" id="K3y-Dz-DBn" userLabel="2 Navigation Controller" sceneMemberID="viewController">
+                <navigationController title="首页" hidesBarsOnSwipe="YES" id="K3y-Dz-DBn" userLabel="2 Navigation Controller" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="首页" image="drop" id="s4Z-B1-qP9" customClass="RAMAnimatedTabBarItem" customModule="UnNamedWeibo" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
