@@ -16,12 +16,14 @@
 
 
 #import "HomeTableViewController.h"
+#import "UIImageView+WebCache.h"
 #import "KYCell.h"
 #import "Utils.h"
 #import "SKSplashIcon.h"
 #import "KYLoadingHUD.h"
 #import "JellyButton.h"
 #import "KYCuteView.h"
+
 
 
 
@@ -58,7 +60,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-//    [self.tableView reloadData];
+    [self.tableView reloadData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -162,12 +164,15 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
     WeiboModel *model = [self.data objectAtIndex:indexPath.row];
     
     
     KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
    
-    cell.weiboModel = model;
+//    cell.weiboModel = model;
+
+    
     
     [self updateCellContentView:cell withWeiboModel:model];
 
@@ -182,6 +187,26 @@
 //填充数据
 -(void)updateCellContentView:(KYCell *)cell withWeiboModel:(WeiboModel *)model{
 
+    cell.cellView.weiboView.weiboModel = model;
+
+    
+    //-----头像-------
+    NSString *imgURL = model.user.avatar_large;
+    
+    //多线程实现头像的加载
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+        if (avatorUrl != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.avator sd_setImageWithURL:avatorUrl];
+            });
+        }
+    });
+    
+    //-----昵称-------
+    cell.name.text = model.user.screen_name;
+
+    
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
     
@@ -509,7 +534,6 @@
         if (self.cuteView == nil) {
 
             self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,[self centerForTabBarItemAtIndex:0].y - 35-15) superView:self.tabBarController.tabBar];
-            NSLog(@"%@",NSStringFromCGRect(self.cuteView.frame));
     
             self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.bubbleWidth = 35;
@@ -635,7 +659,7 @@
     CGFloat originX = containingWidth * index ;
     CGRect containingRect = CGRectMake( originX, 0, containingWidth, self.tabBarController.tabBar.frame.size.height );
     CGPoint center = CGPointMake( CGRectGetMidX(containingRect), CGRectGetMidY(containingRect));
-    NSLog(@"%@",NSStringFromCGPoint(center));
+
     return center;
 }
 

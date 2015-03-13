@@ -14,6 +14,6 @@
 @interface HomeTableViewController : BaseTableViewController<SKSplashDelegate,loadMoreDelegate>
 
 
-@property(nonatomic,retain)NSArray *data;   //为tableView提供数据,基本单位是WeiboModel
+@property(nonatomic,retain)NSMutableArray *data;   //为tableView提供数据,基本单位是WeiboModel
 @property (nonatomic,retain)NSMutableArray *weibos;
 @end

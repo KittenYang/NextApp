@@ -9,7 +9,6 @@
 #import "KYCell.h"
 #import "HomeTableViewController.h"
 #import "UIView+Extra.h"
-#import "UIImageView+WebCache.h"
 #import "Utils.h"
 
 #define BarColor  [UIColor colorWithRed:249/255.0 green:56/255.0 blue:54/255.0 alpha:1]
@@ -21,6 +20,13 @@
 
 
 - (void)awakeFromNib {
+    
+    //-----头像------
+    
+    self.avator.layer.cornerRadius = self.avator.width / 2;
+    self.avator.layer.masksToBounds = YES;
+    self.avator.layer.borderWidth = 1.0f;
+    self.avator.layer.borderColor = [UIColor whiteColor].CGColor;
 
     [self createLine];
     [self addPanGesture];
@@ -113,27 +119,23 @@
 //
 //}
 
+
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.cellView.weiboModel = self.weiboModel;
+//    self.cellView.weiboModel = self.weiboModel;
 //    [self.cellView layoutIfNeeded];
     
-    //-----头像------
-
-    self.avator.layer.cornerRadius = self.avator.width / 2;
-    self.avator.layer.masksToBounds = YES;
-    self.avator.layer.borderWidth = 1.0f;
-    self.avator.layer.borderColor = [UIColor whiteColor].CGColor;
-    NSString *imgURL = self.weiboModel.user.avatar_large;
-    //多线程实现头像的加载
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
-        if (avatorUrl != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.avator sd_setImageWithURL:avatorUrl];
-            });
-        }
-    });
+//    NSString *imgURL = self.weiboModel.user.avatar_large;
+//    
+//    //多线程实现头像的加载
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+//        if (avatorUrl != nil) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.avator sd_setImageWithURL:avatorUrl];
+//            });
+//        }
+//    });
     
 
 
@@ -146,10 +148,23 @@
 //    [avatorShadowLayer addSublayer:self.avator.layer];
 //    [self.layer insertSublayer:avatorShadowLayer below:self.verticalLine];
 
-
     
-    //-----昵称-------
-    self.name.text = self.weiboModel.user.screen_name;
+    
+//    //-----头像-------
+//    NSString *imgURL = self.weiboModel.user.avatar_large;
+//    
+//    //多线程实现头像的加载
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+//        if (avatorUrl != nil) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.avator sd_setImageWithURL:avatorUrl];
+//            });
+//        }
+//    });
+//    
+//    //-----昵称-------
+//    self.name.text = self.weiboModel.user.screen_name;
 
 }
 

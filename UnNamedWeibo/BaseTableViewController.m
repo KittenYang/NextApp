@@ -110,11 +110,11 @@
 
 
 #pragma mark - UITableViewDelegate
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView willDisplayCell:(KYCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    
-//    [kycell_.cellView.weiboView.weiboImageCollectionView reloadItemsAtIndexPaths:];
-//    [kycell_.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
+    NSLog(@"indexPath.row:%ld",indexPath.row);
+    [cell.cellView.weiboView.weiboImageCollectionView reloadData];
+    [cell.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
     
 //    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
 

@@ -36,14 +36,29 @@ typedef enum ScrollDirection {
     self.reWeiboText.customEmojiPlistName = @"EMOTION.plist";
     self.reWeiboText.customEmojiRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
     self.reWeiboText.font =[UIFont systemFontOfSize:15.0f];
+    
 }
 
--(void)layoutSubviews{
-    [super layoutSubviews];
-//    [self.reWeiboImageCollectionView.collectionViewLayout invalidateLayout];
-    [self.reWeiboImageCollectionView reloadData];
-}
+//-(void)layoutSubviews{
+//    [super layoutSubviews];
+////    [self.reWeiboImageCollectionView.collectionViewLayout invalidateLayout];
+//    if (self.reWeiboModel.pic_urls.count > 0) {
+//        [self.reWeiboImageCollectionView reloadData];
+//    }
+//}
 
+-(void)setReWeiboModel:(WeiboModel *)reWeiboModel{
+    if (_reWeiboModel != reWeiboModel) {
+        _reWeiboModel = reWeiboModel;
+    }
+    if (reWeiboModel.pic_urls.count > 0) {
+
+//        [_reWeiboImageCollectionView reloadData];
+        
+    }else{
+        return;
+    }
+}
 
 #pragma mark - MLEmojiLabelDelegate
 - (void)mlEmojiLabel:(MLEmojiLabel*)emojiLabel didSelectLink:(NSString*)link withType:(MLEmojiLabelLinkType)type{
@@ -85,31 +100,37 @@ typedef enum ScrollDirection {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.reWeiboModel.pic_urls.count];
-    for (NSInteger i = 0; i < self.reWeiboModel.pic_urls.count; i++) {
-        NSString *thumbnailImageUrl = [self.reWeiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
-        thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
-        NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
-        [bmiddle_pic_urls addObject:imgdics];
-    }
-    self.reWeiboModel.pic_urls = bmiddle_pic_urls;
+    if (self.reWeiboModel.pic_urls.count > 0) {
     
-    ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
+        NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.reWeiboModel.pic_urls.count];
+        for (NSInteger i = 0; i < self.reWeiboModel.pic_urls.count; i++) {
+            NSString *thumbnailImageUrl = [self.reWeiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
+            thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+            NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
+            [bmiddle_pic_urls addObject:imgdics];
+        }
+        self.reWeiboModel.pic_urls = bmiddle_pic_urls;
+        
+        ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
 
-    if (indexPath.item < self.reWeiboModel.pic_urls.count) {
-    
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
-            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-            NSURL *photoUrl = [NSURL URLWithString:imgUrl];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+        if (indexPath.item < self.reWeiboModel.pic_urls.count) {
+        
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
+                NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+                NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+                });
             });
-        });
+        }
+        
+        return cell;
+        
+    }else{
+        return nil;
     }
-    
-    return cell;
     
 }
 

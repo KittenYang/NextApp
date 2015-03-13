@@ -51,7 +51,7 @@
 
     
 
-    self.weiboView.weiboModel = self.weiboModel;
+//    self.weiboView.weiboModel = self.weiboModel;
     //----------微博来源--------------
 //    NSString *ret = [Utils parseSource: self.weiboModel.source];
 //    if (ret != nil) {

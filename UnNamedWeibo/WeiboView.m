@@ -38,14 +38,24 @@ typedef enum ScrollDirection {
     self.weiboText.customEmojiPlistName = @"EMOTION.plist";
     self.weiboText.customEmojiRegex = @"\\[[a-zA-Z0-9\\u4e00-\\u9fa5]+\\]";
     self.weiboText.font =[UIFont systemFontOfSize:16.0f];
+    
 }
 
 
--(void)layoutSubviews{
-    [super layoutSubviews];
-//    [self.weiboImageCollectionView.collectionViewLayout invalidateLayout];
-    [self.weiboImageCollectionView reloadData];
+//-(void)layoutSubviews{
+//    [super layoutSubviews];
+////    [self.weiboImageCollectionView.collectionViewLayout invalidateLayout];
+//}
 
+-(void)setWeiboModel:(WeiboModel *)weiboModel{
+    if (_weiboModel != weiboModel) {
+        _weiboModel = weiboModel;
+    }
+    
+    if (weiboModel.pic_urls.count > 0) {
+        
+//        [_weiboImageCollectionView reloadData];
+    }
 }
 
 #pragma  mark  - MLEmojiLabelDelegate
@@ -77,9 +87,7 @@ typedef enum ScrollDirection {
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
-    if (self.weiboModel.pic_urls.count == 0) {
-        return 0;
-    }
+
     return [self.weiboModel.pic_urls count];
     
 }
@@ -87,7 +95,7 @@ typedef enum ScrollDirection {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
-    
+
     CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
 
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
