@@ -459,7 +459,7 @@
             [self.afterRemovedshowIndexes removeAllObjects];
         }
         [self.afterRemovedshowIndexes addObjectsFromArray:self.showIndexes];
-        NSLog(@"移除：%@",self.showIndexes);
+
         self.isFirstTime = NO;
         
         self.data   = WEIBOS;
@@ -510,7 +510,6 @@
 
             self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,CGRectGetHeight(self.tabBarController.view.frame)- CGRectGetHeight(self.tabBarController.tabBar.frame)-35*2/3) superView:self.tabBarController.view];
     
-            NSLog(@"self.cuteView.frame:%@",NSStringFromCGRect(self.cuteView.frame));
             self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.bubbleWidth = 35;
             self.cuteView.viscosity  = 25;
