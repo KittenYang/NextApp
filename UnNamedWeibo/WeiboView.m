@@ -95,7 +95,7 @@ typedef enum ScrollDirection {
 //        NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
 //        for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
 //            NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
-//            thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+//            thumbnailImageUrl = [thumbnailImageUrl 1112stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
 //            NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
 //            [bmiddle_pic_urls addObject:imgdics];
 //        }

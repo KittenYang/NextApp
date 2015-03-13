@@ -153,8 +153,15 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    NSLog(@"scrollview.contentoffset.y : %f",scrollView.contentOffset.y);
     [_timeScroller scrollViewDidScroll];
     if (scrollView.contentOffset.y > -64.5) {
+        if (self.jellyView.isLoading == NO) {
+            [self.jellyView removeFromSuperview];
+            self.jellyView = nil;
+            [self.displayLinkToPull invalidate];
+            self.displayLinkToPull = nil;
+        }
         return;
     }
     
