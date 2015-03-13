@@ -233,6 +233,9 @@
     
     
 //    //------图片视图-------
+    if (model.pic_urls.count == 0) {
+        cell.cellView.weiboView.weiboModel.pic_urls = 0;
+    }
 //    if (model.pic_urls.count > 0) {
 //
 //        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
@@ -266,7 +269,8 @@
 //        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
         
     }else{
-        
+
+        cell.cellView.weiboView.reWeiboView.reWeiboModel = nil;
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
 //        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
 //        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
