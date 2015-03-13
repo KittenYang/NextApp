@@ -508,7 +508,8 @@
         
         if (self.cuteView == nil) {
 
-            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,CGRectGetHeight(self.tabBarController.view.frame)- CGRectGetHeight(self.tabBarController.tabBar.frame)-35*2/3) superView:self.tabBarController.view];
+            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,[self centerForTabBarItemAtIndex:0].y - 35-15) superView:self.tabBarController.tabBar];
+            NSLog(@"%@",NSStringFromCGRect(self.cuteView.frame));
     
             self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.bubbleWidth = 35;
@@ -634,6 +635,7 @@
     CGFloat originX = containingWidth * index ;
     CGRect containingRect = CGRectMake( originX, 0, containingWidth, self.tabBarController.tabBar.frame.size.height );
     CGPoint center = CGPointMake( CGRectGetMidX(containingRect), CGRectGetMidY(containingRect));
+    NSLog(@"%@",NSStringFromCGPoint(center));
     return center;
 }
 
