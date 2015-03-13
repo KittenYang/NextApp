@@ -43,6 +43,8 @@
     //刷新了几条微博的视图
     JellyButton *refreshNumberView;
     UILabel *updatedNumberforBanner;
+    
+    //cell 的具体高度
 
 }
 
@@ -153,7 +155,6 @@
 
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return self.data.count;
@@ -175,6 +176,7 @@
     
     return cell;
 }
+
 
 
 //填充数据
@@ -205,14 +207,14 @@
     }
     
     
-    //------图片视图-------
-    if (model.pic_urls.count > 0) {
-
-        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
-    
-    }else {
-        cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
-    }
+//    //------图片视图-------
+//    if (model.pic_urls.count > 0) {
+//
+//        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
+//    
+//    }else {
+//        cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
+//    }
     
     //------转发视图-------
     if (model.retWeibo) {
@@ -221,34 +223,108 @@
         NSString *nickName = model.retWeibo.user.screen_name;
 
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = [NSString stringWithFormat:@"@%@:%@",nickName,model.retWeibo.text];
-        CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
 
+        CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
         cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
         CGSize size = [cell.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake(cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.width, MAXFLOAT)];
         
         cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
         
-        if (model.retWeibo.pic_urls.count > 0) {
-            
-            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
-            
-        }else {
-            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
-        }
+//        if (model.retWeibo.pic_urls.count > 0) {
+//            
+//            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
+//            
+//        }else {
+//            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//        }
         
         cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.bounds.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
         
     }else{
         
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
-        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
-        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+//        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
     }
-
-
-    
-
 }
+
+
+#pragma mark - Table view delegate
+//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    WeiboModel *model = [self.data objectAtIndex:indexPath.row];
+//    if (model.retWeibo) {
+//        return 380;
+//    }else{
+//        return 250;
+//    }
+//    
+//}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+////    KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
+//    WeiboModel *model = [self.data objectAtIndex:indexPath.row];
+//    
+//    CGFloat height;
+//    //头像以上的高度
+//    CGFloat avatorHeight = 10.0f + 50.0f;
+//    
+//    
+//    //微博正文顶部的padding
+//    CGFloat weiboLabelPadding = 5.0f;
+//    
+//    //微博正文的高度
+//    MLEmojiLabel *textLabel = [[MLEmojiLabel alloc]initWithFrame:CGRectZero];
+//    textLabel.text = model.text;
+//    textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    CGSize weiboTextSize = [textLabel sizeThatFits:CGSizeMake(280, MAXFLOAT)];
+//    
+//    //转发视图顶部的padding
+//    CGFloat reWeiboPadding  = 8.0f;
+//    
+//    
+//    //转发视图
+//    CGFloat reWeiboHeight;
+//    //转发视图text顶部padding
+//    CGFloat reWeiboTextPadding  = 5.0f;
+//    //转发图片顶部padding
+//    CGFloat reWeiboImgPadding  = 5.0f;
+//    //转发视图底部的padding
+//    CGFloat reWeiboBottomPadding  = 5.0f;
+//    if (model.retWeibo) {
+//        //转发正文的高度
+//        MLEmojiLabel *reTextLabel = [[MLEmojiLabel alloc]initWithFrame:CGRectZero];
+//        reTextLabel.text = model.retWeibo.text;
+//        reTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//        CGSize reWeiboTextSize = [reTextLabel sizeThatFits:CGSizeMake(280, MAXFLOAT)];
+//        
+//        //转发图片的高度
+//        CGFloat reWeiboImgHeight   = 130.0f;
+//        
+//        
+//        reWeiboHeight =  reWeiboTextPadding + reWeiboTextSize.height + reWeiboImgPadding + reWeiboImgHeight + reWeiboBottomPadding;
+//    }else{
+//        reWeiboHeight = reWeiboTextPadding + reWeiboImgPadding + reWeiboBottomPadding;
+//    }
+//    
+//    //微博图片顶部padding
+//    CGFloat weiboImgpadding = 8.0f;
+//
+//    //微博图片的高度
+//    CGFloat weiboImgHeight;
+//    if (model.pic_urls.count > 0) {
+//        weiboImgHeight = 130.0f;
+//    }else{
+//        weiboImgHeight = 0.0f;
+//    }
+//    
+//    //末尾的一些padding
+//    CGFloat bottomPadding = 5.0f + 5.0f + 10.0f;
+//    
+//    height = avatorHeight + weiboLabelPadding + weiboTextSize.height  + reWeiboPadding + reWeiboHeight + weiboImgpadding + weiboImgHeight +  bottomPadding;
+//    
+//    return height;
+//}
+
 
 #pragma  mark - 微博登录
 -(void)authWeibo{
