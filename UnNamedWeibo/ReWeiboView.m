@@ -96,18 +96,18 @@ typedef enum ScrollDirection {
     
     ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
 
-//    if (indexPath.item < self.reWeiboModel.pic_urls.count) {
-//    
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
-//            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-//            NSURL *photoUrl = [NSURL URLWithString:imgUrl];
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [cell.reWeiboImage sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
-//            });
-//        });
-//    }
+    if (indexPath.item < self.reWeiboModel.pic_urls.count) {
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
+            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+            NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+            });
+        });
+    }
     
     return cell;
     

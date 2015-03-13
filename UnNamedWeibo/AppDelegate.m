@@ -20,7 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-    NSLog(@"%@",application.windows);
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kWeiboAppKey];
     
@@ -35,6 +34,11 @@
 
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     return [WeiboSDK handleOpenURL:url delegate:self];
+}
+
+#pragma mark - WeiboSDKDelegate
+- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+    
 }
 
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
