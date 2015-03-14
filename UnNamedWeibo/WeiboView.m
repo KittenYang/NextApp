@@ -100,25 +100,27 @@ typedef enum ScrollDirection {
 
         CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
 
-    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
-        for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
-            NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
-            thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
-            NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
-            [bmiddle_pic_urls addObject:imgdics];
+        if (indexPath.row < self.weiboModel.pic_urls.count) {
+            
+            NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
+            for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
+                NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
+                thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                if ([thumbnailImageUrl hasSuffix:@".gif"]) {
+                    thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@".gif" withString:@".jpg"];
+                }
+                NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
+                [bmiddle_pic_urls addObject:imgdics];
+            }
+            self.weiboModel.pic_urls = bmiddle_pic_urls;
+            
+            NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
+            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+            NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+            
+            [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+            
         }
-        self.weiboModel.pic_urls = bmiddle_pic_urls;
-        
-        NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
-        NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-        NSURL *photoUrl = [NSURL URLWithString:imgUrl];
-        
-        //        dispatch_async(dispatch_get_main_queue(), ^{
-        [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
-        
-    //        });
-    //    });
         return cell;
         
     }else{

@@ -101,34 +101,36 @@ typedef enum ScrollDirection {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (self.reWeiboModel.pic_urls.count > 0) {
-    
+        ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
+
         NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.reWeiboModel.pic_urls.count];
         for (NSInteger i = 0; i < self.reWeiboModel.pic_urls.count; i++) {
             NSString *thumbnailImageUrl = [self.reWeiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
             thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+            
+            if ([thumbnailImageUrl hasSuffix:@".gif"]) {
+                thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@".gif" withString:@".jpg"];
+            }
+
             NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
             [bmiddle_pic_urls addObject:imgdics];
         }
         self.reWeiboModel.pic_urls = bmiddle_pic_urls;
         
-        ReWeiboImgCollectionViewCell *cell = (ReWeiboImgCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"reWeibo_image_cell" forIndexPath:indexPath];
 
         if (indexPath.item < self.reWeiboModel.pic_urls.count) {
         
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
-                NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
-                NSURL *photoUrl = [NSURL URLWithString:imgUrl];
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
-                });
-            });
+            NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
+            NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
+            NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+            
+            [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
         }
-        
+    
         return cell;
         
     }else{
+        
         return nil;
     }
     

@@ -1,4 +1,6 @@
-pod 'Shimmer', '~> 1.0.2'
+platform :ios, '6.1'
+pod 'SDWebImage', '~>3.6'
+
 pod 'SKSplashView'
-pod 'CBStoreHouseRefreshControl'
+
 
