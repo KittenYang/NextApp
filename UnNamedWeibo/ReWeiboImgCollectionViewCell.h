@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YLImageView.h"
 
 @interface ReWeiboImgCollectionViewCell : UICollectionViewCell
 
 
-@property (strong, nonatomic) IBOutlet UIImageView *reWeiboImage;
+@property (strong, nonatomic) IBOutlet YLImageView *reWeiboImage;
 
 
 @end

@@ -63,7 +63,7 @@
     _afterRemovedshowIndexes = [NSMutableArray array];
     
     //时间滚动条
-    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
+//    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
 
     
     //是否是第一次加载
@@ -116,30 +116,30 @@
     [cell.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
     [cell.cellView.weiboView.weiboImageCollectionView reloadData];
     
-//    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
+    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
 
     
     //cell进入动画：
-//    if (![self.showIndexes containsObject:row]) {
-//        [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
-//        NSLog(@"加入：%@",self.showIndexes);
-//        
-//        CGPoint offsetPositioning = CGPointMake(0, 150);
-//        CATransform3D transform = CATransform3DIdentity;
-//        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
-//        KYCell *kycell_ = (KYCell *)cell;
-//        cell.layer.transform = transform;
-//        
-//        kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
-//        kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
-//        
-//        [UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//
-//            kycell_.avator.layer.transform = CATransform3DIdentity;
-//            cell.layer.transform = CATransform3DIdentity;
-//
-//        } completion:nil];
-//    }
+    if (![self.showIndexes containsObject:row]) {
+        [self.showIndexes insertObject:row atIndex:[self.afterRemovedshowIndexes count]];
+        NSLog(@"加入：%@",self.showIndexes);
+        
+        CGPoint offsetPositioning = CGPointMake(0, 150);
+        CATransform3D transform = CATransform3DIdentity;
+        transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y , 0.0);
+        KYCell *kycell_ = (KYCell *)cell;
+        cell.layer.transform = transform;
+        
+        kycell_.avator.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1);
+        kycell_.avator.layer.transform = CATransform3DRotate(kycell_.avator.layer.transform, -180 * (M_PI / 180), 0, 0, 1);
+        
+        [UIView animateWithDuration:0.6 delay:0.0 usingSpringWithDamping:0.6f initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+
+            kycell_.avator.layer.transform = CATransform3DIdentity;
+            cell.layer.transform = CATransform3DIdentity;
+
+        } completion:nil];
+    }
 
 }
 
@@ -240,6 +240,7 @@
         self.jellyView = nil;
         [self.displayLinkToPull invalidate];
         self.displayLinkToPull = nil;
+
     }];
 }
 

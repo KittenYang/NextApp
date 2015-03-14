@@ -106,10 +106,10 @@ typedef enum ScrollDirection {
         NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.reWeiboModel.pic_urls.count];
         for (NSInteger i = 0; i < self.reWeiboModel.pic_urls.count; i++) {
             NSString *thumbnailImageUrl = [self.reWeiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
-            thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
-            
-            if ([thumbnailImageUrl hasSuffix:@".gif"]) {
-                thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@".gif" withString:@".jpg"];
+            if (![thumbnailImageUrl hasSuffix:@".gif"]) {
+                
+                thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                
             }
 
             NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
@@ -123,8 +123,18 @@ typedef enum ScrollDirection {
             NSDictionary *imgDICS = self.reWeiboModel.pic_urls[indexPath.item];
             NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
             NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+  
+            [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg_white"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );
+            } completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (error) {
+                    NSLog(@"ERROR: %@", error);
+                } else {
+                    
+                }
+            }];
             
-            [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+//            [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
         }
     
         return cell;

@@ -89,7 +89,7 @@
         cosDigree = (y2-y1)/centerDistance;
         sinDigree = (x2-x1)/centerDistance;
     }
-//    NSLog(@"%f", acosf(cosDigree));
+
     r1 = oldBackViewFrame.size.width / 2 - centerDistance/self.viscosity;
     
     pointA = CGPointMake(x1-r1*cosDigree, y1+r1*sinDigree);  // A

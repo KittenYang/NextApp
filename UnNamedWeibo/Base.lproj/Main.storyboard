@@ -116,7 +116,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-Xg-cVa" customClass="YLImageView">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                             </imageView>
                                                                         </subviews>
@@ -167,7 +167,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                                 <subviews>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="zws-wP-EpK">
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="zws-wP-EpK" customClass="YLImageView">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                                     </imageView>
                                                                                 </subviews>

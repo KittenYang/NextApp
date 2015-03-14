@@ -1,19 +1,35 @@
 PODS:
-  - CBStoreHouseRefreshControl (1.0)
-  - Shimmer (1.0.2)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage-YLGIFImage (0.2)
+  - SDWebImage/Core (3.7.1)
   - SKSplashView (0.1.0)
-  - SSPullToRefresh (1.2.2)
+  - YLGIFImage (0.11)
 
 DEPENDENCIES:
-  - CBStoreHouseRefreshControl
-  - Shimmer (~> 1.0.2)
+  - SDWebImage (from `https://github.com/liyong03/SDWebImage.git`)
+  - SDWebImage-YLGIFImage (from `https://github.com/liyong03/SDWebImage-YLGIFImage.git`)
   - SKSplashView
-  - SSPullToRefresh
+  - YLGIFImage
+
+EXTERNAL SOURCES:
+  SDWebImage:
+    :git: https://github.com/liyong03/SDWebImage.git
+  SDWebImage-YLGIFImage:
+    :git: https://github.com/liyong03/SDWebImage-YLGIFImage.git
+
+CHECKOUT OPTIONS:
+  SDWebImage:
+    :commit: d3567259f2d1c8a1b191563aef1357eed081b600
+    :git: https://github.com/liyong03/SDWebImage.git
+  SDWebImage-YLGIFImage:
+    :commit: 601909292beefee7d231cdad73ef0bb7c9f64c95
+    :git: https://github.com/liyong03/SDWebImage-YLGIFImage.git
 
 SPEC CHECKSUMS:
-  CBStoreHouseRefreshControl: 3c67731fe57aff3ccd2a151c9d13a6f2aed8a11e
-  Shimmer: 057fcfe9c1c978d69d50b64fce93a61080cd08ec
+  SDWebImage: ff5239e81afa8f9cc29552712cac071183529f66
+  SDWebImage-YLGIFImage: c0d061245bd11e4293c39fb002484a741ab1f1ad
   SKSplashView: 1cff0ac7bae5539e65b5b638fb25e59a1e43f681
-  SSPullToRefresh: da7acfb8e269acbd040be7f0b091824cda365a17
+  YLGIFImage: ffdc4cb9faf077217aacb1cdfe69689afe403f21
 
 COCOAPODS: 0.35.0

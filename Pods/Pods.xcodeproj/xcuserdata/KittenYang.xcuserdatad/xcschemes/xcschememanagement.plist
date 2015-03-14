@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-CBStoreHouseRefreshControl.xcscheme</key>
+		<key>Pods-SDWebImage-YLGIFImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -14,12 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-SSPullToRefresh.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-Shimmer.xcscheme</key>
+		<key>Pods-YLGIFImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0BFA139B9CF0AD09CCB38DB7</key>
+		<key>028C9595ED1134FA3823A9F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>10F286F74C32CA6C6C557353</key>
+		<key>2C9DCD01872AA6E628537BC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7F2149A66606787E7D71B46F</key>
+		<key>56DC6848028ED3DD0F88F252</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>860A4DEA11FFD58E0F635040</key>
+		<key>CDAFBF19F2D9034A2F65038F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>916C0845D6009C542D82D2B8</key>
+		<key>D9891817887314CB9694C308</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -236,16 +236,17 @@
     
     
 //    //------图片视图-------
-    if (model.pic_urls.count == 0) {
-        cell.cellView.weiboView.weiboModel.pic_urls = 0;
-    }
-//    if (model.pic_urls.count > 0) {
-//
-//        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
-//    
-//    }else {
-//        cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
+//    if (model.pic_urls.count == 0) {
+//        cell.cellView.weiboView.weiboModel.pic_urls = 0;
 //    }
+    if (model.pic_urls.count > 0) {
+
+        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
+    
+    }else {
+        cell.cellView.weiboView.weiboModel.pic_urls = 0;
+        cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
+    }
     
     //------转发视图-------
     if (model.retWeibo) {
@@ -261,22 +262,27 @@
         
         cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
         
-//        if (model.retWeibo.pic_urls.count > 0) {
-//            
-//            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
-//            
-//        }else {
-//            cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
-//        }
         
-//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
+
+        if (!(model.retWeibo.pic_urls.count > 0)) {
+            
+            if (cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant != 0.0f) {
+                cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+            }
+        }else{
+            if (cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant != 130.0f) {
+                cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
+            }
+        }
+        
+        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
         
     }else{
 
         cell.cellView.weiboView.reWeiboView.reWeiboModel = nil;
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
-//        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
-//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
     }
 }
 
@@ -284,11 +290,7 @@
 #pragma mark - Table view delegate
 //- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    WeiboModel *model = [self.data objectAtIndex:indexPath.row];
-//    if (model.retWeibo) {
-//        return 380;
-//    }else{
-//        return 250;
-//    }
+//    
 //    
 //}
 
@@ -454,7 +456,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:StoreData forKey:@"StoreData"];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
-        
         [self.tableView reloadData];
     }
     
@@ -540,7 +541,7 @@
         
         if (self.cuteView == nil) {
 
-            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,[self centerForTabBarItemAtIndex:0].y - 35-15) superView:self.tabBarController.tabBar];
+            self.cuteView = [[KYCuteView alloc]initWithPoint:CGPointMake([self centerForTabBarItemAtIndex:0].x - 35/2,[[UIScreen mainScreen]bounds].size.height - CGRectGetHeight(self.tabBarController.tabBar.frame)- 35*2/3) superView:self.tabBarController.view];
     
             self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.bubbleWidth = 35;

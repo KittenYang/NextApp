@@ -105,9 +105,8 @@ typedef enum ScrollDirection {
             NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
             for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
                 NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
-                thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
-                if ([thumbnailImageUrl hasSuffix:@".gif"]) {
-                    thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@".gif" withString:@".jpg"];
+                if (![thumbnailImageUrl hasSuffix:@".gif"]) {
+                    thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                 }
                 NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
                 [bmiddle_pic_urls addObject:imgdics];
@@ -118,7 +117,16 @@ typedef enum ScrollDirection {
             NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
             NSURL *photoUrl = [NSURL URLWithString:imgUrl];
             
-            [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+            [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg_gray"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );
+            } completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                if (error) {
+                    NSLog(@"ERROR: %@", error);
+                } else {
+                    
+                }
+            }];
+//            [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
             
         }
         return cell;

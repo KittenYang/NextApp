@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YLImageView.h"
 
 @interface CollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *weiboImage;
+@property (strong, nonatomic) IBOutlet YLImageView *weiboImage;
 
 @end
