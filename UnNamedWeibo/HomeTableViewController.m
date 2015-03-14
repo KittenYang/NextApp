@@ -164,15 +164,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"indexPath.row:%ld",(long)indexPath.row);
+
     WeiboModel *model = [self.data objectAtIndex:indexPath.row];
     
     
     KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
-   
-//    cell.weiboModel = model;
-
-    
     
     [self updateCellContentView:cell withWeiboModel:model];
 
@@ -187,6 +183,7 @@
 //填充数据
 -(void)updateCellContentView:(KYCell *)cell withWeiboModel:(WeiboModel *)model{
 
+    cell.weiboModel = model;
     cell.cellView.weiboView.weiboModel = model;
 
     
@@ -194,14 +191,20 @@
     NSString *imgURL = model.user.avatar_large;
     
     //多线程实现头像的加载
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
-        if (avatorUrl != nil) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [cell.avator sd_setImageWithURL:avatorUrl];
-            });
-        }
-    });
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+//        if (avatorUrl != nil) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [cell.avator sd_setImageWithURL:avatorUrl];
+//            });
+//        }
+//    });
+    
+    
+    NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+    if (avatorUrl != nil) {
+        [cell.avator sd_setImageWithURL:avatorUrl];
+    }
     
     //-----昵称-------
     cell.name.text = model.user.screen_name;

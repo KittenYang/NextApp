@@ -100,7 +100,7 @@
 - (NSDate *)timeScroller:(ACTimeScroller *)timeScroller dateForCell:(UITableViewCell *)cell
 {
     KYCell *kycell = (KYCell *)cell;
-    NSString *createDate =  kycell.weiboModel.createDate;
+    NSString *createDate = kycell.weiboModel.createDate;
     NSString *formate = @"EEE MMM d HH:mm:ss Z yyyy";
     NSDate *scrollBarDate = [Utils dateFromFomate:createDate formate:formate];
 
@@ -112,9 +112,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView willDisplayCell:(KYCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    NSLog(@"indexPath.row:%ld",indexPath.row);
-    [cell.cellView.weiboView.weiboImageCollectionView reloadData];
+    
     [cell.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
+    [cell.cellView.weiboView.weiboImageCollectionView reloadData];
     
 //    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
 

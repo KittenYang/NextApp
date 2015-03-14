@@ -96,10 +96,11 @@ typedef enum ScrollDirection {
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
 
-    CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
+    if (self.weiboModel.pic_urls > 0) {
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
+        CollectionViewCell *cell = (CollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"weibo_image_cell" forIndexPath:indexPath];
+
+    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableArray *bmiddle_pic_urls = [NSMutableArray arrayWithCapacity:self.weiboModel.pic_urls.count];
         for (NSInteger i = 0; i < self.weiboModel.pic_urls.count; i++) {
             NSString *thumbnailImageUrl = [self.weiboModel.pic_urls[i] objectForKey:@"thumbnail_pic"];
@@ -108,18 +109,22 @@ typedef enum ScrollDirection {
             [bmiddle_pic_urls addObject:imgdics];
         }
         self.weiboModel.pic_urls = bmiddle_pic_urls;
-
+        
         NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
         NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
         NSURL *photoUrl = [NSURL URLWithString:imgUrl];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
-        });
-    });
-    
-    
-    return cell;
+        //        dispatch_async(dispatch_get_main_queue(), ^{
+        [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg"]];
+        
+    //        });
+    //    });
+        return cell;
+        
+    }else{
+        
+        return nil;
+    }
     
 }
 
