@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TTTAttributedLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-YLGIFImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,27 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>028C9595ED1134FA3823A9F5</key>
+		<key>4127C1AE119C2E62EA640F9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2C9DCD01872AA6E628537BC6</key>
+		<key>4974FDEB992F9817A8D37978</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>56DC6848028ED3DD0F88F252</key>
+		<key>7C7A7898EFE2ED75EAC7B382</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDAFBF19F2D9034A2F65038F</key>
+		<key>82FECF00B93A19CBBE7D7955</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9891817887314CB9694C308</key>
+		<key>A229920DF6818FB13F558600</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA71590B5C1E3860FC32DD7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

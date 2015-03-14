@@ -1,5 +1,6 @@
 
 pod 'SKSplashView'
+pod 'TTTAttributedLabel'
 
 #pod 'SDWebImage', '~>3.6'
 pod 'SDWebImage', :git => 'https://github.com/liyong03/SDWebImage.git'

@@ -166,7 +166,6 @@
 		5FE0C7D21AB02F4900D4D0F7 /* expressionImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C7601AB02F4900D4D0F7 /* expressionImage.plist */; };
 		5FE0C7D31AB02F4900D4D0F7 /* expressionImage_custom.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C7611AB02F4900D4D0F7 /* expressionImage_custom.plist */; };
 		5FE0C7D41AB02F4900D4D0F7 /* MLEmojiLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0C7631AB02F4900D4D0F7 /* MLEmojiLabel.m */; };
-		5FE0C7D51AB02F4900D4D0F7 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE0C7661AB02F4900D4D0F7 /* TTTAttributedLabel.m */; };
 		5FE0C7D71AB0362000D4D0F7 /* emotions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C7D61AB0362000D4D0F7 /* emotions.plist */; };
 		5FE0C90F1AB0368B00D4D0F7 /* 001.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C7D91AB0368A00D4D0F7 /* 001.gif */; };
 		5FE0C9101AB0368B00D4D0F7 /* 001.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C7DA1AB0368A00D4D0F7 /* 001.png */; };
@@ -2697,8 +2696,6 @@
 		5FE0C7611AB02F4900D4D0F7 /* expressionImage_custom.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expressionImage_custom.plist; sourceTree = "<group>"; };
 		5FE0C7621AB02F4900D4D0F7 /* MLEmojiLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLEmojiLabel.h; sourceTree = "<group>"; };
 		5FE0C7631AB02F4900D4D0F7 /* MLEmojiLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLEmojiLabel.m; sourceTree = "<group>"; };
-		5FE0C7651AB02F4900D4D0F7 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
-		5FE0C7661AB02F4900D4D0F7 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		5FE0C7D61AB0362000D4D0F7 /* emotions.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emotions.plist; sourceTree = "<group>"; };
 		5FE0C7D91AB0368A00D4D0F7 /* 001.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 001.gif; sourceTree = "<group>"; };
 		5FE0C7DA1AB0368A00D4D0F7 /* 001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 001.png; sourceTree = "<group>"; };
@@ -5390,7 +5387,6 @@
 				5FE0C7611AB02F4900D4D0F7 /* expressionImage_custom.plist */,
 				5FE0C7621AB02F4900D4D0F7 /* MLEmojiLabel.h */,
 				5FE0C7631AB02F4900D4D0F7 /* MLEmojiLabel.m */,
-				5FE0C7641AB02F4900D4D0F7 /* TTTAttributedLabel */,
 			);
 			path = MLEmoji;
 			sourceTree = "<group>";
@@ -5505,15 +5501,6 @@
 				5FE0C75D1AB02F4900D4D0F7 /* Expression_9@2x.png */,
 			);
 			path = Expression;
-			sourceTree = "<group>";
-		};
-		5FE0C7641AB02F4900D4D0F7 /* TTTAttributedLabel */ = {
-			isa = PBXGroup;
-			children = (
-				5FE0C7651AB02F4900D4D0F7 /* TTTAttributedLabel.h */,
-				5FE0C7661AB02F4900D4D0F7 /* TTTAttributedLabel.m */,
-			);
-			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
 		5FE0C7D81AB0365000D4D0F7 /* Emotions */ = {
@@ -10452,7 +10439,6 @@
 				5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */,
 				5F7FADDB1A9385B900CEF622 /* CellView.m in Sources */,
 				5F8736731A8C55EC000CADF4 /* RAMBounceAnimation.swift in Sources */,
-				5FE0C7D51AB02F4900D4D0F7 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
