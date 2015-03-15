@@ -16,8 +16,7 @@
 - (void)pullDown;
 //上拉
 - (void)pullUp;
-//选中cell
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+
 
 @end
 

@@ -14,5 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet YLImageView *reWeiboImage;
 
+@property (strong, nonatomic) IBOutlet UILabel *reGifLabel;
 
 @end

@@ -4,14 +4,12 @@ PODS:
   - SDWebImage-YLGIFImage (0.2)
   - SDWebImage/Core (3.7.1)
   - SKSplashView (0.1.0)
-  - TTTAttributedLabel (1.13.2)
   - YLGIFImage (0.11)
 
 DEPENDENCIES:
   - SDWebImage (from `https://github.com/liyong03/SDWebImage.git`)
   - SDWebImage-YLGIFImage (from `https://github.com/liyong03/SDWebImage-YLGIFImage.git`)
   - SKSplashView
-  - TTTAttributedLabel
   - YLGIFImage
 
 EXTERNAL SOURCES:
@@ -32,7 +30,6 @@ SPEC CHECKSUMS:
   SDWebImage: ff5239e81afa8f9cc29552712cac071183529f66
   SDWebImage-YLGIFImage: c0d061245bd11e4293c39fb002484a741ab1f1ad
   SKSplashView: 1cff0ac7bae5539e65b5b638fb25e59a1e43f681
-  TTTAttributedLabel: 7c4592f9a806badb8b48dc634cb9800447c51594
   YLGIFImage: ffdc4cb9faf077217aacb1cdfe69689afe403f21
 
 COCOAPODS: 0.35.0

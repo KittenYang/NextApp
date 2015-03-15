@@ -108,6 +108,7 @@ typedef enum ScrollDirection {
                 if (![thumbnailImageUrl hasSuffix:@".gif"]) {
                     thumbnailImageUrl = [thumbnailImageUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                 }
+                
                 NSDictionary *imgdics = [NSDictionary dictionaryWithObjectsAndKeys:thumbnailImageUrl,@"thumbnail_pic", nil];
                 [bmiddle_pic_urls addObject:imgdics];
             }
@@ -116,6 +117,11 @@ typedef enum ScrollDirection {
             NSDictionary *imgDICS = self.weiboModel.pic_urls[indexPath.item];
             NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
             NSURL *photoUrl = [NSURL URLWithString:imgUrl];
+            if ([imgUrl hasSuffix:@".gif"]) {
+                cell.gifLabel.hidden = NO;
+            }else{
+                cell.gifLabel.hidden = YES;
+            }
             
             [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg_gray"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );

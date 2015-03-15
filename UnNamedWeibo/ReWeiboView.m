@@ -124,6 +124,13 @@ typedef enum ScrollDirection {
             NSString *imgUrl = [imgDICS objectForKey:@"thumbnail_pic"];
             NSURL *photoUrl = [NSURL URLWithString:imgUrl];
   
+            if ([imgUrl hasSuffix:@".gif"]) {
+                cell.reGifLabel.hidden = NO;
+            }else{
+                cell.reGifLabel.hidden = YES;
+            }
+
+            
             [cell.reWeiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg_white"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
                 NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );
             } completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

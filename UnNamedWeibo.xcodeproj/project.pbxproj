@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1147D31AB46090009C75B0 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1147D21AB46090009C75B0 /* TTTAttributedLabel.m */; };
+		5F1147D61AB49F90009C75B0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1147D51AB49F90009C75B0 /* DetailViewController.m */; };
 		5F2889591AA868F200E64BAD /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889581AA868F200E64BAD /* CollectionViewCell.m */; };
 		5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */; };
 		5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */; };
@@ -2495,6 +2497,10 @@
 /* Begin PBXFileReference section */
 		253EB284DB3AB18D1FB274CB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		296A6E4ABE0FB16D9F90BF72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1147D11AB46090009C75B0 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		5F1147D21AB46090009C75B0 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		5F1147D41AB49F90009C75B0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		5F1147D51AB49F90009C75B0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		5F2889571AA868F200E64BAD /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		5F2889581AA868F200E64BAD /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		5F28895A1AA8B93E00E64BAD /* ReWeiboView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReWeiboView.h; sourceTree = "<group>"; };
@@ -5283,6 +5289,8 @@
 				5FE192341AB0CF99004E7A33 /* EMOTION.plist */,
 				5F8736C01A8D1B3F000CADF4 /* HomeTableViewController.h */,
 				5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */,
+				5F1147D41AB49F90009C75B0 /* DetailViewController.h */,
+				5F1147D51AB49F90009C75B0 /* DetailViewController.m */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -5380,6 +5388,8 @@
 		5FE0C6F31AB02F4900D4D0F7 /* MLEmoji */ = {
 			isa = PBXGroup;
 			children = (
+				5F1147D11AB46090009C75B0 /* TTTAttributedLabel.h */,
+				5F1147D21AB46090009C75B0 /* TTTAttributedLabel.m */,
 				5FE0C6F41AB02F4900D4D0F7 /* Expression */,
 				5FE0C75E1AB02F4900D4D0F7 /* expression.plist */,
 				5FE0C75F1AB02F4900D4D0F7 /* expression_custom.plist */,
@@ -10412,6 +10422,7 @@
 				5F7FAD6F1A90DEB600CEF622 /* MainTabViewController.m in Sources */,
 				5F7FADFD1A9475A000CEF622 /* Utils.m in Sources */,
 				5F8737321A8F2399000CADF4 /* BaseViewController.m in Sources */,
+				5F1147D61AB49F90009C75B0 /* DetailViewController.m in Sources */,
 				5F8736841A8CC517000CADF4 /* MessageViewController.m in Sources */,
 				5F8736481A8C4EF7000CADF4 /* UserViewController.m in Sources */,
 				5F7FAD941A923F1400CEF622 /* UserModel.m in Sources */,
@@ -10435,6 +10446,7 @@
 				5F8736741A8C55EC000CADF4 /* RAMFrameItemAnimation.swift in Sources */,
 				5F8736751A8C55EC000CADF4 /* RAMFumeAnimation.swift in Sources */,
 				5F8736881A8CC55A000CADF4 /* SquareViewController.m in Sources */,
+				5F1147D31AB46090009C75B0 /* TTTAttributedLabel.m in Sources */,
 				5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */,
 				5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */,
 				5F7FADDB1A9385B900CEF622 /* CellView.m in Sources */,

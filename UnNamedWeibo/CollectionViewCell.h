@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet YLImageView *weiboImage;
 
+@property (strong, nonatomic) IBOutlet UILabel *gifLabel;
+
 @end

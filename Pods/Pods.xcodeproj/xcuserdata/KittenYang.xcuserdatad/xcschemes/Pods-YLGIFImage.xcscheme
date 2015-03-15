@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7C7A7898EFE2ED75EAC7B382"
+               BlueprintIdentifier = "98D75A98543CEB4D4CCA40B4"
                BuildableName = "libPods-YLGIFImage.a"
                BlueprintName = "Pods-YLGIFImage"
                ReferencedContainer = "container:Pods.xcodeproj">

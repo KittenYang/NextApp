@@ -17,15 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage* logo = [UIImage imageNamed:@"Woohu"];
-    CGRect frameimg = CGRectMake(0, 0, 70, 30);
-    UIButton *logoButton = [[UIButton alloc] initWithFrame:frameimg];
-    [logoButton setImage:logo forState:UIControlStateNormal];
-    logoButton.imageEdgeInsets = UIEdgeInsetsMake(0, -6, 4, 0);
-    logoButton.adjustsImageWhenHighlighted = NO;
-    
-    UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
-    self.navigationItem.leftBarButtonItem=logoItem;
+//    UIImage* logo = [UIImage imageNamed:@"Woohu"];
+//    CGRect frameimg = CGRectMake(0, 0, 70, 30);
+//    UIButton *logoButton = [[UIButton alloc] initWithFrame:frameimg];
+//    [logoButton setImage:logo forState:UIControlStateNormal];
+//    logoButton.imageEdgeInsets = UIEdgeInsetsMake(0, -6, 4, 0);
+//    logoButton.adjustsImageWhenHighlighted = NO;
+//    
+//    UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
+//    self.navigationItem.leftBarButtonItem=logoItem;
 
 }
 

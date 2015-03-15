@@ -36,22 +36,22 @@
     [super viewDidLoad];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 250;
+//    self.tableView.estimatedRowHeight = 250;
     
     //去除黑线
 //    self.navigationController.navigationBar.clipsToBounds = YES;
     
     
-    UIImage* logo = [UIImage imageNamed:@"Woohu"];
-    CGRect frameimg = CGRectMake(0, 0, 70, 30);
-    UIButton *logoButton = [[UIButton alloc] initWithFrame:frameimg];
-    [logoButton setImage:logo forState:UIControlStateNormal];
-    logoButton.imageEdgeInsets = UIEdgeInsetsMake(0, -6, 4, 0);
-    logoButton.adjustsImageWhenHighlighted = NO;
-    
-    UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
-    self.navigationItem.leftBarButtonItem=logoItem;
-    self.navigationController.navigationBar.alpha = 0.5f;
+//    UIImage* logo = [UIImage imageNamed:@"Woohu"];
+//    CGRect frameimg = CGRectMake(0, 0, 70, 30);
+//    UIButton *logoButton = [[UIButton alloc] initWithFrame:frameimg];
+//    [logoButton setImage:logo forState:UIControlStateNormal];
+//    logoButton.imageEdgeInsets = UIEdgeInsetsMake(0, -6, 4, 0);
+//    logoButton.adjustsImageWhenHighlighted = NO;
+//    
+//    UIBarButtonItem *logoItem =[[UIBarButtonItem alloc] initWithCustomView:logoButton];
+//    self.navigationItem.leftBarButtonItem=logoItem;
+
     
     //状态条底色
 //    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 568, 20)];

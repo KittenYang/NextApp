@@ -11,6 +11,7 @@
 
 @interface UserViewController : BaseViewController
 
+@property int index;
 
 @end
 

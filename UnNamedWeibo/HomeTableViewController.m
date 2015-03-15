@@ -23,9 +23,7 @@
 #import "KYLoadingHUD.h"
 #import "JellyButton.h"
 #import "KYCuteView.h"
-
-
-
+#import "DetailViewController.h"
 
 
 @interface HomeTableViewController ()
@@ -46,7 +44,8 @@
     JellyButton *refreshNumberView;
     UILabel *updatedNumberforBanner;
     
-    //cell 的具体高度
+    //缓存高度
+    NSMutableArray *cellHeightCache;
 
 }
 
@@ -71,6 +70,8 @@
     [super viewDidLoad];
     [self twitterSplash];
 
+    self.navigationItem.hidesBackButton = NO;
+    self.navigationItem.leftItemsSupplementBackButton = NO;
 //    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
 //    [self.view addSubview:hud];
 
@@ -113,6 +114,9 @@
     }else{
         [self.tableView reloadData];
     }
+    
+    //缓存高度
+    cellHeightCache = [NSMutableArray array];
     
     
     //获取未读微博数的定时器
@@ -166,14 +170,97 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     WeiboModel *model = [self.data objectAtIndex:indexPath.row];
-    
-    
     KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
+//        [cell setNeedsUpdateConstraints];
+//        [cell updateConstraintsIfNeeded];
     
     [self updateCellContentView:cell withWeiboModel:model];
 
-//    [cell setNeedsUpdateConstraints];
-//    [cell updateConstraintsIfNeeded];
+//    cell.weiboModel = model;
+//    cell.cellView.weiboView.weiboModel = model;
+//    
+//    //1.头像
+//    NSString *imgURL = model.user.avatar_large;
+//    NSURL *avatorUrl = [NSURL URLWithString:imgURL];
+//    if (avatorUrl != nil) {
+//        [cell.avator sd_setImageWithURL:avatorUrl];
+//    }
+//    
+//    //2.昵称
+//    cell.name.text = model.user.screen_name;
+//    
+//    //3.微博内容
+//    cell.cellView.weiboView.weiboText.lineBreakMode = NSLineBreakByWordWrapping;
+//    cell.cellView.weiboView.weiboText.numberOfLines = 0;
+//    cell.cellView.weiboView.weiboText.text = model.text;
+//    CGRect oldFrame = cell.cellView.weiboView.weiboText.frame;
+//    CGSize size = [cell.cellView.weiboView.weiboText sizeThatFits:CGSizeMake(cell.cellView.weiboView.weiboText.frame.size.width, MAXFLOAT)];
+//    cell.cellView.weiboView.weiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
+//
+//    
+//    //4.创建日期
+//    NSString *createDate =  model.createDate;
+//    NSString *dateString = [Utils fomateString:createDate];
+//    if (createDate != nil ) {
+//        cell.cellView.createDateLabel.hidden = NO;
+//        cell.cellView.createDateLabel.text = dateString;
+//    }else{
+//        cell.cellView.createDateLabel.hidden = YES;
+//    }
+//    
+//    //5.微博来源
+//    NSString *ret = [Utils parseSource: model.source];
+//    if (ret != nil) {
+//        cell.cellView.createDateLabel.hidden = NO;
+//        cell.cellView.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
+//    }else{
+//        cell.cellView.sourceLabel.hidden = YES;
+//    }
+//    
+//    //6.图片视图
+//    if (model.pic_urls.count > 0) {
+//        
+//        cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
+//        
+//    }else {
+//        cell.cellView.weiboView.weiboModel.pic_urls = 0;
+//        cell.cellView.weiboView.collectionViewHeight.constant = 0.0f;
+//    }
+//    
+//    //7.转发视图
+//    if (model.retWeibo) {
+//        
+//        cell.cellView.weiboView.reWeiboView.reWeiboModel = model.retWeibo;
+//        
+//        NSString *nickName = model.retWeibo.user.screen_name;
+//        cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
+//        cell.cellView.weiboView.reWeiboView.reWeiboText.numberOfLines = 0;
+//        cell.cellView.weiboView.reWeiboView.reWeiboText.text = [NSString stringWithFormat:@"@%@:%@",nickName,model.retWeibo.text];
+//        CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
+//        CGSize size = [cell.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake(cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.width, MAXFLOAT)];
+//        cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
+//        
+//        
+//        if (!(model.retWeibo.pic_urls.count > 0)) {
+//            
+//            if (cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant != 0.0f) {
+//                cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//            }
+//        }else{
+//            if (cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant != 130.0f) {
+//                cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 130.0f;
+//            }
+//        }
+//        
+//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.height + cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant + 5 + 5 + 5;
+//        
+//    }else{
+//        
+//        cell.cellView.weiboView.reWeiboView.reWeiboModel = nil;
+//        cell.cellView.weiboView.reWeiboView.reWeiboText.text = nil;
+//        cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant = 0.0f;
+//        cell.cellView.weiboView.reWeiboView.reWeiboHeight.constant = 0;
+//    }
     
     return cell;
 }
@@ -189,18 +276,6 @@
     
     //-----头像-------
     NSString *imgURL = model.user.avatar_large;
-    
-    //多线程实现头像的加载
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        NSURL *avatorUrl = [NSURL URLWithString:imgURL];
-//        if (avatorUrl != nil) {
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [cell.avator sd_setImageWithURL:avatorUrl];
-//            });
-//        }
-//    });
-    
-    
     NSURL *avatorUrl = [NSURL URLWithString:imgURL];
     if (avatorUrl != nil) {
         [cell.avator sd_setImageWithURL:avatorUrl];
@@ -220,8 +295,6 @@
 
     if (createDate != nil ) {
         cell.cellView.createDateLabel.text = dateString;
-    }else{
-        cell.cellView.createDateLabel.hidden = YES;
     }
     
 
@@ -230,15 +303,10 @@
     if (ret != nil) {
         cell.cellView.sourceLabel.text = [NSString stringWithFormat:@"来自 %@",ret];
         
-    }else{
-        cell.cellView.sourceLabel.hidden = YES;
     }
     
     
-//    //------图片视图-------
-//    if (model.pic_urls.count == 0) {
-//        cell.cellView.weiboView.weiboModel.pic_urls = 0;
-//    }
+    //------图片视图-------
     if (model.pic_urls.count > 0) {
 
         cell.cellView.weiboView.collectionViewHeight.constant = 130.0f;
@@ -255,15 +323,15 @@
         NSString *nickName = model.retWeibo.user.screen_name;
 
         cell.cellView.weiboView.reWeiboView.reWeiboText.text = [NSString stringWithFormat:@"@%@:%@",nickName,model.retWeibo.text];
+        cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
+        cell.cellView.weiboView.reWeiboView.reWeiboText.numberOfLines = 0;
 
         CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
-        cell.cellView.weiboView.reWeiboView.reWeiboText.lineBreakMode = NSLineBreakByWordWrapping;
         CGSize size = [cell.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake(cell.cellView.weiboView.reWeiboView.reWeiboText.frame.size.width, MAXFLOAT)];
         
         cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
         
         
-
         if (!(model.retWeibo.pic_urls.count > 0)) {
             
             if (cell.cellView.weiboView.reWeiboView.reCollectionViewHeight.constant != 0.0f) {
@@ -288,33 +356,42 @@
 
 
 #pragma mark - Table view delegate
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    WeiboModel *model = [self.data objectAtIndex:indexPath.row];
-//    
-//    
-//}
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 250;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    [self performSegueWithIdentifier:@"showDetail" sender:nil];
+
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+////    if ([cellHeightCache objectAtIndex:indexPath.row]) {
+////        return [[cellHeightCache objectAtIndex:indexPath.row]floatValue];
+////    }
 ////    KYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WeiboCell" forIndexPath:indexPath];
 //    WeiboModel *model = [self.data objectAtIndex:indexPath.row];
 //    
 //    CGFloat height;
+//
 //    //头像以上的高度
 //    CGFloat avatorHeight = 10.0f + 50.0f;
-//    
 //    
 //    //微博正文顶部的padding
 //    CGFloat weiboLabelPadding = 5.0f;
 //    
 //    //微博正文的高度
 //    MLEmojiLabel *textLabel = [[MLEmojiLabel alloc]initWithFrame:CGRectZero];
-//    textLabel.text = model.text;
 //    textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    CGSize weiboTextSize = [textLabel sizeThatFits:CGSizeMake(280, MAXFLOAT)];
+//    textLabel.numberOfLines = 0;
+//    textLabel.text = model.text;
+//    CGSize weiboTextSize = [textLabel sizeThatFits:CGSizeMake([[UIScreen mainScreen]bounds].size.width - 15, MAXFLOAT)];
 //    
 //    //转发视图顶部的padding
 //    CGFloat reWeiboPadding  = 8.0f;
-//    
 //    
 //    //转发视图
 //    CGFloat reWeiboHeight;
@@ -329,7 +406,8 @@
 //        MLEmojiLabel *reTextLabel = [[MLEmojiLabel alloc]initWithFrame:CGRectZero];
 //        reTextLabel.text = model.retWeibo.text;
 //        reTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//        CGSize reWeiboTextSize = [reTextLabel sizeThatFits:CGSizeMake(280, MAXFLOAT)];
+//        reTextLabel.numberOfLines = 0;
+//        CGSize reWeiboTextSize = [reTextLabel sizeThatFits:CGSizeMake([[UIScreen mainScreen]bounds].size.width - 15, MAXFLOAT)];
 //        
 //        //转发图片的高度
 //        CGFloat reWeiboImgHeight   = 130.0f;
@@ -356,6 +434,7 @@
 //    
 //    height = avatorHeight + weiboLabelPadding + weiboTextSize.height  + reWeiboPadding + reWeiboHeight + weiboImgpadding + weiboImgHeight +  bottomPadding;
 //    
+//    [cellHeightCache addObject:[NSNumber numberWithFloat:height]];
 //    return height;
 //}
 
@@ -419,10 +498,7 @@
 - (void)pullUp{
     
 }
-//选中cell
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-}
+
 
 
 #pragma mark  - WBHttpRequestDelegate
