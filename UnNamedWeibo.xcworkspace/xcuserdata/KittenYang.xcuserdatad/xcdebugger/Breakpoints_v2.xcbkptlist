@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "509"
-            endingLineNumber = "509"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "467"
-            endingLineNumber = "467"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
             landmarkName = "-prepareToLoadWeibo"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-prepareToLoadWeibo"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
+            startingLineNumber = "599"
+            endingLineNumber = "599"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "547"
-            endingLineNumber = "547"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "651"
-            endingLineNumber = "651"
+            startingLineNumber = "675"
+            endingLineNumber = "675"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "676"
-            endingLineNumber = "676"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
             landmarkName = "-request:didFinishLoadingWithDataResult:"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448127035.699073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -378,12 +378,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448127035.699073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "-updateCellContentView:withWeiboModel:"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "-updateCellContentView:withWeiboModel:withIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -474,12 +474,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448127035.699073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-updateCellContentView:withWeiboModel:"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-updateCellContentView:withWeiboModel:withIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -618,27 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
+            timestampString = "448135268.787143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "-tableView:estimatedHeightForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UnNamedWeibo/HomeTableViewController.m"
-            timestampString = "448111959.221146"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -672,6 +656,54 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnNamedWeibo/HomeTableViewController.m"
+            timestampString = "448135268.787143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
+            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnNamedWeibo/HomeTableViewController.m"
+            timestampString = "448135268.787143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-updateCellContentView:withWeiboModel:withIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnNamedWeibo/HomeTableViewController.m"
+            timestampString = "448135268.787143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
+            landmarkName = "-updateCellContentView:withWeiboModel:withIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

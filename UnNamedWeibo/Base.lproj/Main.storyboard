@@ -67,22 +67,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是DetailVC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVr-7b-wfP">
-                                <rect key="frame" x="250" y="290" width="101" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="xrh-Ch-LWo">
+                                <rect key="frame" x="31" y="92" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Hvf-Eu-atg"/>
+                                    <constraint firstAttribute="height" constant="50" id="vQp-nO-Zlc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="KITTEN-YANG" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-dr-pMO">
+                                <rect key="frame" x="89" y="92" width="150" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="W6c-cJ-SsS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="2015-02-28" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dC-eu-yOE">
+                                <rect key="frame" x="89" y="122" width="65" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="6Ff-w4-9fC"/>
+                                    <constraint firstAttribute="width" constant="65" id="Y0G-wv-Kjc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="来自 iPhone 6 " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GX1-Cc-ytQ">
+                                <rect key="frame" x="157" y="122" width="120" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="mGl-Qc-Svu"/>
+                                    <constraint firstAttribute="height" constant="20" id="n3g-5W-zAc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="iVr-7b-wfP" secondAttribute="centerY" id="9c0-QY-aFc"/>
-                            <constraint firstAttribute="centerX" secondItem="iVr-7b-wfP" secondAttribute="centerX" id="JEG-5T-kaK"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="FOJ-G6-ZMx">
-                        <barButtonItem key="backBarButtonItem" title="我也要回去" id="Goc-vH-h2D"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="FOJ-G6-ZMx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkB-UU-gg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,15 +123,15 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WeiboCell" rowHeight="464" id="xlN-Eg-L5h" customClass="KYCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeiboCell" rowHeight="464" id="xlN-Eg-L5h" customClass="KYCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xlN-Eg-L5h" id="22v-tu-i6u">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahg-PD-yVw" userLabel="CellView" customClass="CellView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahg-PD-yVw" userLabel="CellView" customClass="CellView">
                                             <rect key="frame" x="5" y="35" width="590" height="419"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7l-2m-WOR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-02-28" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7l-2m-WOR">
                                                     <rect key="frame" x="52" y="0.0" width="65" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="5H8-dV-rL9"/>
@@ -126,10 +151,10 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCK-Zx-Qf9" userLabel="WeiboView" customClass="WeiboView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCK-Zx-Qf9" userLabel="WeiboView" customClass="WeiboView">
                                                     <rect key="frame" x="0.0" y="25" width="590" height="389"/>
                                                     <subviews>
-                                                        <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
+                                                        <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yIf-4U-N4w">
                                                             <rect key="frame" x="0.0" y="254" width="590" height="130"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -158,7 +183,7 @@
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="10" id="e1q-x4-yL8"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -185,16 +210,16 @@
                                                                 <outlet property="delegate" destination="hCK-Zx-Qf9" id="KEe-77-iRk"/>
                                                             </connections>
                                                         </collectionView>
-                                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-Ej-uy3" userLabel="reWeiboView" customClass="ReWeiboView">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wW4-Ej-uy3" userLabel="reWeiboView" customClass="ReWeiboView">
                                                             <rect key="frame" x="0.0" y="56" width="590" height="190"/>
                                                             <subviews>
-                                                                <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0P-cf-XCP" userLabel="reWeibo_text" customClass="MLEmojiLabel">
+                                                                <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0P-cf-XCP" userLabel="reWeibo_text" customClass="MLEmojiLabel">
                                                                     <rect key="frame" x="10" y="5" width="575" height="45"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-Yg-zal" userLabel="ReWeiboImgCollectionView">
+                                                                <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wWD-Yg-zal" userLabel="ReWeiboImgCollectionView">
                                                                     <rect key="frame" x="0.0" y="55" width="590" height="130"/>
                                                                     <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
@@ -223,7 +248,7 @@
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="10" id="PC1-0o-BdH"/>
                                                                                         </constraints>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
@@ -269,11 +294,8 @@
                                                                 <outlet property="reWeiboText" destination="y0P-cf-XCP" id="ypP-Ai-h3N"/>
                                                             </connections>
                                                         </view>
-                                                        <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-jI-Rqb" userLabel="weibo_text" customClass="MLEmojiLabel">
+                                                        <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4i-jI-Rqb" userLabel="weibo_text" customClass="MLEmojiLabel">
                                                             <rect key="frame" x="10" y="5" width="575" height="43"/>
-                                                            <accessibility key="accessibilityConfiguration">
-                                                                <accessibilityTraits key="traits" none="YES" button="YES" link="YES" selected="YES" staticText="YES"/>
-                                                            </accessibility>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -353,7 +375,7 @@
                                     <outlet property="avator" destination="vsj-oN-jyf" id="ycZ-c9-yTD"/>
                                     <outlet property="cellView" destination="ahg-PD-yVw" id="092-Jc-caT"/>
                                     <outlet property="name" destination="QQK-qW-FwU" id="S6a-pt-lH4"/>
-                                    <segue destination="2Tx-QV-bJM" kind="push" identifier="showDetail" id="rQZ-6x-eGm"/>
+                                    <segue destination="2Tx-QV-bJM" kind="show" identifier="showDetail" id="rQZ-6x-eGm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -362,11 +384,7 @@
                             <outlet property="delegate" destination="xCt-L4-EeA" id="fX1-cC-aut"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="B1h-32-Xab">
-                        <barButtonItem key="backBarButtonItem" title="我要回去" style="plain" id="h9W-Ii-0In">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="B1h-32-Xab"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i36-Ue-dle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

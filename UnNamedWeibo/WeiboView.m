@@ -124,7 +124,7 @@ typedef enum ScrollDirection {
             }
             
             [cell.weiboImage sd_setImageWithURL:photoUrl placeholderImage:[UIImage imageNamed:@"placeholderImg_gray"] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );
+//                NSLog(@"图片下载进度 = %f", (float)receivedSize/(float)expectedSize );
             } completed:^(UIImage *image, NSData *data, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 if (error) {
                     NSLog(@"ERROR: %@", error);
