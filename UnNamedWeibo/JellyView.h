@@ -11,6 +11,7 @@
 @interface JellyView : UIView
 
 
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
 @property  CGFloat controlPointOffset;
 @property  CGFloat yOffset;
 @property (nonatomic,strong)UIView *controlPoint;

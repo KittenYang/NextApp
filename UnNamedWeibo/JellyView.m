@@ -10,10 +10,16 @@
 
 #import "JellyView.h"
 
+@interface JellyView()
+
+
+
+@end
+
 @implementation JellyView{
     CGRect jellyFrame;
     UIColor *fillColor;
-    CAShapeLayer *shapeLayer;
+//    CAShapeLayer *shapeLayer;
     
     UIDynamicAnimator *animator;
     UICollisionBehavior *coll;
@@ -65,8 +71,8 @@
         item.elasticity = 0;
         item.density = 1;
         
-        shapeLayer = [CAShapeLayer layer];
-        [self.layer insertSublayer:shapeLayer below:_ballView.layer];
+        self.shapeLayer = [CAShapeLayer layer];
+        [self.layer insertSublayer:self.shapeLayer below:_ballView.layer];
     
     }
     return self;
@@ -102,8 +108,9 @@
     [path closePath];
     
     
-    shapeLayer.path = path.CGPath;
-    shapeLayer.fillColor = [UIColor redColor].CGColor;
+    self.shapeLayer.path = path.CGPath;
+    self.shapeLayer.fillColor = [UIColor redColor].CGColor;
+
     
     if (self.isLoading == NO) {
         [coll addBoundaryWithIdentifier:@"弧形" forPath:path];
@@ -133,6 +140,7 @@
 -(void)removeAnimator{
     [animator removeAllBehaviors];
     animator = nil;
+    CGPathRelease(self.shapeLayer.path);
 }
 
 
