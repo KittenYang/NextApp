@@ -530,6 +530,9 @@
 
 #pragma mark  - WBHttpRequestDelegate
 - (void)request:(WBHttpRequest *)request didFinishLoadingWithDataResult:(NSData *)data{
+
+
+    //-------------------load的网络返回------------------------
     if ([request.tag isEqual: @"load"]) {
 //        [hud dismissHUD];
 
@@ -562,6 +565,9 @@
         [self.tableView reloadData];
     }
     
+    
+
+    //-------------------pullDown的网络返回------------------------
     if ([request.tag isEqual:@"pullDown"]) {
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error]; // 100条JSON，一个statuses对应一个WeiboModel
@@ -632,6 +638,10 @@
         
     }
     
+    
+    
+    
+    //-------------------Unread的网络返回------------------------
     if ([request.tag isEqual:@"unRead"]) {
         NSError *error;
         NSDictionary *WEIBOJSON = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];

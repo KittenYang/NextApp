@@ -25,7 +25,7 @@
     UICollisionBehavior *coll;
     UISnapBehavior  *snap;
     
-    BOOL isFirstTime;
+//    BOOL isFirstTime;
     CGFloat angle;
 }
 
@@ -41,11 +41,8 @@
     self = [super initWithFrame:jellyFrame];
     if (self) {
         self.isLoading = NO;
-        isFirstTime = NO;
+        self.isFirstTime = NO;
         
-//        self.fillColor = [UIColor blackColor];
-//        self.fillColor = [UIColor colorWithRed:0 green:0.722 blue:1 alpha:1];
-//        fillColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper"]];
         self.frame = jellyFrame;
         
         //贝塞尔曲线的控制点
@@ -86,12 +83,12 @@
         fillColor = [UIColor redColor];
     }else{
 
-        if (!isFirstTime) {
-            isFirstTime = YES;
+        if (!self.isFirstTime) {
+            self.isFirstTime = YES;
             snap = [[ UISnapBehavior alloc]initWithItem:_ballView snapToPoint:CGPointMake(self.userFrame.size.width / 2, self.userFrame.size.height - (90+64.5)/2)];
             [animator addBehavior:snap];
             
-            [self startLoading];
+//            [self startLoading];
         }
 
         fillColor = [UIColor redColor];
@@ -132,7 +129,7 @@
         _ballView.transform = endAngle;
     } completion:^(BOOL finished) {
         angle += 10;
-//        [self startLoading];
+        [self startLoading];
     }];
     
 }

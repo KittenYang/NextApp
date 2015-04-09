@@ -166,7 +166,7 @@
     }
     
     if (!self.jellyView.isFirstTime && self.displayLinkToPull == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
-        self.jellyView.isFirstTime = YES;
+//        self.jellyView.isFirstTime = YES;
         self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight - 30 , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
         self.jellyView.backgroundColor = [UIColor clearColor];
         [self.view insertSubview:self.jellyView aboveSubview:self.tableView];
@@ -235,12 +235,12 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.tableView.contentInset = UIEdgeInsetsMake(64.5, 0, 0, 0);
     } completion:^(BOOL finished) {
-        [self.jellyView removeAnimator];
+        [self.displayLinkToPull invalidate];
+        self.displayLinkToPull = nil;
+//        [self.jellyView removeAnimator];
         self.jellyView.isLoading = NO;
         [self.jellyView removeFromSuperview];
         self.jellyView = nil;
-        [self.displayLinkToPull invalidate];
-        self.displayLinkToPull = nil;
 
     }];
 }
@@ -250,9 +250,11 @@
     
 //    CALayer *layer = (CALayer *)[self.jellyView.controlPoint.layer presentationLayer];
     
-    self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
-    
-    [self.jellyView drawRectInJellyView];
+    if (dis != nil) {
+        self.jellyView.controlPointOffset = (self.jellyView.isLoading == NO)? (-self.tableView.contentOffset.y - 64.5) : (self.jellyView.controlPoint.layer.position.y - self.jellyView.userFrame.size.height);
+        
+        [self.jellyView drawRectInJellyView];
+    }
 }
 
 
