@@ -35,8 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-//    self.tableView.estimatedRowHeight = 250;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 250;
     
     //去除黑线
 //    self.navigationController.navigationBar.clipsToBounds = YES;
@@ -63,7 +63,7 @@
     _afterRemovedshowIndexes = [NSMutableArray array];
     
     //时间滚动条
-//    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
+    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
 
     
     //是否是第一次加载
@@ -165,7 +165,8 @@
         return;
     }
     
-    if (self.displayLinkToPull == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
+    if (!self.jellyView.isFirstTime && self.displayLinkToPull == nil && (-scrollView.contentOffset.y - 64.5) > 0) {
+        self.jellyView.isFirstTime = YES;
         self.jellyView = [[JellyView alloc]initWithFrame:CGRectMake(0, -jellyHeaderHeight - 30 , [UIScreen mainScreen].bounds.size.width, jellyHeaderHeight)];
         self.jellyView.backgroundColor = [UIColor clearColor];
         [self.view insertSubview:self.jellyView aboveSubview:self.tableView];

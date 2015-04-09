@@ -20,7 +20,7 @@
     UIDynamicAnimator *animator;
     UISnapBehavior  *snap;
     
-    CADisplayLink *displayLink;
+
     
 
 //    UIView *frontView;
@@ -189,10 +189,7 @@
         backView.hidden = NO;
         fillColorForCute = self.bubbleColor;
         [self RemoveAniamtionLikeGameCenterBubble];
-        if (displayLink == nil) {
-            displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkAction:)];
-            [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-        }
+
 
     }else if (ges.state == UIGestureRecognizerStateChanged){
         self.frontView.center = dragPoint;
@@ -201,8 +198,7 @@
             fillColorForCute = [UIColor clearColor];
             backView.hidden = YES;
             [shapeLayer removeFromSuperlayer];
-            [displayLink invalidate];
-            displayLink = nil;
+
         }
 
     }else if (ges.state == UIGestureRecognizerStateEnded || ges.state ==UIGestureRecognizerStateCancelled || ges.state == UIGestureRecognizerStateFailed){
@@ -216,13 +212,13 @@
             
             if (finished) {
                 [self AddAniamtionLikeGameCenterBubble];
-                [displayLink invalidate];
-                displayLink = nil;
             }
             
         }];
     
     }
+    
+    [self displayLinkAction:nil];
     
 }
 

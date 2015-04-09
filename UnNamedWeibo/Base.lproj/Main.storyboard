@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hkB-UU-gg0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2792" y="1557"/>
+            <point key="canvasLocation" x="-2164" y="2365"/>
         </scene>
         <!--Home Table View Controller-->
         <scene sceneID="uqd-MP-q6I">
@@ -184,7 +184,7 @@
                                                                                     <constraint firstAttribute="height" constant="10" id="e1q-x4-yL8"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -249,7 +249,7 @@
                                                                                             <constraint firstAttribute="height" constant="10" id="PC1-0o-BdH"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                 </subviews>
@@ -276,7 +276,6 @@
                                                                     </connections>
                                                                 </collectionView>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="wWD-Yg-zal" secondAttribute="bottom" constant="5" id="25b-dI-Yl5"/>
                                                                 <constraint firstAttribute="height" constant="190" id="FPO-jh-u9z"/>
@@ -301,7 +300,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="yIf-4U-N4w" secondAttribute="bottom" constant="5" id="MhK-wz-6Lx"/>
                                                         <constraint firstItem="yIf-4U-N4w" firstAttribute="top" secondItem="wW4-Ej-uy3" secondAttribute="bottom" constant="8" id="OdD-hg-1ao"/>

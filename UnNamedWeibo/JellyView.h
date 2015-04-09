@@ -18,10 +18,12 @@
 @property  CGRect userFrame;
 
 @property BOOL isLoading;
+@property BOOL isFirstTime;
 
 @property (strong,nonatomic)   UIImageView *ballView;
 
 - (void)drawRectInJellyView;
 -(void)removeAnimator;
+
 
 @end

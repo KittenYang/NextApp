@@ -132,7 +132,7 @@
         _ballView.transform = endAngle;
     } completion:^(BOOL finished) {
         angle += 10;
-        [self startLoading];
+//        [self startLoading];
     }];
     
 }
