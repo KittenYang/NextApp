@@ -662,7 +662,7 @@
     
             self.cuteView.bubbleColor = BubbleColor;
             self.cuteView.bubbleWidth = 35;
-            self.cuteView.viscosity  = 25;
+            self.cuteView.viscosity  = 10;
             [self.cuteView setUp];
             [self.cuteView addGesture];
             self.tabBarController.view.backgroundColor = [UIColor whiteColor];
