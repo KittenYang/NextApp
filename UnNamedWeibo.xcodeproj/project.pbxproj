@@ -12,6 +12,7 @@
 		5F2889591AA868F200E64BAD /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889581AA868F200E64BAD /* CollectionViewCell.m */; };
 		5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */; };
 		5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */; };
+		5F3362BA1AE2925500D574A1 /* KYPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3362B91AE2925500D574A1 /* KYPushTransition.m */; };
 		5F7FAD6C1A904CF500CEF622 /* KYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6B1A904CF500CEF622 /* KYCell.m */; };
 		5F7FAD6F1A90DEB600CEF622 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6E1A90DEB600CEF622 /* MainTabViewController.m */; };
 		5F7FAD8B1A923B5900CEF622 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FAD801A923B5900CEF622 /* libWeiboSDK.a */; };
@@ -655,6 +656,8 @@
 		5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboView.m; sourceTree = "<group>"; };
 		5F28895D1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReWeiboImgCollectionViewCell.h; sourceTree = "<group>"; };
 		5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboImgCollectionViewCell.m; sourceTree = "<group>"; };
+		5F3362B81AE2925500D574A1 /* KYPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPushTransition.h; sourceTree = "<group>"; };
+		5F3362B91AE2925500D574A1 /* KYPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPushTransition.m; sourceTree = "<group>"; };
 		5F7FAD6A1A904CF500CEF622 /* KYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCell.h; sourceTree = "<group>"; };
 		5F7FAD6B1A904CF500CEF622 /* KYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCell.m; sourceTree = "<group>"; };
 		5F7FAD6D1A90DEB600CEF622 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
@@ -1345,6 +1348,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5F3362BB1AE2927C00D574A1 /* KYPushTransition */ = {
+			isa = PBXGroup;
+			children = (
+				5F3362B81AE2925500D574A1 /* KYPushTransition.h */,
+				5F3362B91AE2925500D574A1 /* KYPushTransition.m */,
+			);
+			name = KYPushTransition;
+			sourceTree = "<group>";
+		};
 		5F7FAD7F1A923B5900CEF622 /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1469,6 +1481,7 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F3362BB1AE2927C00D574A1 /* KYPushTransition */,
 				5FE0C7D81AB0365000D4D0F7 /* Emotions */,
 				5FE0C6F31AB02F4900D4D0F7 /* MLEmoji */,
 				5FDF30DC1AA0AAD0007E6ECA /* VBFJellyView */,
@@ -3006,6 +3019,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F3362BA1AE2925500D574A1 /* KYPushTransition.m in Sources */,
 				5FE0C7D41AB02F4900D4D0F7 /* MLEmojiLabel.m in Sources */,
 				5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */,
 				5F8736C21A8D1B3F000CADF4 /* HomeTableViewController.m in Sources */,
