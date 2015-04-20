@@ -185,7 +185,6 @@
 
     if (![self ky_isEstimatedRowHeightInCache:indexPath]) {
         CGSize cellSize = [cell systemLayoutSizeFittingSize:CGSizeMake(self.view.frame.size.width, 0) withHorizontalFittingPriority:1000.0 verticalFittingPriority:50.0];
-//        [self putEstimatedCellHeightToCache:indexPath height:cellSize.height];
         [self ky_putEstimatedCellHeightToCache:indexPath height:cellSize.height];
     }
 //    cell.weiboModel = model;
