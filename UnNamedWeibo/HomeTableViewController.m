@@ -114,7 +114,8 @@
     if (self.data.count == 0) {
         [self loadWeibo];
     }else{
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
+        [self ky_tableViewReloadData];
     }
     
     //缓存高度
@@ -168,6 +169,10 @@
     return self.data.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self ky_getEstimatedCellHeightFromCache:indexPath defaultHeight:250.0f];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
@@ -178,6 +183,11 @@
     
     [self updateCellContentView:cell withWeiboModel:model withIndexPath:indexPath];
 
+    if (![self ky_isEstimatedRowHeightInCache:indexPath]) {
+        CGSize cellSize = [cell systemLayoutSizeFittingSize:CGSizeMake(self.view.frame.size.width, 0) withHorizontalFittingPriority:1000.0 verticalFittingPriority:50.0];
+//        [self putEstimatedCellHeightToCache:indexPath height:cellSize.height];
+        [self ky_putEstimatedCellHeightToCache:indexPath height:cellSize.height];
+    }
 //    cell.weiboModel = model;
 //    cell.cellView.weiboView.weiboModel = model;
 //    
@@ -366,6 +376,50 @@
     NSLog(@"生成Cell%ld_正文内容高度:%@",indexPath.row,NSStringFromCGSize(size));
 
 }
+
+#pragma mark - estimated height cache methods
+//
+//// put height to cache
+//- (void) putEstimatedCellHeightToCache:(NSIndexPath *) indexPath height:(CGFloat) height {
+//    [self initEstimatedRowHeightCacheIfNeeded];
+//    [self.estimatedRowHeightCache setValue:[[NSNumber alloc] initWithFloat:height] forKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]];
+//}
+//
+//// get height from cache
+//- (CGFloat) getEstimatedCellHeightFromCache:(NSIndexPath *) indexPath defaultHeight:(CGFloat) defaultHeight {
+//    [self initEstimatedRowHeightCacheIfNeeded];
+//    NSNumber *estimatedHeight = [self.estimatedRowHeightCache valueForKey:[NSString stringWithFormat:@"%ld", (long)indexPath.row]];
+//    if (estimatedHeight != nil) {
+//        //NSLog(@"cached: %f", [estimatedHeight floatValue]);
+//        return [estimatedHeight floatValue];
+//    }
+//    //NSLog(@"not cached: %f", defaultHeight);
+//    return defaultHeight;
+//}
+//
+//// check if height is on cache
+//- (BOOL) isEstimatedRowHeightInCache:(NSIndexPath *) indexPath {
+//    if ([self getEstimatedCellHeightFromCache:indexPath defaultHeight:0] > 0) {
+//        return YES;
+//    }
+//    return NO;
+//}
+//
+//// init cache
+//-(void) initEstimatedRowHeightCacheIfNeeded {
+//    if (self.estimatedRowHeightCache == nil) {
+//        self.estimatedRowHeightCache = [[NSMutableDictionary alloc] init];
+//    }
+//}
+//
+//
+//// custom [self.tableView reloadData]
+//-(void) tableViewReloadData {
+//    // clear cache on reload
+//    self.estimatedRowHeightCache = [[NSMutableDictionary alloc] init];
+//    [self.tableView reloadData];
+//}
+
 
 
 #pragma mark - Table view delegate
@@ -566,7 +620,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:StoreData forKey:@"StoreData"];
         [[NSUserDefaults standardUserDefaults] synchronize];
 
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
+        [self ky_tableViewReloadData];
     }
     
     
@@ -627,7 +682,8 @@
 //        CGFloat oldTableViewHeight = self.tableView.contentSize.height;
         
         //刷新tableview
-        [self.tableView reloadData];
+//        [self.tableView reloadData];
+        [self ky_tableViewReloadData];
         [self backToTop];
         [self showNumberOfRefresh:updateCount];
         //刷新之后移除未读提示

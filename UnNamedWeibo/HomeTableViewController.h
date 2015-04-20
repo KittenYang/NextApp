@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "BaseTableViewController.h"
 #import "SKSplashView.h"
-
+#import "UITableViewController+KYSelfSizingPushFix.h"
 
 @interface HomeTableViewController : BaseTableViewController<SKSplashDelegate,loadMoreDelegate>
 
 
 @property(nonatomic,retain)NSMutableArray *data;   //为tableView提供数据,基本单位是WeiboModel
 @property (nonatomic,retain)NSMutableArray *weibos;
+//@property NSMutableDictionary *estimatedRowHeightCache;
 @end
