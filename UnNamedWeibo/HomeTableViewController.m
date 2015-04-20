@@ -114,20 +114,18 @@
     [authBtn setTitle:@"登录" forState:UIControlStateNormal];
     [authBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [authBtn addTarget:self action:@selector(authWeibo) forControlEvents:UIControlEventTouchUpInside];
-    
     UIBarButtonItem *authItem =[[UIBarButtonItem alloc]initWithCustomView:authBtn];
-//    self.navigationItem.rightBarButtonItem=authItem;
-
+    self.navigationItem.rightBarButtonItem = authItem;
     
     //获取表情
-    UIButton *emotionsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    emotionsButton.frame = CGRectMake(0, 0, 50, 30);
-    [emotionsButton setTitle:@"表情" forState:UIControlStateNormal];
-    [emotionsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [emotionsButton addTarget:self action:@selector(getEmotions) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *emotionsItem = [[UIBarButtonItem alloc]initWithCustomView:emotionsButton];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:authItem,emotionsItem ,nil];
+//    UIButton *emotionsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    emotionsButton.frame = CGRectMake(0, 0, 50, 30);
+//    [emotionsButton setTitle:@"表情" forState:UIControlStateNormal];
+//    [emotionsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [emotionsButton addTarget:self action:@selector(getEmotions) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *emotionsItem = [[UIBarButtonItem alloc]initWithCustomView:emotionsButton];
     
+//    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:authItem,emotionsItem ,nil];
     
     
     //下拉加载更多
