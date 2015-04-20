@@ -12,7 +12,10 @@
 		5F2889591AA868F200E64BAD /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2889581AA868F200E64BAD /* CollectionViewCell.m */; };
 		5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */; };
 		5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */; };
-		5F3ABC7E1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ABC7D1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.m */; };
+		5F3ABC8C1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ABC8B1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m */; };
+		5F3ABC941AE55AFC0014DA38 /* KYPopInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ABC8F1AE55AFB0014DA38 /* KYPopInteractiveTransition.m */; };
+		5F3ABC951AE55AFC0014DA38 /* KYPopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ABC911AE55AFC0014DA38 /* KYPopTransition.m */; };
+		5F3ABC961AE55AFC0014DA38 /* KYPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3ABC931AE55AFC0014DA38 /* KYPushTransition.m */; };
 		5F7FAD6C1A904CF500CEF622 /* KYCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6B1A904CF500CEF622 /* KYCell.m */; };
 		5F7FAD6F1A90DEB600CEF622 /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FAD6E1A90DEB600CEF622 /* MainTabViewController.m */; };
 		5F7FAD8B1A923B5900CEF622 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FAD801A923B5900CEF622 /* libWeiboSDK.a */; };
@@ -656,8 +659,14 @@
 		5F28895B1AA8B93E00E64BAD /* ReWeiboView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboView.m; sourceTree = "<group>"; };
 		5F28895D1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReWeiboImgCollectionViewCell.h; sourceTree = "<group>"; };
 		5F28895E1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReWeiboImgCollectionViewCell.m; sourceTree = "<group>"; };
-		5F3ABC7C1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+KYSelfSizingPushFix.h"; sourceTree = "<group>"; };
-		5F3ABC7D1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+KYSelfSizingPushFix.m"; sourceTree = "<group>"; };
+		5F3ABC8A1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewController+KYSelfSizingPushFix.h"; sourceTree = "<group>"; };
+		5F3ABC8B1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewController+KYSelfSizingPushFix.m"; sourceTree = "<group>"; };
+		5F3ABC8E1AE55AFB0014DA38 /* KYPopInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPopInteractiveTransition.h; sourceTree = "<group>"; };
+		5F3ABC8F1AE55AFB0014DA38 /* KYPopInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPopInteractiveTransition.m; sourceTree = "<group>"; };
+		5F3ABC901AE55AFC0014DA38 /* KYPopTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPopTransition.h; sourceTree = "<group>"; };
+		5F3ABC911AE55AFC0014DA38 /* KYPopTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPopTransition.m; sourceTree = "<group>"; };
+		5F3ABC921AE55AFC0014DA38 /* KYPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYPushTransition.h; sourceTree = "<group>"; };
+		5F3ABC931AE55AFC0014DA38 /* KYPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYPushTransition.m; sourceTree = "<group>"; };
 		5F7FAD6A1A904CF500CEF622 /* KYCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCell.h; sourceTree = "<group>"; };
 		5F7FAD6B1A904CF500CEF622 /* KYCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCell.m; sourceTree = "<group>"; };
 		5F7FAD6D1A90DEB600CEF622 /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
@@ -1355,6 +1364,28 @@
 			name = KYPushTransition;
 			sourceTree = "<group>";
 		};
+		5F3ABC8D1AE55ABF0014DA38 /* KYSelfSizingPushFixCategory */ = {
+			isa = PBXGroup;
+			children = (
+				5F3ABC8A1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.h */,
+				5F3ABC8B1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m */,
+			);
+			name = KYSelfSizingPushFixCategory;
+			sourceTree = "<group>";
+		};
+		5F3ABC971AE55B080014DA38 /* KYPushTransition */ = {
+			isa = PBXGroup;
+			children = (
+				5F3ABC8E1AE55AFB0014DA38 /* KYPopInteractiveTransition.h */,
+				5F3ABC8F1AE55AFB0014DA38 /* KYPopInteractiveTransition.m */,
+				5F3ABC901AE55AFC0014DA38 /* KYPopTransition.h */,
+				5F3ABC911AE55AFC0014DA38 /* KYPopTransition.m */,
+				5F3ABC921AE55AFC0014DA38 /* KYPushTransition.h */,
+				5F3ABC931AE55AFC0014DA38 /* KYPushTransition.m */,
+			);
+			name = KYPushTransition;
+			sourceTree = "<group>";
+		};
 		5F7FAD7F1A923B5900CEF622 /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1479,13 +1510,15 @@
 		5F87363F1A8C4EF6000CADF4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F3ABC971AE55B080014DA38 /* KYPushTransition */,
+				5F3ABC8D1AE55ABF0014DA38 /* KYSelfSizingPushFixCategory */,
+				5F7FAE9F1A9C40A500CEF622 /* KYJellyView */,
 				5F3362BB1AE2927C00D574A1 /* KYPushTransition */,
+				5F8DB56C1AA56A4D00727719 /* KYCuteView */,
+				5F7FAE911A9B42C000CEF622 /* KYLoadingHUD */,
 				5FE0C7D81AB0365000D4D0F7 /* Emotions */,
 				5FE0C6F31AB02F4900D4D0F7 /* MLEmoji */,
 				5FDF30DC1AA0AAD0007E6ECA /* VBFJellyView */,
-				5F7FAE9F1A9C40A500CEF622 /* KYJellyView */,
-				5F8DB56C1AA56A4D00727719 /* KYCuteView */,
-				5F7FAE911A9B42C000CEF622 /* KYLoadingHUD */,
 				5F7FAE481A9794B500CEF622 /* TimeScroller */,
 				5F7FADFE1A94C69300CEF622 /* RegexKitLite */,
 				5F8736651A8C55EB000CADF4 /* RAMAnimatedTabBarController */,
@@ -1595,8 +1628,6 @@
 			children = (
 				5F8736C01A8D1B3F000CADF4 /* HomeTableViewController.h */,
 				5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */,
-				5F3ABC7C1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.h */,
-				5F3ABC7D1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.m */,
 				5F1147D41AB49F90009C75B0 /* DetailViewController.h */,
 				5F1147D51AB49F90009C75B0 /* DetailViewController.m */,
 			);
@@ -3020,6 +3051,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE0C7D41AB02F4900D4D0F7 /* MLEmojiLabel.m in Sources */,
+				5F3ABC941AE55AFC0014DA38 /* KYPopInteractiveTransition.m in Sources */,
 				5F28895C1AA8B93E00E64BAD /* ReWeiboView.m in Sources */,
 				5F8736C21A8D1B3F000CADF4 /* HomeTableViewController.m in Sources */,
 				5F2889591AA868F200E64BAD /* CollectionViewCell.m in Sources */,
@@ -3036,8 +3068,10 @@
 				5F7FADD81A93840F00CEF622 /* UIView+Extra.m in Sources */,
 				5F8DB5781AA5816700727719 /* KYCuteView.m in Sources */,
 				5F8736781A8C55EC000CADF4 /* RAMAnimatedTabBarController.swift in Sources */,
+				5F3ABC951AE55AFC0014DA38 /* KYPopTransition.m in Sources */,
 				5F7FADDE1A9385C500CEF622 /* WeiboView.m in Sources */,
 				5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */,
+				5F3ABC961AE55AFC0014DA38 /* KYPushTransition.m in Sources */,
 				5F7FAE471A9794AE00CEF622 /* ACTimeScroller.m in Sources */,
 				5F28895F1AA8BD1700E64BAD /* ReWeiboImgCollectionViewCell.m in Sources */,
 				5F8736451A8C4EF7000CADF4 /* AppDelegate.m in Sources */,
@@ -3050,7 +3084,7 @@
 				5F8736761A8C55EC000CADF4 /* RAMRotationAnimation.swift in Sources */,
 				5F8736741A8C55EC000CADF4 /* RAMFrameItemAnimation.swift in Sources */,
 				5F8736751A8C55EC000CADF4 /* RAMFumeAnimation.swift in Sources */,
-				5F3ABC7E1AE5103F0014DA38 /* UITableViewController+KYSelfSizingPushFix.m in Sources */,
+				5F3ABC8C1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m in Sources */,
 				5F8736881A8CC55A000CADF4 /* SquareViewController.m in Sources */,
 				5F1147D31AB46090009C75B0 /* TTTAttributedLabel.m in Sources */,
 				5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */,
