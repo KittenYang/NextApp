@@ -12,6 +12,9 @@
 
 #endif
 
+#define SCREENWIDTH   [[UIScreen mainScreen]bounds].size.width
+#define SCREENHEIGHT  [[UIScreen mainScreen]bounds].size.height
+
 #define kWeiboAppKey     @"1532246631"
 #define kWeiboAppSecret  @"93eedeccc67d099354370679ef8c906e"
 #define kWeiboRedirectURI @"https://api.weibo.com/oauth2/default.html"
@@ -23,3 +26,5 @@
 #define WB_home   @"https://api.weibo.com/2/statuses/home_timeline.json"
 #define WB_unRead @"https://rm.api.weibo.com/2/remind/unread_count.json"
 #define WB_emotions @"https://api.weibo.com/2/emotions.json"
+
+

@@ -7,14 +7,24 @@
 //
 
 #import "DetailViewController.h"
+#import "UIView+Extra.h"
+#import "CONST.h"
 
-@interface DetailViewController ()
+@interface DetailViewController ()<UITableViewDataSource>
 
 @end
 
 @implementation DetailViewController
 
 
+-(void)viewWillAppear:(BOOL)animated{
+    UIView *detailWeiboView = [[[NSBundle mainBundle]loadNibNamed:@"DetailWeiboView" owner:self options:nil]firstObject];
+    detailWeiboView.frame = CGRectMake(0, 0,SCREENWIDTH , 0);
+    detailWeiboView.height = 90;
+    
+    self.tableView.tableHeaderView = detailWeiboView;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,14 +38,23 @@
 
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma  mark -- UITableView DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
 }
-*/
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+    return commentCell;
+    
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+
 
 @end
