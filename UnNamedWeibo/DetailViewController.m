@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "UIView+Extra.h"
 #import "CONST.h"
+#import "DetailWeiboView.h"
 
 @interface DetailViewController ()<UITableViewDataSource>
 
@@ -17,15 +18,37 @@
 @implementation DetailViewController
 
 
+-(id)initWithModel:(WeiboModel *)model{
+    
+    self = [super init];
+    if (self) {
+        
+        self.model = model;
+    }
+    
+    return self;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
-    UIView *detailWeiboView = [[[NSBundle mainBundle]loadNibNamed:@"DetailWeiboView" owner:self options:nil]firstObject];
-    detailWeiboView.frame = CGRectMake(0, 0,SCREENWIDTH , 0);
-    detailWeiboView.height = 90;
+    DetailWeiboView *detailWeiboView = [[[NSBundle mainBundle]loadNibNamed:@"DetailWeiboView" owner:self options:nil]firstObject];
+    [detailWeiboView setUpDetailData:self.model];
+//    detailWeiboView.frame = CGRectMake(0, 0,SCREENWIDTH , 0);
+//    detailWeiboView.height = 90;
     
-    self.tableView.dataSource = self;
+//    DetailWeiboView *detailWeiboView = [[DetailWeiboView alloc]initWithWeiboModel:self.model];
+//    detailWeiboView.frame = CGRectMake(0, 0, SCREENWIDTH, [detailWeiboView getDetailWeiboViewHeight]);
+//    
+//    self.tableView.dataSource = self;
+//    self.isNeedTimeScrollIndicator = NO;
+//    
+//    self.tableView.tableHeaderView = detailWeiboView;
+    
+//    DetailWeiboView *detailWeiboView = [[DetailWeiboView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0) weiboModel:self.model];
+    detailWeiboView.frame = CGRectMake(0, 0, SCREENWIDTH, 100);
+    
     self.isNeedTimeScrollIndicator = NO;
-    
     self.tableView.tableHeaderView = detailWeiboView;
+
     
 }
 

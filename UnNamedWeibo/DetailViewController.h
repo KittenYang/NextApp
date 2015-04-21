@@ -7,7 +7,11 @@
 //
 
 #import "BaseTableViewController.h"
+#import "WeiboModel.h"
 
 @interface DetailViewController : BaseTableViewController
+
+-(id)initWithModel:(WeiboModel *)model;
+@property (nonatomic,strong)WeiboModel *model;
 
 @end

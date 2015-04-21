@@ -50,13 +50,16 @@
     
     //手势返回的实例
     KYPopInteractiveTransition *popInteractive;
+    
+    //详细微博页面
+    DetailViewController *detailVC;
 
 }
 
 #pragma mark -- prepareForSegue
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier  isEqual: @"showDetail"]) {
-        DetailViewController *detailVC = (DetailViewController *)segue.destinationViewController;
+        detailVC = (DetailViewController *)segue.destinationViewController;
         popInteractive = [KYPopInteractiveTransition new];
         [popInteractive addPopGesture:detailVC];
     }
@@ -156,7 +159,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -- 定时获取未读微博数
@@ -274,9 +276,7 @@
 
         CGRect oldFrame = cell.cellView.weiboView.reWeiboView.reWeiboText.frame;
         CGSize size = [cell.cellView.weiboView.reWeiboView.reWeiboText sizeThatFits:CGSizeMake([[UIScreen mainScreen]bounds].size.width - 15, MAXFLOAT)];
-        
-        NSLog(@"生成Cell%ld_转发内容高度:%@",indexPath.row,NSStringFromCGSize(size));
-        
+                
         cell.cellView.weiboView.reWeiboView.reWeiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
         
         
@@ -303,7 +303,6 @@
     
     //----------微博内容--------------
     cell.cellView.weiboView.weiboText.text = model.text;
-    
     cell.cellView.weiboView.weiboText.lineBreakMode = NSLineBreakByWordWrapping;
     cell.cellView.weiboView.weiboText.numberOfLines = 0;
     
@@ -311,7 +310,6 @@
     CGSize size = [cell.cellView.weiboView.weiboText sizeThatFits:CGSizeMake([[UIScreen mainScreen]bounds].size.width - 15, MAXFLOAT)];
     
     cell.cellView.weiboView.weiboText.frame =CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, size.height);
-    NSLog(@"生成Cell%ld_正文内容高度:%@",indexPath.row,NSStringFromCGSize(size));
 
 }
 
@@ -321,7 +319,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    [self performSegueWithIdentifier:@"showDetail" sender:nil];
+//    DetailViewController *detailVC = [[DetailViewController alloc]initWithModel:[self.data objectAtIndex:indexPath.row]];
+    detailVC.model = [self.data objectAtIndex:indexPath.row];
 
 }
 

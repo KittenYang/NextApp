@@ -376,6 +376,7 @@
 		5F8737321A8F2399000CADF4 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737311A8F2399000CADF4 /* BaseViewController.m */; };
 		5F8737361A8F23EA000CADF4 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */; };
 		5F8DB5781AA5816700727719 /* KYCuteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F8DB5771AA5816700727719 /* KYCuteView.m */; };
+		5FA0E3A21AE67C88009734D1 /* DetailWeiboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA0E3A11AE67C88009734D1 /* DetailWeiboView.m */; };
 		5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */; };
 		5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF30DE1AA0AAFA007E6ECA /* JellyButton.m */; };
 		5FE0C7671AB02F4900D4D0F7 /* Expression_100@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE0C6F51AB02F4900D4D0F7 /* Expression_100@2x.png */; };
@@ -1229,6 +1230,8 @@
 		5F8737351A8F23EA000CADF4 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		5F8DB5761AA5816700727719 /* KYCuteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KYCuteView.h; sourceTree = "<group>"; };
 		5F8DB5771AA5816700727719 /* KYCuteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KYCuteView.m; sourceTree = "<group>"; };
+		5FA0E3A01AE67C88009734D1 /* DetailWeiboView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailWeiboView.h; sourceTree = "<group>"; };
+		5FA0E3A11AE67C88009734D1 /* DetailWeiboView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailWeiboView.m; sourceTree = "<group>"; };
 		5FDF30D91AA0AAC8007E6ECA /* VBFJellyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBFJellyView.h; sourceTree = "<group>"; };
 		5FDF30DA1AA0AAC8007E6ECA /* VBFJellyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBFJellyView.m; sourceTree = "<group>"; };
 		5FDF30DD1AA0AAFA007E6ECA /* JellyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JellyButton.h; sourceTree = "<group>"; };
@@ -2284,6 +2287,8 @@
 				5F8736C11A8D1B3F000CADF4 /* HomeTableViewController.m */,
 				5F1147D41AB49F90009C75B0 /* DetailViewController.h */,
 				5F1147D51AB49F90009C75B0 /* DetailViewController.m */,
+				5FA0E3A01AE67C88009734D1 /* DetailWeiboView.h */,
+				5FA0E3A11AE67C88009734D1 /* DetailWeiboView.m */,
 				5F3ABF0F1AE5F4160014DA38 /* DetailWeiboView.xib */,
 			);
 			name = HomeViewController;
@@ -3750,6 +3755,7 @@
 				5F8736751A8C55EC000CADF4 /* RAMFumeAnimation.swift in Sources */,
 				5F3ABC8C1AE51DE40014DA38 /* UITableViewController+KYSelfSizingPushFix.m in Sources */,
 				5F8736881A8CC55A000CADF4 /* SquareViewController.m in Sources */,
+				5FA0E3A21AE67C88009734D1 /* DetailWeiboView.m in Sources */,
 				5F1147D31AB46090009C75B0 /* TTTAttributedLabel.m in Sources */,
 				5FDF30DF1AA0AAFA007E6ECA /* JellyButton.m in Sources */,
 				5FDF30DB1AA0AAC8007E6ECA /* VBFJellyView.m in Sources */,

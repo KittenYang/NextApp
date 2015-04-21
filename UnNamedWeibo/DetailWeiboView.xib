@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="318"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DetailWeiboView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="498"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="jZ2-Pk-TuL">
@@ -48,30 +48,194 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2l-8k-wCG">
-                    <rect key="frame" x="20" y="78" width="560" height="200"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5l-j9-uPg" userLabel="WeiboView">
+                    <rect key="frame" x="20" y="78" width="560" height="400"/>
+                    <subviews>
+                        <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mZ9-wu-Sb8">
+                            <rect key="frame" x="0.0" y="265" width="560" height="130"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="130" id="Ocr-BV-Hqf"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3uG-RK-aCc">
+                                <size key="itemSize" width="120" height="120"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                            <cells>
+                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="300" contentMode="scaleAspectFill" reuseIdentifier="weibo_image_cell" id="ff2-Gb-Cue" customClass="CollectionViewCell">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="200" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="SMv-Y3-qrN" customClass="YLImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkX-TA-Zgh">
+                                                <rect key="frame" x="0.0" y="110" width="120" height="10"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="10" id="7Kf-FD-lUI"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <constraints>
+                                        <constraint firstItem="SMv-Y3-qrN" firstAttribute="leading" secondItem="ff2-Gb-Cue" secondAttribute="leading" id="76U-j7-2dM"/>
+                                        <constraint firstItem="kkX-TA-Zgh" firstAttribute="leading" secondItem="ff2-Gb-Cue" secondAttribute="leading" id="7vb-BP-kOo"/>
+                                        <constraint firstAttribute="bottom" secondItem="SMv-Y3-qrN" secondAttribute="bottom" id="DE8-3w-0Df"/>
+                                        <constraint firstItem="SMv-Y3-qrN" firstAttribute="top" secondItem="ff2-Gb-Cue" secondAttribute="top" id="Nay-dI-iwh"/>
+                                        <constraint firstAttribute="bottom" secondItem="kkX-TA-Zgh" secondAttribute="bottom" id="dYo-5J-1GM"/>
+                                        <constraint firstAttribute="trailing" secondItem="kkX-TA-Zgh" secondAttribute="trailing" id="jiS-if-ahN"/>
+                                        <constraint firstAttribute="trailing" secondItem="SMv-Y3-qrN" secondAttribute="trailing" id="qnc-j4-197"/>
+                                    </constraints>
+                                </collectionViewCell>
+                            </cells>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="kWI-Wf-zLT"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="LFa-ll-NRH"/>
+                            </connections>
+                        </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzH-4Y-vOq" userLabel="reWeiboView" customClass="ReWeiboView">
+                            <rect key="frame" x="0.0" y="67" width="560" height="190"/>
+                            <subviews>
+                                <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCv-jp-Xdd" userLabel="reWeibo_text" customClass="MLEmojiLabel">
+                                    <rect key="frame" x="10" y="5" width="545" height="45"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <collectionView multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e3l-xv-WIy" userLabel="ReWeiboImgCollectionView">
+                                    <rect key="frame" x="0.0" y="55" width="560" height="130"/>
+                                    <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="130" id="6nw-2G-iUU"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VeZ-X6-1Ec">
+                                        <size key="itemSize" width="120" height="120"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="reWeibo_image_cell" id="Z3b-OL-atZ" customClass="ReWeiboImgCollectionViewCell">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kitten" translatesAutoresizingMaskIntoConstraints="NO" id="ZMI-yh-xix" customClass="YLImageView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GIF" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4h-kK-f2C">
+                                                        <rect key="frame" x="0.0" y="110" width="120" height="10"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="10" id="hAS-t8-QQL"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="D4h-kK-f2C" secondAttribute="trailing" id="MZ9-1o-gBk"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZMI-yh-xix" secondAttribute="bottom" id="ULA-Gv-Jbn"/>
+                                                <constraint firstItem="D4h-kK-f2C" firstAttribute="leading" secondItem="Z3b-OL-atZ" secondAttribute="leading" id="oDI-Yk-ZqY"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZMI-yh-xix" secondAttribute="trailing" id="q4l-BC-rht"/>
+                                                <constraint firstAttribute="bottom" secondItem="D4h-kK-f2C" secondAttribute="bottom" id="r8z-ss-n0a"/>
+                                                <constraint firstItem="ZMI-yh-xix" firstAttribute="leading" secondItem="Z3b-OL-atZ" secondAttribute="leading" id="uKl-ib-nEn"/>
+                                                <constraint firstItem="ZMI-yh-xix" firstAttribute="top" secondItem="Z3b-OL-atZ" secondAttribute="top" id="xaX-YV-KnI"/>
+                                            </constraints>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <connections>
+                                        <outlet property="dataSource" destination="iN0-l3-epB" id="4pF-4W-VLy"/>
+                                        <outlet property="delegate" destination="iN0-l3-epB" id="rLb-Aq-KIJ"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="VCv-jp-Xdd" firstAttribute="leading" secondItem="pzH-4Y-vOq" secondAttribute="leading" constant="10" id="7Hw-F5-2Ud"/>
+                                <constraint firstAttribute="trailing" secondItem="VCv-jp-Xdd" secondAttribute="trailing" constant="5" id="Cfz-1d-lc8"/>
+                                <constraint firstItem="VCv-jp-Xdd" firstAttribute="top" secondItem="pzH-4Y-vOq" secondAttribute="top" constant="5" id="GMv-7G-ysN"/>
+                                <constraint firstAttribute="height" constant="190" id="LQJ-sL-oy9"/>
+                                <constraint firstItem="e3l-xv-WIy" firstAttribute="leading" secondItem="pzH-4Y-vOq" secondAttribute="leading" id="Y2E-9S-EFo"/>
+                                <constraint firstAttribute="trailing" secondItem="e3l-xv-WIy" secondAttribute="trailing" id="h4U-nn-bho"/>
+                                <constraint firstItem="e3l-xv-WIy" firstAttribute="top" secondItem="VCv-jp-Xdd" secondAttribute="bottom" constant="5" id="o5K-RC-wN5"/>
+                                <constraint firstAttribute="bottom" secondItem="e3l-xv-WIy" secondAttribute="bottom" constant="5" id="xNS-Z8-dvp"/>
+                            </constraints>
+                        </view>
+                        <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZH-HW-XUZ" userLabel="weibo_text" customClass="MLEmojiLabel">
+                            <rect key="frame" x="10" y="5" width="545" height="54"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="T2T-PA-GdZ"/>
+                        <constraint firstItem="pzH-4Y-vOq" firstAttribute="top" secondItem="MZH-HW-XUZ" secondAttribute="bottom" constant="8" id="7PE-JM-ETV"/>
+                        <constraint firstAttribute="bottom" secondItem="mZ9-wu-Sb8" secondAttribute="bottom" constant="5" id="D1Y-ou-7Fj"/>
+                        <constraint firstItem="mZ9-wu-Sb8" firstAttribute="top" secondItem="pzH-4Y-vOq" secondAttribute="bottom" constant="8" id="GnA-L6-VHx"/>
+                        <constraint firstItem="MZH-HW-XUZ" firstAttribute="leading" secondItem="N5l-j9-uPg" secondAttribute="leading" constant="10" id="JPG-JU-Xou"/>
+                        <constraint firstAttribute="trailing" secondItem="mZ9-wu-Sb8" secondAttribute="trailing" id="TYR-DS-r0f"/>
+                        <constraint firstItem="mZ9-wu-Sb8" firstAttribute="leading" secondItem="N5l-j9-uPg" secondAttribute="leading" id="ZU5-35-AYK"/>
+                        <constraint firstAttribute="trailing" secondItem="MZH-HW-XUZ" secondAttribute="trailing" constant="5" id="cPw-zZ-5u2"/>
+                        <constraint firstItem="pzH-4Y-vOq" firstAttribute="leading" secondItem="N5l-j9-uPg" secondAttribute="leading" id="emJ-vF-Gj2"/>
+                        <constraint firstAttribute="trailing" secondItem="pzH-4Y-vOq" secondAttribute="trailing" id="hWa-tY-pX8"/>
+                        <constraint firstItem="MZH-HW-XUZ" firstAttribute="top" secondItem="N5l-j9-uPg" secondAttribute="top" constant="5" id="vKt-ke-GUc"/>
                     </constraints>
+                    <connections>
+                        <outlet property="collectionViewHeight" destination="Ocr-BV-Hqf" id="KnO-CU-fv3"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="jZ2-Pk-TuL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="1tR-hj-FCY"/>
+                <constraint firstItem="N5l-j9-uPg" firstAttribute="top" secondItem="jZ2-Pk-TuL" secondAttribute="bottom" constant="8" id="6Gz-z9-rxK"/>
                 <constraint firstItem="jZ2-Pk-TuL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="8nv-6l-Jt6"/>
                 <constraint firstItem="Dii-7t-3eT" firstAttribute="leading" secondItem="jZ2-Pk-TuL" secondAttribute="trailing" constant="8" id="DMd-Wv-3eG"/>
+                <constraint firstItem="N5l-j9-uPg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Jcu-eP-Q5L"/>
                 <constraint firstItem="HuO-dr-xik" firstAttribute="leading" secondItem="jZ2-Pk-TuL" secondAttribute="trailing" constant="8" id="MFj-yn-PLx"/>
                 <constraint firstItem="uhg-nb-7HE" firstAttribute="leading" secondItem="Dii-7t-3eT" secondAttribute="trailing" constant="3" id="NSr-af-BrI"/>
-                <constraint firstItem="n2l-8k-wCG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Paa-bE-ulP"/>
                 <constraint firstItem="Dii-7t-3eT" firstAttribute="top" secondItem="HuO-dr-xik" secondAttribute="bottom" constant="7" id="XFg-yY-oui"/>
                 <constraint firstItem="uhg-nb-7HE" firstAttribute="top" secondItem="HuO-dr-xik" secondAttribute="bottom" constant="7" id="cvT-td-DTp"/>
-                <constraint firstItem="n2l-8k-wCG" firstAttribute="top" secondItem="jZ2-Pk-TuL" secondAttribute="bottom" constant="8" id="eaV-gd-XRq"/>
+                <constraint firstAttribute="bottom" secondItem="N5l-j9-uPg" secondAttribute="bottom" constant="20" id="g1y-Ub-nVd"/>
+                <constraint firstAttribute="trailing" secondItem="N5l-j9-uPg" secondAttribute="trailing" constant="20" id="qqC-5T-jL3"/>
                 <constraint firstItem="HuO-dr-xik" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="u2o-Ha-Ml8"/>
-                <constraint firstAttribute="trailing" secondItem="n2l-8k-wCG" secondAttribute="trailing" constant="20" id="uKY-Kc-nDZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="296" y="250"/>
+            <connections>
+                <outlet property="detailReWeiboCollectionHeight" destination="6nw-2G-iUU" id="3Lz-7q-Edj"/>
+                <outlet property="detailReWeiboImage" destination="ZMI-yh-xix" id="LXd-uI-phK"/>
+                <outlet property="detailReWeiboImageCollectionView" destination="e3l-xv-WIy" id="Lop-bf-NFL"/>
+                <outlet property="detailReWeiboText" destination="VCv-jp-Xdd" id="c1B-CI-a6K"/>
+                <outlet property="detailReWeiboView" destination="pzH-4Y-vOq" id="4o3-h0-mui"/>
+                <outlet property="detailView_avatar" destination="jZ2-Pk-TuL" id="Zoz-ND-bbF"/>
+                <outlet property="detailView_date" destination="Dii-7t-3eT" id="j6X-qi-7pp"/>
+                <outlet property="detailView_name" destination="HuO-dr-xik" id="2Rq-eD-nVj"/>
+                <outlet property="detailView_source" destination="uhg-nb-7HE" id="Bvh-ud-OXU"/>
+                <outlet property="detailWeiboCollectionHeight" destination="Ocr-BV-Hqf" id="u2r-d2-jYb"/>
+                <outlet property="detailWeiboImage" destination="SMv-Y3-qrN" id="dz8-d2-nz4"/>
+                <outlet property="detailWeiboImageCollectionView" destination="mZ9-wu-Sb8" id="Ajo-7u-jvh"/>
+                <outlet property="detailWeiboText" destination="MZH-HW-XUZ" id="ytb-E6-6Xm"/>
+                <outlet property="detailWeiboView" destination="N5l-j9-uPg" id="hQt-wT-Trb"/>
+                <outlet property="gifLabel" destination="kkX-TA-Zgh" id="mad-6V-QwV"/>
+                <outlet property="gifLabel_re" destination="D4h-kK-f2C" id="iFM-Oj-89U"/>
+            </connections>
+            <point key="canvasLocation" x="296" y="340"/>
         </view>
     </objects>
     <resources>
