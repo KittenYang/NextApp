@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Kitten Yang. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BaseTableViewController.h"
 
-@interface DetailViewController : BaseViewController
+@interface DetailViewController : BaseTableViewController
 
 @end
