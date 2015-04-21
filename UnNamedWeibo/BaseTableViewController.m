@@ -63,7 +63,9 @@
     _afterRemovedshowIndexes = [NSMutableArray array];
     
     //时间滚动条
-    _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
+    if (self.isNeedTimeScrollIndicator) {
+        _timeScroller = [[ACTimeScroller alloc] initWithDelegate:self];
+    }
 
     
     //是否是第一次加载
@@ -113,8 +115,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(KYCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
 
     
-    [cell.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
-    [cell.cellView.weiboView.weiboImageCollectionView reloadData];
+//    [cell.cellView.weiboView.reWeiboView.reWeiboImageCollectionView reloadData];
+//    [cell.cellView.weiboView.weiboImageCollectionView reloadData];
     
 //    NSNumber *row = [NSNumber numberWithInteger:indexPath.row];
 

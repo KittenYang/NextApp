@@ -58,7 +58,7 @@
         <!--Detail Table View Controller-->
         <scene sceneID="rvL-rd-Q0k">
             <objects>
-                <tableViewController id="iC9-I2-GTQ" userLabel="Detail Table View Controller" sceneMemberID="viewController">
+                <tableViewController id="iC9-I2-GTQ" userLabel="Detail Table View Controller" customClass="DetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="Aff-J5-MD3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -367,7 +367,7 @@
                                     <outlet property="avator" destination="vsj-oN-jyf" id="ycZ-c9-yTD"/>
                                     <outlet property="cellView" destination="ahg-PD-yVw" id="092-Jc-caT"/>
                                     <outlet property="name" destination="QQK-qW-FwU" id="S6a-pt-lH4"/>
-                                    <segue destination="iC9-I2-GTQ" kind="show" id="ujy-1J-oCJ"/>
+                                    <segue destination="iC9-I2-GTQ" kind="show" identifier="showDetail" id="ujy-1J-oCJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

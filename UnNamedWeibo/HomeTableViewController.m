@@ -104,6 +104,7 @@
     self.navigationItem.hidesBackButton = NO;
     self.navigationItem.leftItemsSupplementBackButton = NO;
     self.navigationController.delegate = self;
+    self.isNeedTimeScrollIndicator = YES;
 //    hud = [[KYLoadingHUD alloc]initWithFrame:CGRectMake(self.view.bounds.size.width / 2 - 50, self.view.bounds.size.height / 2 -100, 100, 100)];
 //    [self.view addSubview:hud];
 

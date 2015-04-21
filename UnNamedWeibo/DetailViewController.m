@@ -22,6 +22,9 @@
     detailWeiboView.frame = CGRectMake(0, 0,SCREENWIDTH , 0);
     detailWeiboView.height = 90;
     
+    self.tableView.dataSource = self;
+    self.isNeedTimeScrollIndicator = NO;
+    
     self.tableView.tableHeaderView = detailWeiboView;
     
 }
@@ -46,6 +49,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+    
     return commentCell;
     
 }

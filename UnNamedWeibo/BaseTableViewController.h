@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSMutableArray   *showIndexes;//保存已显示的cell的indexpath
 @property (strong, nonatomic) NSMutableArray   *afterRemovedshowIndexes;//保存已显示的cell的indexpath
 @property (assign,nonatomic ) BOOL             isFirstTime;
+@property (assign,nonatomic ) BOOL             isNeedTimeScrollIndicator;
 
 -(void)backToTop;//停止刷新，回到顶部
 @end
